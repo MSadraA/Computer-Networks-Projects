@@ -4,11 +4,12 @@
 #include "UDPSocket.hpp"
 #include "PingStats.hpp"
 #include <chrono>
+#include <cstdint>
 #include <string>
 
 struct ClientConfig {
     std::string host;
-    uint16_t port;
+    std::uint16_t port;
     int count;
     int timeout_ms;
     int interval_ms;
@@ -16,7 +17,7 @@ struct ClientConfig {
 
 class PingClient {
 public:
-    PingClient(const ClientConfig& config);
+    explicit PingClient(const ClientConfig& config);
     void run();
 
 private:
@@ -24,7 +25,9 @@ private:
     UDPSocket socket;
     PingStats stats;
 
-    bool waitForPong(uint64_t expected_seq, std::chrono::time_point<std::chrono::steady_clock> start_time, double& out_rtt);
+    bool waitForPong(std::uint64_t expected_seq, const std::string& expected_token,
+                     const sockaddr_in& expected_server,
+                     std::chrono::steady_clock::time_point start_time, double& out_rtt);
 };
 
 #endif

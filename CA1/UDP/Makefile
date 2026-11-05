@@ -1,13 +1,13 @@
 CXX = g++
-CXXFLAGS = -std=c++11 -Wall -O2
+CXXFLAGS = -std=c++11 -Wall -Wextra -pedantic -O2
 
 all: ping-server ping-client
 
 ping-server: main_server.cpp PingServer.cpp UDPSocket.cpp MessageParser.cpp
-	$(CXX) $(CXXFLAGS) -o ping-server $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 ping-client: main_client.cpp PingClient.cpp PingStats.cpp UDPSocket.cpp MessageParser.cpp
-	$(CXX) $(CXXFLAGS) -o ping-client $^
+	$(CXX) $(CXXFLAGS) -o $@ $^
 
 tmux-env: all
 	@echo "Creating Tmux environment for manual testing..."
@@ -20,3 +20,5 @@ tmux-env: all
 
 clean:
 	rm -f ping-server ping-client
+
+.PHONY: all clean tmux-env

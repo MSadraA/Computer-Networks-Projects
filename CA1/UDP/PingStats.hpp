@@ -1,17 +1,22 @@
-#include <vector>
+#ifndef PINGSTATS_HPP
+#define PINGSTATS_HPP
+
+#include <cstddef>
 
 class PingStats {
 public:
-    PingStats(int total_expected);
+    PingStats();
 
-    void recordRtt(double rtt_ms); 
-    void recordTimeout();        
-
+    void recordRtt(double rtt_ms);
+    void recordTimeout();
     void printFinalReport() const;
 
 private:
-    int total_expected;
-    int sent_count;
-    int received_count;
-    std::vector<double> rtt_history;
+    std::size_t sent_count;
+    std::size_t received_count;
+    double min_rtt;
+    double max_rtt;
+    double total_rtt;
 };
+
+#endif
