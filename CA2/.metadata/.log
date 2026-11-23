@@ -1,0 +1,441 @@
+!SESSION 2026-11-22 15:11:15.095 -----------------------------------------------
+eclipse.buildId=6.4.0.260506-2cf25223fe
+java.version=25.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.e4.ui.css.swt.theme 4 0 2026-11-22 15:11:32.746
+!MESSAGE /css/default.css
+!STACK 0
+java.io.FileNotFoundException: /css/default.css
+	at org.eclipse.osgi.storage.url.bundleentry.Handler.findBundleEntry(Handler.java:55)
+	at org.eclipse.osgi.storage.url.BundleResourceHandler.openConnection(BundleResourceHandler.java:214)
+	at java.base/java.net.URL.openConnection(Unknown Source)
+	at org.eclipse.osgi.storage.url.BundleURLConverter.resolve(BundleURLConverter.java:64)
+	at org.eclipse.core.runtime.FileLocator.resolve(FileLocator.java:301)
+	at org.eclipse.core.internal.runtime.PlatformURLConverter.resolve(PlatformURLConverter.java:57)
+	at org.eclipse.core.runtime.FileLocator.resolve(FileLocator.java:301)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:466)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:434)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.setTheme(ThemeEngine.java:426)
+	at org.eclipse.e4.ui.css.swt.internal.theme.ThemeEngine.restore(ThemeEngine.java:623)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.setCSSTheme(PartRenderingEngine.java:1416)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.initializeStyling(PartRenderingEngine.java:1323)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1055)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1051)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:153)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:684)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:583)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:173)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:185)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:219)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:149)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:115)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:467)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:298)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source)
+	at java.base/java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:615)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:563)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1415)
+	at org.eclipse.equinox.launcher.Main.main(Main.java:1387)
+
+!ENTRY org.omnetpp.common.core 4 0 2026-11-22 15:11:34.237
+!MESSAGE Thread contention monitoring enabled
+
+!ENTRY org.omnetpp.main 1 0 2026-11-22 15:11:34.256
+!MESSAGE OMNeT++ IDE 6.4.0.260506-2cf25223fe started.
+
+!ENTRY org.python.pydev.shared_core 1 1 2026-11-22 15:11:36.110
+!MESSAGE Restoring info for: /home/sadra/omnetpp-6.4.0/.venv/bin/python3
+
+!ENTRY org.python.pydev.shared_core 1 1 2026-11-22 15:11:36.431
+!MESSAGE Finished restoring information for: /home/sadra/omnetpp-6.4.0/.venv/bin/python3 at: /home/sadra/Documents/Codes/Computer-Networks-Projects/CA2/.metadata/.plugins/org.python.pydev/v1_5lxyld29hudyj6r4ww522n1tu
+
+!ENTRY org.eclipse.osgi 4 0 2026-11-22 15:11:36.471
+!MESSAGE An error occurred while automatically activating bundle org.omnetpp.python (412).
+!STACK 0
+org.osgi.framework.BundleException: Exception in org.omnetpp.python.Activator.start() of bundle org.omnetpp.python.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:859)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	... 26 more
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
+Root exception:
+py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
+
+!ENTRY org.eclipse.ui.workbench 4 2 2026-11-22 15:11:36.476
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.ui.workbench".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Plug-in org.omnetpp.python was unable to load class org.omnetpp.python.Activator.
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:245)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:228)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.omnetpp.python (412).
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:133)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	... 10 more
+Caused by: org.osgi.framework.BundleException: Exception in org.omnetpp.python.Activator.start() of bundle org.omnetpp.python.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:859)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	... 19 more
+Caused by: py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	... 26 more
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2026-11-22 15:11:36.477
+!MESSAGE Plug-in org.omnetpp.python was unable to load class org.omnetpp.python.Activator.
+!STACK 0
+java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.omnetpp.python (412).
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:133)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.osgi.framework.BundleException: Exception in org.omnetpp.python.Activator.start() of bundle org.omnetpp.python.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:859)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	... 19 more
+Caused by: py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	... 26 more
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2026-11-22 15:11:36.477
+!MESSAGE Plug-in org.omnetpp.python was unable to load class org.omnetpp.python.Activator.
+!STACK 0
+java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.omnetpp.python (412).
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:133)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.osgi.framework.BundleException: Exception in org.omnetpp.python.Activator.start() of bundle org.omnetpp.python.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:859)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	... 19 more
+Caused by: py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	... 26 more
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
+
+!ENTRY org.eclipse.ui 4 0 2026-11-22 15:11:36.478
+!MESSAGE Unable to execute early startup code for the org.eclipse.ui.IStartup extension contributed by the 'org.omnetpp.python' plug-in.
+!STACK 1
+org.eclipse.core.runtime.CoreException: Plug-in org.omnetpp.python was unable to load class org.omnetpp.python.Activator.
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:245)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:228)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.omnetpp.python (412).
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:133)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	... 10 more
+Caused by: org.osgi.framework.BundleException: Exception in org.omnetpp.python.Activator.start() of bundle org.omnetpp.python.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:859)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	... 19 more
+Caused by: py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	... 26 more
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2026-11-22 15:11:36.479
+!MESSAGE Plug-in org.omnetpp.python was unable to load class org.omnetpp.python.Activator.
+!STACK 0
+java.lang.ClassNotFoundException: An error occurred while automatically activating bundle org.omnetpp.python (412).
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:133)
+	at org.eclipse.osgi.internal.loader.classpath.ClasspathManager.findLocalClass(ClasspathManager.java:620)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.findLocalClass(ModuleClassLoader.java:353)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findLocalClass(BundleLoader.java:418)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass0(BundleLoader.java:527)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:439)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:195)
+	at java.base/java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:663)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:226)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:1034)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:286)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:65)
+	at org.eclipse.ui.internal.WorkbenchPlugin.lambda$0(WorkbenchPlugin.java:285)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:59)
+	at org.eclipse.ui.internal.WorkbenchPlugin.createExtension(WorkbenchPlugin.java:283)
+	at org.eclipse.ui.internal.EarlyStartupRunnable.run(EarlyStartupRunnable.java:55)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.ui.internal.Workbench$39.run(Workbench.java:2788)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: org.osgi.framework.BundleException: Exception in org.omnetpp.python.Activator.start() of bundle org.omnetpp.python.
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:859)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.start(BundleContextImpl.java:780)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.startWorker0(EquinoxBundle.java:1082)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle$EquinoxModule.startWorker(EquinoxBundle.java:394)
+	at org.eclipse.osgi.container.Module.doStart(Module.java:643)
+	at org.eclipse.osgi.container.Module.start(Module.java:500)
+	at org.eclipse.osgi.framework.util.SecureAction.start(SecureAction.java:528)
+	at org.eclipse.osgi.internal.hooks.EclipseLazyStarter.postFindLocalClass(EclipseLazyStarter.java:122)
+	... 19 more
+Caused by: py4j.Py4JNetworkException
+	at py4j.GatewayServer.startSocket(GatewayServer.java:788)
+	at py4j.GatewayServer.start(GatewayServer.java:763)
+	at py4j.GatewayServer.start(GatewayServer.java:746)
+	at py4j.ClientServer.<init>(ClientServer.java:150)
+	at py4j.ClientServer.<init>(ClientServer.java:45)
+	at py4j.ClientServer$ClientServerBuilder.build(ClientServer.java:263)
+	at org.omnetpp.python.Activator.start(Activator.java:49)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:838)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl$2.run(BundleContextImpl.java:1)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at org.eclipse.osgi.internal.framework.BundleContextImpl.startActivator(BundleContextImpl.java:830)
+	... 26 more
+Caused by: java.net.BindException: Address already in use
+	at java.base/sun.nio.ch.Net.bind0(Native Method)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.Net.bind(Unknown Source)
+	at java.base/sun.nio.ch.NioSocketImpl.bind(Unknown Source)
+	at java.base/java.net.ServerSocket.bind(Unknown Source)
+	at py4j.GatewayServer.startSocket(GatewayServer.java:786)
+	... 36 more
