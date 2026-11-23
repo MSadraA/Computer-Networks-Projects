@@ -1,0 +1,3777 @@
+version 3
+run Sweep-2-20261123-20:36:26-13133
+attr configname Sweep
+attr datetime 20261123-20:36:26
+attr datetimef 20261123-203626
+attr experiment Sweep
+attr inifile omnetpp.ini
+attr iterationvars $n=1
+attr iterationvarsd n=1
+attr iterationvarsf n=1-
+attr measurement $n=1
+attr network Contention
+attr processid 13133
+attr repetition 2
+attr replication #2
+attr resultdir results
+attr runnumber 2
+attr seedset 2
+itervar n 1
+config cmdenv-redirect-output true
+config image-path /home/sadra/omnetpp-6.4.0/samples/inet-4.7.0/images
+config repeat 5
+config *.n 1
+config network Contention
+config Contention.**.wlan*.bitrate 54Mbps
+config Contention.**.cli.reqLength 900B
+config Anomaly.n 5
+config Anomaly.host[0].wlan[*].bitrate 9Mbps
+config Anomaly.host[*].wlan[*].bitrate 54Mbps
+config Anomaly.ap.wlan[*].bitrate 54Mbps
+config Anomaly.**.messageLength 900B
+config Anomaly.ap.**.pendingQueue.numQueues 5
+config Roaming.D 51m
+config Roaming.radioMedium.pathLoss.alpha 3.2
+config Roaming.radioMedium.pathLoss.sigma 3
+config Roaming.ap*.wlan.mgmt.beaconInterval 100ms
+config Roaming.host.wlan.mgmt.numChannels 7
+config Roaming.*.mobility.turtleScript "xml(\"<movement><set x='50' y='102' speed='1.75' angle='0'/><forward d='51'/></movement>\")"
+config sim-time-limit 12s
+config warmup-period 2s
+config **.vector-recording false
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 400m
+config **.constraintAreaMaxY 400m
+config **.constraintAreaMaxZ 0m
+config *.radioMedium.sameTransmissionStartTimeCheck "\"ignore\""
+config **.wlan*.opMode "\"a\""
+config **.wlan*.radio.bandName "\"5 GHz (20 MHz)\""
+config **.wlan*.radio.channelNumber 8
+config **.radio.transmitter.power 20mW
+config **.fragmentationPolicy.fragmentationThreshold 2346B
+config **.ap.wlan.address "\"10:00:00:00:00:00\""
+config **.mgmt.accessPointAddress "\"10:00:00:00:00:00\""
+config **.cli.respLength 0B
+config **.cli.destAddress "\"20:00:00:00:00:00\""
+config **.cli.sendInterval 50us
+config *.ap.mobility.initialX 200m
+config *.ap.mobility.initialY 200m
+config **.mobility.initialZ 0m
+config **.mobility.initFromDisplayString false
+
+par Contention.visualizer.sceneVisualizer typename "\"inet.visualizer.canvas.scene.SceneCanvasVisualizer\""
+par Contention.visualizer.sceneVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.sceneVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.sceneVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.sceneVisualizer tags "\"\""
+par Contention.visualizer.sceneVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par Contention.visualizer.sceneVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.sceneVisualizer axisLength "nan m"
+attr mutable ""
+attr unit m
+par Contention.visualizer.sceneVisualizer animationSpeed 0
+par Contention.visualizer.sceneVisualizer sceneMinX "nan m"
+attr unit m
+par Contention.visualizer.sceneVisualizer sceneMinY "nan m"
+attr unit m
+par Contention.visualizer.sceneVisualizer sceneMinZ "nan m"
+attr unit m
+par Contention.visualizer.sceneVisualizer sceneMaxX "nan m"
+attr unit m
+par Contention.visualizer.sceneVisualizer sceneMaxY "nan m"
+attr unit m
+par Contention.visualizer.sceneVisualizer sceneMaxZ "nan m"
+attr unit m
+par Contention.visualizer.sceneVisualizer zIndex 0
+par Contention.visualizer.sceneVisualizer viewAngle "\"x right y down z out\""
+attr mutable ""
+par Contention.visualizer.sceneVisualizer viewScale "\"1 1\""
+attr mutable ""
+par Contention.visualizer.sceneVisualizer viewTranslation "\"0 0\""
+attr mutable ""
+par Contention.visualizer.sceneVisualizer descriptionFigure "\"\""
+par Contention.visualizer.physicalEnvironmentVisualizer typename "\"inet.visualizer.canvas.environment.PhysicalEnvironmentCanvasVisualizer\""
+par Contention.visualizer.physicalEnvironmentVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.physicalEnvironmentVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.physicalEnvironmentVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.physicalEnvironmentVisualizer tags "\"\""
+par Contention.visualizer.physicalEnvironmentVisualizer physicalEnvironmentModule "\"physicalEnvironment\""
+par Contention.visualizer.physicalEnvironmentVisualizer displayObjects true
+par Contention.visualizer.physicalEnvironmentVisualizer zIndex 0
+par Contention.visualizer.networkNodeVisualizer typename "\"inet.visualizer.canvas.scene.NetworkNodeCanvasVisualizer\""
+par Contention.visualizer.networkNodeVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.networkNodeVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.networkNodeVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.networkNodeVisualizer tags "\"\""
+par Contention.visualizer.networkNodeVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.networkNodeVisualizer annotationSpacing 4
+par Contention.visualizer.networkNodeVisualizer placementPenalty 10
+par Contention.visualizer.networkNodeVisualizer zIndex 0
+par Contention.visualizer.networkConnectionVisualizer typename "\"inet.visualizer.canvas.scene.NetworkConnectionCanvasVisualizer\""
+par Contention.visualizer.networkConnectionVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.networkConnectionVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.networkConnectionVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.networkConnectionVisualizer tags "\"\""
+par Contention.visualizer.networkConnectionVisualizer displayNetworkConnections true
+par Contention.visualizer.networkConnectionVisualizer nodeFilter "\"\""
+attr mutable ""
+par Contention.visualizer.networkConnectionVisualizer lineColor "\"black\""
+par Contention.visualizer.networkConnectionVisualizer lineStyle "\"solid\""
+par Contention.visualizer.networkConnectionVisualizer lineWidth 1
+par Contention.visualizer.networkConnectionVisualizer zIndex 0
+par Contention.visualizer.mobilityVisualizer typename "\"inet.visualizer.canvas.mobility.MobilityCanvasVisualizer\""
+par Contention.visualizer.mobilityVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.mobilityVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.mobilityVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.mobilityVisualizer tags "\"\""
+par Contention.visualizer.mobilityVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.mobilityVisualizer displayMobility true
+par Contention.visualizer.mobilityVisualizer animationSpeed 0
+par Contention.visualizer.mobilityVisualizer moduleFilter "\"**.mobility\""
+attr mutable ""
+par Contention.visualizer.mobilityVisualizer displayPositions false
+par Contention.visualizer.mobilityVisualizer positionCircleRadius 4
+par Contention.visualizer.mobilityVisualizer positionCircleLineWidth 1
+par Contention.visualizer.mobilityVisualizer positionCircleLineColor "\"dark\""
+par Contention.visualizer.mobilityVisualizer positionCircleFillColor "\"dark\""
+par Contention.visualizer.mobilityVisualizer displayOrientations false
+par Contention.visualizer.mobilityVisualizer orientationPieRadius 32
+par Contention.visualizer.mobilityVisualizer orientationPieSize 0.2
+par Contention.visualizer.mobilityVisualizer orientationPieOpacity 0.25
+par Contention.visualizer.mobilityVisualizer orientationLineColor "\"black\""
+par Contention.visualizer.mobilityVisualizer orientationLineStyle "\"solid\""
+par Contention.visualizer.mobilityVisualizer orientationLineWidth 1
+par Contention.visualizer.mobilityVisualizer orientationFillColorUp "\"blue\""
+par Contention.visualizer.mobilityVisualizer orientationFillColorDown "\"red\""
+par Contention.visualizer.mobilityVisualizer displayVelocities false
+par Contention.visualizer.mobilityVisualizer velocityArrowScale 1
+par Contention.visualizer.mobilityVisualizer velocityLineColor "\"black\""
+par Contention.visualizer.mobilityVisualizer velocityLineStyle "\"solid\""
+par Contention.visualizer.mobilityVisualizer velocityLineWidth 1
+par Contention.visualizer.mobilityVisualizer velocityProjection "\"projected\""
+attr enum projected,trueLength,isometric
+par Contention.visualizer.mobilityVisualizer orientationProjection "\"projected\""
+attr enum projected,trueLength,isometric
+par Contention.visualizer.mobilityVisualizer displayMovementTrails false
+par Contention.visualizer.mobilityVisualizer movementTrailLineColor "\"dark\""
+par Contention.visualizer.mobilityVisualizer movementTrailLineStyle "\"solid\""
+par Contention.visualizer.mobilityVisualizer movementTrailLineWidth 1
+par Contention.visualizer.mobilityVisualizer trailLength 100
+par Contention.visualizer.mobilityVisualizer movementTrailSegmentHideThreshold inf
+par Contention.visualizer.mobilityVisualizer zIndex 0
+par Contention.visualizer.statisticVisualizer typename "\"inet.visualizer.canvas.common.StatisticCanvasVisualizer\""
+par Contention.visualizer.statisticVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.statisticVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.statisticVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.statisticVisualizer tags "\"\""
+par Contention.visualizer.statisticVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.statisticVisualizer displayStatistics false
+par Contention.visualizer.statisticVisualizer signalName "\"\""
+par Contention.visualizer.statisticVisualizer statisticName "\"\""
+par Contention.visualizer.statisticVisualizer statisticUnit "\"\""
+par Contention.visualizer.statisticVisualizer statisticExpression "\"\""
+par Contention.visualizer.statisticVisualizer sourceFilter "\"**\""
+attr mutable ""
+par Contention.visualizer.statisticVisualizer format "\"%n: %v %u\""
+attr mutable ""
+par Contention.visualizer.statisticVisualizer unit "\"\""
+par Contention.visualizer.statisticVisualizer font "\"<default>\""
+par Contention.visualizer.statisticVisualizer textColor "\"black\""
+par Contention.visualizer.statisticVisualizer backgroundColor "\"white\""
+par Contention.visualizer.statisticVisualizer opacity 1
+par Contention.visualizer.statisticVisualizer placementHint "\"top\""
+par Contention.visualizer.statisticVisualizer placementPriority 0
+par Contention.visualizer.statisticVisualizer zIndex 10
+par Contention.visualizer.statisticVisualizer propertyName "\"\""
+par Contention.visualizer.statisticVisualizer propertyIndex "\"\""
+par Contention.visualizer.infoVisualizer typename "\"inet.visualizer.canvas.common.InfoCanvasVisualizer\""
+par Contention.visualizer.infoVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.infoVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.infoVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.infoVisualizer tags "\"\""
+par Contention.visualizer.infoVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.infoVisualizer displayInfos true
+par Contention.visualizer.infoVisualizer modules "\"\""
+attr mutable ""
+par Contention.visualizer.infoVisualizer format "\"%t\""
+attr mutable ""
+par Contention.visualizer.infoVisualizer font "\"<default>\""
+par Contention.visualizer.infoVisualizer textColor "\"black\""
+par Contention.visualizer.infoVisualizer textAlignment "\"left\""
+attr enum left,right,center
+par Contention.visualizer.infoVisualizer backgroundColor "\"white\""
+par Contention.visualizer.infoVisualizer lineColor "\"black\""
+par Contention.visualizer.infoVisualizer opacity 1
+par Contention.visualizer.infoVisualizer placementHint "\"top\""
+par Contention.visualizer.infoVisualizer placementPriority 0
+par Contention.visualizer.infoVisualizer zIndex 10
+par Contention.visualizer.energyStorageVisualizer typename "\"inet.visualizer.canvas.power.EnergyStorageCanvasVisualizer\""
+par Contention.visualizer.energyStorageVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.energyStorageVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.energyStorageVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.energyStorageVisualizer tags "\"\""
+par Contention.visualizer.energyStorageVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.energyStorageVisualizer displayEnergyStorages false
+par Contention.visualizer.energyStorageVisualizer energyStorageFilter "\"**\""
+par Contention.visualizer.energyStorageVisualizer color "\"green\""
+par Contention.visualizer.energyStorageVisualizer width 8
+par Contention.visualizer.energyStorageVisualizer height 24
+par Contention.visualizer.energyStorageVisualizer spacing 2
+par Contention.visualizer.energyStorageVisualizer placementHint "\"right\""
+par Contention.visualizer.energyStorageVisualizer placementPriority 0
+par Contention.visualizer.energyStorageVisualizer zIndex 10
+par Contention.visualizer.mediumVisualizer typename "\"inet.visualizer.canvas.physicallayer.MediumCanvasVisualizer\""
+par Contention.visualizer.mediumVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.mediumVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.mediumVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.mediumVisualizer tags "\"\""
+par Contention.visualizer.mediumVisualizer mediumModule "\"radioMedium\""
+par Contention.visualizer.mediumVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.mediumVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.mediumVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.mediumVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.mediumVisualizer displaySignals false
+par Contention.visualizer.mediumVisualizer signalColor "\"dark\""
+par Contention.visualizer.mediumVisualizer signalPropagationAnimationSpeed nan
+attr mutable ""
+par Contention.visualizer.mediumVisualizer signalPropagationAnimationTime 1s
+attr unit s
+par Contention.visualizer.mediumVisualizer signalPropagationAdditionalTime 0s
+attr unit s
+par Contention.visualizer.mediumVisualizer signalTransmissionAnimationSpeed nan
+attr mutable ""
+par Contention.visualizer.mediumVisualizer signalTransmissionAnimationTime 1s
+attr unit s
+par Contention.visualizer.mediumVisualizer signalAnimationSpeedChangeTimeMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.mediumVisualizer signalAnimationSpeedChangeTime 1s
+attr unit s
+par Contention.visualizer.mediumVisualizer displaySignalDepartures false
+par Contention.visualizer.mediumVisualizer signalDepartureImage "\"misc/signal_departure.png\""
+par Contention.visualizer.mediumVisualizer signalDeparturePlacementHint "\"topCenter\""
+par Contention.visualizer.mediumVisualizer signalDeparturePlacementPriority 1
+par Contention.visualizer.mediumVisualizer displaySignalArrivals false
+par Contention.visualizer.mediumVisualizer signalArrivalImage "\"misc/signal_arrival.png\""
+par Contention.visualizer.mediumVisualizer signalArrivalPlacementHint "\"topCenter\""
+par Contention.visualizer.mediumVisualizer signalArrivalPlacementPriority -1
+par Contention.visualizer.mediumVisualizer displayCommunicationRanges false
+par Contention.visualizer.mediumVisualizer communicationRangeLineColor "\"blue\""
+par Contention.visualizer.mediumVisualizer communicationRangeLineStyle "\"solid\""
+par Contention.visualizer.mediumVisualizer communicationRangeLineWidth 1
+par Contention.visualizer.mediumVisualizer displayInterferenceRanges false
+par Contention.visualizer.mediumVisualizer interferenceRangeLineColor "\"gray\""
+par Contention.visualizer.mediumVisualizer interferenceRangeLineStyle "\"solid\""
+par Contention.visualizer.mediumVisualizer interferenceRangeLineWidth 1
+par Contention.visualizer.mediumVisualizer autoPowerAxis true
+par Contention.visualizer.mediumVisualizer signalMinPower "inf dBmW"
+attr unit dBmW
+par Contention.visualizer.mediumVisualizer signalMaxPower 0dBmW
+attr unit dBmW
+par Contention.visualizer.mediumVisualizer signalMinPowerDensity "inf dBmWpMHz"
+attr unit dBmWpMHz
+par Contention.visualizer.mediumVisualizer signalMaxPowerDensity "-inf dBmWpMHz"
+attr unit dBmWpMHz
+par Contention.visualizer.mediumVisualizer autoTimeAxis true
+par Contention.visualizer.mediumVisualizer signalMinTime 0s
+attr unit s
+par Contention.visualizer.mediumVisualizer signalMaxTime 0s
+attr unit s
+par Contention.visualizer.mediumVisualizer autoFrequencyAxis true
+par Contention.visualizer.mediumVisualizer signalMinFrequency "inf Hz"
+attr unit Hz
+par Contention.visualizer.mediumVisualizer signalMaxFrequency "-inf Hz"
+attr unit Hz
+par Contention.visualizer.mediumVisualizer displayMainPowerDensityMap false
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapPixmapDensity 1
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapMinX 0
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapMaxX nan
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapMinY 0
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapMaxY nan
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapZ 0
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapFigureXTickCount 3
+par Contention.visualizer.mediumVisualizer mainPowerDensityMapFigureYTickCount 3
+par Contention.visualizer.mediumVisualizer displayPowerDensityMaps false
+par Contention.visualizer.mediumVisualizer powerDensityMapMode "\"auto\""
+attr enum total,signal,auto
+par Contention.visualizer.mediumVisualizer powerDensityMapPixelMode "\"mean\""
+attr enum sample,partition,mean
+par Contention.visualizer.mediumVisualizer powerDensityMapApproximationSize 10
+par Contention.visualizer.mediumVisualizer powerDensityMapCenterFrequency "nan Hz"
+attr mutable ""
+attr unit Hz
+par Contention.visualizer.mediumVisualizer powerDensityMapBandwidth 0Hz
+attr mutable ""
+attr unit Hz
+par Contention.visualizer.mediumVisualizer powerDensityMapFigureWidth 200
+par Contention.visualizer.mediumVisualizer powerDensityMapFigureHeight 120
+par Contention.visualizer.mediumVisualizer powerDensityMapPixmapWidth 200
+par Contention.visualizer.mediumVisualizer powerDensityMapPixmapHeight 120
+par Contention.visualizer.mediumVisualizer powerDensityMapZ 0
+par Contention.visualizer.mediumVisualizer powerDensityMapFigureXTickCount 3
+par Contention.visualizer.mediumVisualizer powerDensityMapFigureYTickCount 3
+par Contention.visualizer.mediumVisualizer displaySpectrums false
+par Contention.visualizer.mediumVisualizer spectrumMode "\"auto\""
+attr enum total,signal,auto
+par Contention.visualizer.mediumVisualizer spectrumFigureWidth 200
+par Contention.visualizer.mediumVisualizer spectrumFigureHeight 120
+par Contention.visualizer.mediumVisualizer spectrumFigureXTickCount 3
+par Contention.visualizer.mediumVisualizer spectrumFigureYTickCount 5
+par Contention.visualizer.mediumVisualizer spectrumFigureInterpolationSize 5
+par Contention.visualizer.mediumVisualizer spectrumPlacementHint "\"bottomCenter\""
+par Contention.visualizer.mediumVisualizer spectrumPlacementPriority -1
+par Contention.visualizer.mediumVisualizer displaySpectrograms false
+par Contention.visualizer.mediumVisualizer spectrogramMode "\"auto\""
+attr enum total,signal,auto
+par Contention.visualizer.mediumVisualizer spectrogramPixelMode "\"mean\""
+attr enum sample,partition,mean
+par Contention.visualizer.mediumVisualizer spectrogramFigureWidth 200
+par Contention.visualizer.mediumVisualizer spectrogramFigureHeight 120
+par Contention.visualizer.mediumVisualizer spectrogramPixmapWidth 200
+par Contention.visualizer.mediumVisualizer spectrogramPixmapHeight 120
+par Contention.visualizer.mediumVisualizer spectrogramFigureXTickCount 3
+par Contention.visualizer.mediumVisualizer spectrogramFigureYTickCount 5
+par Contention.visualizer.mediumVisualizer spectrogramPlacementHint "\"bottomCenter\""
+par Contention.visualizer.mediumVisualizer spectrogramPlacementPriority -1
+par Contention.visualizer.mediumVisualizer zIndex 0
+par Contention.visualizer.mediumVisualizer signalShape "\"ring\""
+attr enum ring,sphere
+par Contention.visualizer.mediumVisualizer signalOpacity 0.5
+par Contention.visualizer.mediumVisualizer signalRingCount 20
+par Contention.visualizer.mediumVisualizer signalRingSize 50m
+attr unit m
+par Contention.visualizer.mediumVisualizer signalFadingDistance 50m
+attr unit m
+par Contention.visualizer.mediumVisualizer signalFadingFactor 1.2
+par Contention.visualizer.mediumVisualizer signalWaveCount 20
+par Contention.visualizer.mediumVisualizer signalWaveLength 50m
+attr unit m
+par Contention.visualizer.mediumVisualizer signalWaveWidth 10m
+attr unit m
+par Contention.visualizer.mediumVisualizer signalWaveFadingAnimationSpeedFactor 1
+par Contention.visualizer.mediumVisualizer displayCommunicationHeat false
+par Contention.visualizer.obstacleLossVisualizer typename "\"inet.visualizer.canvas.physicallayer.TracingObstacleLossCanvasVisualizer\""
+par Contention.visualizer.obstacleLossVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.obstacleLossVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.obstacleLossVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.obstacleLossVisualizer tags "\"\""
+par Contention.visualizer.obstacleLossVisualizer displayIntersections false
+par Contention.visualizer.obstacleLossVisualizer intersectionLineColor "\"red\""
+par Contention.visualizer.obstacleLossVisualizer intersectionLineStyle "\"solid\""
+par Contention.visualizer.obstacleLossVisualizer intersectionLineWidth 1
+par Contention.visualizer.obstacleLossVisualizer displayFaceNormalVectors false
+par Contention.visualizer.obstacleLossVisualizer faceNormalLineColor "\"grey\""
+par Contention.visualizer.obstacleLossVisualizer faceNormalLineStyle "\"solid\""
+par Contention.visualizer.obstacleLossVisualizer faceNormalLineWidth 1
+par Contention.visualizer.obstacleLossVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.obstacleLossVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.obstacleLossVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.obstacleLossVisualizer zIndex 0
+par Contention.visualizer.packetDropVisualizer typename "\"inet.visualizer.canvas.common.PacketDropCanvasVisualizer\""
+par Contention.visualizer.packetDropVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.packetDropVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.packetDropVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.packetDropVisualizer tags "\"\""
+par Contention.visualizer.packetDropVisualizer displayPacketDrops false
+par Contention.visualizer.packetDropVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.packetDropVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.packetDropVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.packetDropVisualizer detailsFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.packetDropVisualizer icon "\"msg/packet_s\""
+par Contention.visualizer.packetDropVisualizer iconTintAmount 1
+par Contention.visualizer.packetDropVisualizer iconTintColor "\"dark\""
+par Contention.visualizer.packetDropVisualizer labelFormat "\"%n\""
+attr mutable ""
+par Contention.visualizer.packetDropVisualizer labelFont "\"<default>\""
+par Contention.visualizer.packetDropVisualizer labelColor "\"black\""
+par Contention.visualizer.packetDropVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.packetDropVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.packetDropVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.packetDropVisualizer zIndex 10
+par Contention.visualizer.packetDropVisualizer dx 32
+par Contention.visualizer.packetDropVisualizer dy 64
+par Contention.visualizer.packetFlowVisualizer typename "\"inet.visualizer.canvas.flow.PacketFlowCanvasVisualizer\""
+par Contention.visualizer.packetFlowVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.packetFlowVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.packetFlowVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.packetFlowVisualizer tags "\"\""
+par Contention.visualizer.packetFlowVisualizer displayRoutes false
+par Contention.visualizer.packetFlowVisualizer startPathSignal "\"packetFlowStarted\""
+par Contention.visualizer.packetFlowVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Contention.visualizer.packetFlowVisualizer endPathSignal "\"packetFlowEnded\""
+par Contention.visualizer.packetFlowVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.packetFlowVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.packetFlowVisualizer lineColor "\"dark\""
+par Contention.visualizer.packetFlowVisualizer lineStyle "\"dashed\""
+par Contention.visualizer.packetFlowVisualizer lineWidth 3
+par Contention.visualizer.packetFlowVisualizer lineSmooth false
+par Contention.visualizer.packetFlowVisualizer lineShift 16
+par Contention.visualizer.packetFlowVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.packetFlowVisualizer lineContactSpacing 3
+par Contention.visualizer.packetFlowVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.packetFlowVisualizer labelFormat "\"%L %p pk (%l)\""
+par Contention.visualizer.packetFlowVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.packetFlowVisualizer labelColor "\"\""
+par Contention.visualizer.packetFlowVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.packetFlowVisualizer fadeOutTime 0s
+attr unit s
+par Contention.visualizer.packetFlowVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.packetFlowVisualizer zIndex 4
+par Contention.visualizer.queueVisualizer typename "\"inet.visualizer.canvas.common.QueueCanvasVisualizer\""
+par Contention.visualizer.queueVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.queueVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.queueVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.queueVisualizer tags "\"\""
+par Contention.visualizer.queueVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.queueVisualizer displayQueues false
+par Contention.visualizer.queueVisualizer queueFilter "\"**\""
+par Contention.visualizer.queueVisualizer color "\"blue\""
+par Contention.visualizer.queueVisualizer width 8
+par Contention.visualizer.queueVisualizer height 24
+par Contention.visualizer.queueVisualizer spacing 2
+par Contention.visualizer.queueVisualizer placementHint "\"right\""
+par Contention.visualizer.queueVisualizer placementPriority 0
+par Contention.visualizer.queueVisualizer zIndex 10
+par Contention.visualizer.gateScheduleVisualizer typename "\"inet.visualizer.canvas.common.GateScheduleCanvasVisualizer\""
+par Contention.visualizer.gateScheduleVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.gateScheduleVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.gateScheduleVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.gateScheduleVisualizer tags "\"\""
+par Contention.visualizer.gateScheduleVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.gateScheduleVisualizer displayGateSchedules false
+par Contention.visualizer.gateScheduleVisualizer labelFormat "\"%i %D\""
+par Contention.visualizer.gateScheduleVisualizer gateFilter "\"**\""
+par Contention.visualizer.gateScheduleVisualizer width 100
+par Contention.visualizer.gateScheduleVisualizer height 8
+par Contention.visualizer.gateScheduleVisualizer spacing 2
+par Contention.visualizer.gateScheduleVisualizer placementHint "\"right\""
+par Contention.visualizer.gateScheduleVisualizer placementPriority 0
+par Contention.visualizer.gateScheduleVisualizer displayDuration 0s
+attr mutable ""
+attr unit s
+par Contention.visualizer.gateScheduleVisualizer currentTimePosition 50
+par Contention.visualizer.gateScheduleVisualizer zIndex 10
+par Contention.visualizer.radioVisualizer typename "\"inet.visualizer.canvas.physicallayer.RadioCanvasVisualizer\""
+par Contention.visualizer.radioVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.radioVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.radioVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.radioVisualizer tags "\"\""
+par Contention.visualizer.radioVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.radioVisualizer displayRadios false
+par Contention.visualizer.radioVisualizer displayRadioMode true
+par Contention.visualizer.radioVisualizer displayReceptionState true
+par Contention.visualizer.radioVisualizer displayTransmissionState true
+par Contention.visualizer.radioVisualizer displayAntennaLobes false
+par Contention.visualizer.radioVisualizer radioFilter "\"**\""
+attr mutable ""
+par Contention.visualizer.radioVisualizer radioModeImages "\"block/process_vs block/timer_vs block/wrx_vs block/wtx_vs block/wrxtx_vs block/cogwheel_vs\""
+par Contention.visualizer.radioVisualizer receptionStateImages "\"- - misc/receiving misc/receiving\""
+par Contention.visualizer.radioVisualizer transmissionStateImages "\"- - misc/transmitting\""
+par Contention.visualizer.radioVisualizer width 16
+par Contention.visualizer.radioVisualizer height 16
+par Contention.visualizer.radioVisualizer placementHint "\"bottomRight\""
+par Contention.visualizer.radioVisualizer placementPriority 0
+par Contention.visualizer.radioVisualizer antennaLobeNormalize false
+par Contention.visualizer.radioVisualizer antennaLobeRelativeLabels false
+par Contention.visualizer.radioVisualizer antennaLobePlaneGlobal true
+par Contention.visualizer.radioVisualizer antennaLobePlane "\"view\""
+attr enum view,xy,xz,yz
+par Contention.visualizer.radioVisualizer antennaLobeMode "\"logarithmic\""
+attr enum logarithmic,linear
+par Contention.visualizer.radioVisualizer antennaLobeLogarithmicBase 10
+par Contention.visualizer.radioVisualizer antennaLobeLogarithmicScale 100
+par Contention.visualizer.radioVisualizer antennaLobeRadius 100
+par Contention.visualizer.radioVisualizer antennaLobeStep 10deg
+attr unit deg
+par Contention.visualizer.radioVisualizer antennaLobeOpacity 0.25
+par Contention.visualizer.radioVisualizer antennaLobeLineSmooth true
+par Contention.visualizer.radioVisualizer antennaLobeLineColor "\"black\""
+par Contention.visualizer.radioVisualizer antennaLobeLineStyle "\"solid\""
+par Contention.visualizer.radioVisualizer antennaLobeLineWidth 1
+par Contention.visualizer.radioVisualizer antennaLobeFillColor "\"white\""
+par Contention.visualizer.radioVisualizer zIndex 10
+par Contention.visualizer.physicalLinkVisualizer typename "\"inet.visualizer.canvas.physicallayer.PhysicalLinkCanvasVisualizer\""
+par Contention.visualizer.physicalLinkVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.physicalLinkVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.physicalLinkVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.physicalLinkVisualizer tags "\"\""
+par Contention.visualizer.physicalLinkVisualizer displayLinks false
+par Contention.visualizer.physicalLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par Contention.visualizer.physicalLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.physicalLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.physicalLinkVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.physicalLinkVisualizer lineColor "\"olive\""
+par Contention.visualizer.physicalLinkVisualizer lineStyle "\"dotted\""
+par Contention.visualizer.physicalLinkVisualizer lineWidth 3
+par Contention.visualizer.physicalLinkVisualizer lineShift 16
+par Contention.visualizer.physicalLinkVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.physicalLinkVisualizer lineContactSpacing 3
+par Contention.visualizer.physicalLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.physicalLinkVisualizer labelFormat "\"%n\""
+par Contention.visualizer.physicalLinkVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.physicalLinkVisualizer labelColor "\"olive\""
+par Contention.visualizer.physicalLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.physicalLinkVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.physicalLinkVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.physicalLinkVisualizer holdAnimationTime 0s
+attr unit s
+par Contention.visualizer.physicalLinkVisualizer zIndex 1
+par Contention.visualizer.interfaceTableVisualizer typename "\"inet.visualizer.canvas.linklayer.InterfaceTableCanvasVisualizer\""
+par Contention.visualizer.interfaceTableVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.interfaceTableVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.interfaceTableVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.interfaceTableVisualizer tags "\"\""
+par Contention.visualizer.interfaceTableVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.interfaceTableVisualizer displayInterfaceTables false
+par Contention.visualizer.interfaceTableVisualizer displayWiredInterfacesAtConnections true
+par Contention.visualizer.interfaceTableVisualizer displayBackground false
+par Contention.visualizer.interfaceTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.interfaceTableVisualizer interfaceFilter "\"not(lo*)\""
+attr mutable ""
+par Contention.visualizer.interfaceTableVisualizer format "\"%N %\\\\%a%/%l\""
+attr mutable ""
+par Contention.visualizer.interfaceTableVisualizer placementHint "\"top\""
+par Contention.visualizer.interfaceTableVisualizer placementPriority 0
+par Contention.visualizer.interfaceTableVisualizer font "\"<default>\""
+par Contention.visualizer.interfaceTableVisualizer textColor "\"#005030\""
+par Contention.visualizer.interfaceTableVisualizer backgroundColor "\"white\""
+par Contention.visualizer.interfaceTableVisualizer opacity 1
+par Contention.visualizer.interfaceTableVisualizer zIndex 10
+par Contention.visualizer.interfaceTableVisualizer anchor "\"l\""
+attr enum l,r,t
+par Contention.visualizer.dataLinkVisualizer typename "\"inet.visualizer.canvas.linklayer.DataLinkCanvasVisualizer\""
+par Contention.visualizer.dataLinkVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.dataLinkVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.dataLinkVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.dataLinkVisualizer tags "\"\""
+par Contention.visualizer.dataLinkVisualizer displayLinks false
+par Contention.visualizer.dataLinkVisualizer activityLevel "\"service\""
+attr enum service,peer,protocol
+par Contention.visualizer.dataLinkVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.dataLinkVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.dataLinkVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.dataLinkVisualizer lineColor "\"darkcyan\""
+par Contention.visualizer.dataLinkVisualizer lineStyle "\"solid\""
+par Contention.visualizer.dataLinkVisualizer lineWidth 3
+par Contention.visualizer.dataLinkVisualizer lineShift 16
+par Contention.visualizer.dataLinkVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.dataLinkVisualizer lineContactSpacing 3
+par Contention.visualizer.dataLinkVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.dataLinkVisualizer labelFormat "\"%n\""
+par Contention.visualizer.dataLinkVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.dataLinkVisualizer labelColor "\"darkcyan\""
+par Contention.visualizer.dataLinkVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.dataLinkVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.dataLinkVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.dataLinkVisualizer holdAnimationTime 0s
+attr unit s
+par Contention.visualizer.dataLinkVisualizer zIndex 2
+par Contention.visualizer.linkBreakVisualizer typename "\"inet.visualizer.canvas.linklayer.LinkBreakCanvasVisualizer\""
+par Contention.visualizer.linkBreakVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.linkBreakVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.linkBreakVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.linkBreakVisualizer tags "\"\""
+par Contention.visualizer.linkBreakVisualizer displayLinkBreaks false
+par Contention.visualizer.linkBreakVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.linkBreakVisualizer interfaceFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.linkBreakVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.linkBreakVisualizer icon "\"status/stop\""
+par Contention.visualizer.linkBreakVisualizer iconTintAmount 0
+par Contention.visualizer.linkBreakVisualizer iconTintColor "\"\""
+par Contention.visualizer.linkBreakVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.linkBreakVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.linkBreakVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.linkBreakVisualizer zIndex 2
+par Contention.visualizer.ieee80211Visualizer typename "\"inet.visualizer.canvas.linklayer.Ieee80211CanvasVisualizer\""
+par Contention.visualizer.ieee80211Visualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.ieee80211Visualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.ieee80211Visualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.ieee80211Visualizer tags "\"\""
+par Contention.visualizer.ieee80211Visualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.ieee80211Visualizer displayAssociations false
+par Contention.visualizer.ieee80211Visualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.ieee80211Visualizer interfaceFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.ieee80211Visualizer minPower -85dBm
+attr unit dBm
+par Contention.visualizer.ieee80211Visualizer maxPower -50dBm
+attr unit dBm
+par Contention.visualizer.ieee80211Visualizer icons "\"misc/signal_power_0 misc/signal_power_1 misc/signal_power_2 misc/signal_power_3\""
+par Contention.visualizer.ieee80211Visualizer iconColor "\"dark\""
+par Contention.visualizer.ieee80211Visualizer labelFont "\"<default>\""
+par Contention.visualizer.ieee80211Visualizer labelColor "\"black\""
+par Contention.visualizer.ieee80211Visualizer placementHint "\"top\""
+par Contention.visualizer.ieee80211Visualizer placementPriority 0
+par Contention.visualizer.ieee80211Visualizer zIndex 2
+par Contention.visualizer.networkRouteVisualizer typename "\"inet.visualizer.canvas.networklayer.NetworkRouteCanvasVisualizer\""
+par Contention.visualizer.networkRouteVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.networkRouteVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.networkRouteVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.networkRouteVisualizer tags "\"\""
+par Contention.visualizer.networkRouteVisualizer displayRoutes false
+par Contention.visualizer.networkRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par Contention.visualizer.networkRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Contention.visualizer.networkRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par Contention.visualizer.networkRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.networkRouteVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.networkRouteVisualizer lineColor "\"dark\""
+par Contention.visualizer.networkRouteVisualizer lineStyle "\"solid\""
+par Contention.visualizer.networkRouteVisualizer lineWidth 3
+par Contention.visualizer.networkRouteVisualizer lineSmooth false
+par Contention.visualizer.networkRouteVisualizer lineShift 16
+par Contention.visualizer.networkRouteVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.networkRouteVisualizer lineContactSpacing 3
+par Contention.visualizer.networkRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.networkRouteVisualizer labelFormat "\"%n\""
+par Contention.visualizer.networkRouteVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.networkRouteVisualizer labelColor "\"\""
+par Contention.visualizer.networkRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.networkRouteVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.networkRouteVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.networkRouteVisualizer zIndex 3
+par Contention.visualizer.routingTableVisualizer typename "\"inet.visualizer.canvas.networklayer.RoutingTableCanvasVisualizer\""
+par Contention.visualizer.routingTableVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.routingTableVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.routingTableVisualizer tags "\"\""
+par Contention.visualizer.routingTableVisualizer displayRoutingTables false
+par Contention.visualizer.routingTableVisualizer displayRoutesIndividually true
+par Contention.visualizer.routingTableVisualizer displayLabels true
+par Contention.visualizer.routingTableVisualizer destinationFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer multicastSourceNodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer multicastSourceAddressFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer multicastGroupFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer lineColor "\"black\""
+par Contention.visualizer.routingTableVisualizer lineStyle "\"solid\""
+par Contention.visualizer.routingTableVisualizer lineWidth 2
+par Contention.visualizer.routingTableVisualizer lineShift 16
+par Contention.visualizer.routingTableVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.routingTableVisualizer lineContactSpacing 3
+par Contention.visualizer.routingTableVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.routingTableVisualizer labelFormat "\"%d/%m -> %g (%n)\""
+attr mutable ""
+par Contention.visualizer.routingTableVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.routingTableVisualizer labelColor "\"black\""
+par Contention.visualizer.routingTableVisualizer zIndex 0
+par Contention.visualizer.transportRouteVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportRouteCanvasVisualizer\""
+par Contention.visualizer.transportRouteVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.transportRouteVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.transportRouteVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.transportRouteVisualizer tags "\"\""
+par Contention.visualizer.transportRouteVisualizer displayRoutes false
+par Contention.visualizer.transportRouteVisualizer startPathSignal "\"packetReceivedFromUpper\""
+par Contention.visualizer.transportRouteVisualizer extendPathSignal "\"packetReceivedFromLower\""
+par Contention.visualizer.transportRouteVisualizer endPathSignal "\"packetSentToUpper\""
+par Contention.visualizer.transportRouteVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.transportRouteVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.transportRouteVisualizer lineColor "\"dark\""
+par Contention.visualizer.transportRouteVisualizer lineStyle "\"solid\""
+par Contention.visualizer.transportRouteVisualizer lineWidth 3
+par Contention.visualizer.transportRouteVisualizer lineSmooth false
+par Contention.visualizer.transportRouteVisualizer lineShift 16
+par Contention.visualizer.transportRouteVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.transportRouteVisualizer lineContactSpacing 3
+par Contention.visualizer.transportRouteVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.transportRouteVisualizer labelFormat "\"%n\""
+par Contention.visualizer.transportRouteVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.transportRouteVisualizer labelColor "\"\""
+par Contention.visualizer.transportRouteVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.transportRouteVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.transportRouteVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.transportRouteVisualizer zIndex 4
+par Contention.visualizer.transportConnectionVisualizer typename "\"inet.visualizer.canvas.transportlayer.TransportConnectionCanvasVisualizer\""
+par Contention.visualizer.transportConnectionVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.transportConnectionVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.transportConnectionVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.transportConnectionVisualizer tags "\"\""
+par Contention.visualizer.transportConnectionVisualizer networkNodeVisualizerModule "\"^.networkNodeVisualizer\""
+par Contention.visualizer.transportConnectionVisualizer displayTransportConnections false
+par Contention.visualizer.transportConnectionVisualizer sourceNodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.transportConnectionVisualizer sourcePortFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.transportConnectionVisualizer destinationNodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.transportConnectionVisualizer destinationPortFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.transportConnectionVisualizer icon "\"misc/marker_s\""
+par Contention.visualizer.transportConnectionVisualizer iconColor "\"dark\""
+par Contention.visualizer.transportConnectionVisualizer labelFont "\"<default>\""
+par Contention.visualizer.transportConnectionVisualizer labelColor "\"black\""
+par Contention.visualizer.transportConnectionVisualizer placementHint "\"top\""
+par Contention.visualizer.transportConnectionVisualizer placementPriority 0
+par Contention.visualizer.transportConnectionVisualizer zIndex 4
+par Contention.visualizer.failureProtectionConfigurationVisualizer typename "\"inet.visualizer.canvas.configurator.FailureProtectionConfigurationCanvasVisualizer\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.failureProtectionConfigurationVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer tags "\"\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer displayTrees false
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineColor "\"dark\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineStyle "\"solid\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineWidth 3
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineSmooth false
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineShift 16
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineContactSpacing 3
+par Contention.visualizer.failureProtectionConfigurationVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.failureProtectionConfigurationVisualizer failureProtectionConfiguratorModule "\"failureProtectionConfigurator\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer streamFilter "\"*\""
+par Contention.visualizer.failureProtectionConfigurationVisualizer zIndex 3
+par Contention.visualizer.streamRedundancyConfigurationVisualizer typename "\"inet.visualizer.canvas.configurator.StreamRedundancyConfigurationCanvasVisualizer\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer tags "\"\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer displayTrees false
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineColor "\"dark\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineStyle "\"solid\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineWidth 3
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineSmooth false
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineShift 16
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineContactSpacing 3
+par Contention.visualizer.streamRedundancyConfigurationVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.streamRedundancyConfigurationVisualizer streamRedundancyConfiguratorModule "\"streamRedundancyConfigurator\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer streamFilter "\"*\""
+par Contention.visualizer.streamRedundancyConfigurationVisualizer zIndex 3
+par Contention.visualizer.channelVisualizer typename "\"inet.visualizer.canvas.physicallayer.ChannelCanvasVisualizer\""
+par Contention.visualizer.channelVisualizer displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.visualizer.channelVisualizer visualizationTargetModule "\"^.^\""
+par Contention.visualizer.channelVisualizer visualizationSubjectModule "\"^.^\""
+par Contention.visualizer.channelVisualizer tags "\"\""
+par Contention.visualizer.channelVisualizer displayChannelActivity false
+par Contention.visualizer.channelVisualizer nodeFilter "\"*\""
+attr mutable ""
+par Contention.visualizer.channelVisualizer packetFilter "(omnetpp::cValueHolder)holder: \"*\""
+attr mutable ""
+par Contention.visualizer.channelVisualizer lineColor "\"blue\""
+par Contention.visualizer.channelVisualizer lineStyle "\"solid\""
+par Contention.visualizer.channelVisualizer lineWidth 3
+par Contention.visualizer.channelVisualizer lineShift 16
+par Contention.visualizer.channelVisualizer lineShiftMode "\"normal\""
+par Contention.visualizer.channelVisualizer lineContactSpacing 3
+par Contention.visualizer.channelVisualizer lineContactMode "\"rectangular\""
+attr enum circular,rectangular
+par Contention.visualizer.channelVisualizer labelFormat "\"%n\""
+par Contention.visualizer.channelVisualizer labelFont "\"<default>, 8px\""
+par Contention.visualizer.channelVisualizer labelColor "\"blue\""
+par Contention.visualizer.channelVisualizer fadeOutMode "\"realTime\""
+attr enum realTime,animationTime,simulationTime
+par Contention.visualizer.channelVisualizer fadeOutTime 1s
+attr unit s
+par Contention.visualizer.channelVisualizer fadeOutAnimationSpeed 0
+par Contention.visualizer.channelVisualizer holdAnimationTime 0s
+attr unit s
+par Contention.visualizer.channelVisualizer zIndex 1
+par Contention.visualizer typename "\"inet.visualizer.canvas.integrated.IntegratedCanvasVisualizer\""
+par Contention.radioMedium.propagation typename "\"inet.physicallayer.wireless.common.propagation.ConstantSpeedPropagation\""
+par Contention.radioMedium.propagation displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium.propagation propagationSpeed 299792458mps
+attr unit mps
+par Contention.radioMedium.propagation ignoreMovementDuringTransmission true
+par Contention.radioMedium.propagation ignoreMovementDuringPropagation true
+par Contention.radioMedium.propagation ignoreMovementDuringReception true
+scalar Contention.radioMedium.propagation "Arrival computation count" 78556
+par Contention.radioMedium.analogModel typename "\"inet.physicallayer.wireless.common.analogmodel.scalar.ScalarMediumAnalogModel\""
+par Contention.radioMedium.analogModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium.analogModel ignorePartialInterference false
+par Contention.radioMedium.backgroundNoise typename "\"inet.physicallayer.wireless.common.backgroundnoise.IsotropicScalarBackgroundNoise\""
+par Contention.radioMedium.backgroundNoise displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium.backgroundNoise power -110dBm
+attr unit dBm
+par Contention.radioMedium.backgroundNoise bandwidth "nan Hz"
+attr unit Hz
+par Contention.radioMedium.pathLoss typename "\"inet.physicallayer.wireless.common.pathloss.FreeSpacePathLoss\""
+par Contention.radioMedium.pathLoss displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium.pathLoss alpha 2
+par Contention.radioMedium.pathLoss systemLoss 0dB
+attr unit dB
+par Contention.radioMedium.mediumLimitCache typename "\"inet.physicallayer.wireless.common.medium.MediumLimitCache\""
+par Contention.radioMedium.mediumLimitCache displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium.mediumLimitCache centerFrequency 2.4e+09Hz
+attr unit Hz
+par Contention.radioMedium.mediumLimitCache maxSpeed "nan mps"
+attr unit mps
+par Contention.radioMedium.mediumLimitCache maxTransmissionPower "nan W"
+attr unit W
+par Contention.radioMedium.mediumLimitCache minInterferencePower -110dBm
+attr unit dBm
+par Contention.radioMedium.mediumLimitCache minReceptionPower -85dBm
+attr unit dBm
+par Contention.radioMedium.mediumLimitCache maxAntennaGain 0dB
+attr unit dB
+par Contention.radioMedium.mediumLimitCache minInterferenceTime 1e-12s
+attr unit s
+par Contention.radioMedium.mediumLimitCache maxTransmissionDuration 0.01s
+attr unit s
+par Contention.radioMedium.mediumLimitCache maxCommunicationRange "nan m"
+attr unit m
+par Contention.radioMedium.mediumLimitCache maxInterferenceRange "nan m"
+attr unit m
+par Contention.radioMedium.communicationCache typename "\"inet.physicallayer.wireless.common.communicationcache.VectorCommunicationCache\""
+par Contention.radioMedium.communicationCache displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211ScalarRadioMedium\""
+par Contention.radioMedium displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.radioMedium physicalEnvironmentModule "\"physicalEnvironment\""
+par Contention.radioMedium signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.radioMedium rangeFilter "\"\""
+par Contention.radioMedium radioModeFilter false
+par Contention.radioMedium listeningFilter false
+par Contention.radioMedium macAddressFilter false
+par Contention.radioMedium recordTransmissionLog false
+par Contention.radioMedium recordReceptionLog false
+par Contention.radioMedium sameTransmissionStartTimeCheck "\"ignore\""
+attr enum ignore,warning,error
+scalar Contention.radioMedium "transmission count" 78556
+scalar Contention.radioMedium "signal send count" 78556
+scalar Contention.radioMedium "reception computation count" 78556
+scalar Contention.radioMedium "interference computation count" 314225
+scalar Contention.radioMedium "reception decision computation count" 78555
+scalar Contention.radioMedium "listening decision computation count" 157114
+scalar Contention.radioMedium "reception cache hit" 85.71418179702049
+attr unit %
+scalar Contention.radioMedium "interference cache hit" 66.66666666666667
+attr unit %
+scalar Contention.radioMedium "noise cache hit" 0
+attr unit %
+scalar Contention.radioMedium "snir cache hit" 50
+attr unit %
+scalar Contention.radioMedium "reception decision cache hit" 50
+attr unit %
+scalar Contention.radioMedium "reception result cache hit" 0
+attr unit %
+par Contention.ap.sink typename "\"inet.queueing.sink.PassivePacketSink\""
+par Contention.ap.sink displayStringTextFormat "\"received %p pk (%l)\""
+attr mutable ""
+par Contention.ap.sink clockModule "\"\""
+par Contention.ap.sink initialConsumptionOffset 0s
+attr unit s
+par Contention.ap.sink consumptionInterval 0s
+attr unit s
+par Contention.ap.sink scheduleForAbsoluteTime true
+scalar Contention.ap.sink packets:count 32737
+attr recordingmode count
+attr source packetPushed
+attr title "packets, count"
+attr unit pk
+scalar Contention.ap.sink packetLengths:sum 241206216
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushed)
+attr title "packet lengths, sum"
+attr unit b
+statistic Contention.ap.sink packetLengths:histogram
+field count 32737
+field mean 7368
+field stddev 0
+field min 7368
+field max 7368
+field sum 241206216
+field sqrsum 1777207399488
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+bin	-inf	0
+bin	7367	0
+bin	7368	32737
+bin	7369	0
+statistic Contention.ap.sink meanBitLifeTimePerPacket:histogram
+field count 32737
+field mean 0.030988575818482696
+field stddev 0.0004266935844812871
+field min 0.029322796204
+field max 0.03253863394
+field sum 1014.473006569668
+field sqrsum 31.443033838786917
+attr interpolationmode none
+attr recordingmode histogram
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+bin	-inf	0
+bin	0.029320000000000034	5
+bin	0.029360000000000032	9
+bin	0.02940000000000003	7
+bin	0.02944000000000003	8
+bin	0.029480000000000027	10
+bin	0.02952000000000003	1
+bin	0.029560000000000027	3
+bin	0.029600000000000026	3
+bin	0.029640000000000024	5
+bin	0.029680000000000022	13
+bin	0.02972000000000002	16
+bin	0.02976000000000002	25
+bin	0.029800000000000017	39
+bin	0.02984000000000002	54
+bin	0.029880000000000018	70
+bin	0.02992000000000002	61
+bin	0.029960000000000018	84
+bin	0.03000000000000002	95
+bin	0.030040000000000018	131
+bin	0.030080000000000016	156
+bin	0.03012000000000002	214
+bin	0.030160000000000017	225
+bin	0.03020000000000002	250
+bin	0.030240000000000017	289
+bin	0.030280000000000015	314
+bin	0.030320000000000014	366
+bin	0.030360000000000012	427
+bin	0.03040000000000001	469
+bin	0.03044000000000001	509
+bin	0.03048000000000001	587
+bin	0.03052000000000001	747
+bin	0.030560000000000007	759
+bin	0.030600000000000006	808
+bin	0.030640000000000008	802
+bin	0.030680000000000006	918
+bin	0.030720000000000008	996
+bin	0.030760000000000006	987
+bin	0.030800000000000004	997
+bin	0.030840000000000003	1069
+bin	0.030880000000000005	1194
+bin	0.030920000000000003	1226
+bin	0.030960000000000005	1324
+bin	0.031000000000000003	1324
+bin	0.031040000000000005	1323
+bin	0.031080000000000003	1244
+bin	0.031120000000000005	1209
+bin	0.031160000000000004	1140
+bin	0.031200000000000006	1155
+bin	0.031240000000000004	1053
+bin	0.03128	958
+bin	0.03132	898
+bin	0.031360000000000006	801
+bin	0.031400000000000004	716
+bin	0.03144	636
+bin	0.03148	596
+bin	0.031520000000000006	556
+bin	0.031560000000000005	476
+bin	0.0316	423
+bin	0.03164	354
+bin	0.03168000000000001	301
+bin	0.031720000000000005	255
+bin	0.031760000000000004	238
+bin	0.0318	163
+bin	0.03184000000000001	155
+bin	0.031880000000000006	114
+bin	0.031920000000000004	94
+bin	0.03196	55
+bin	0.032	50
+bin	0.032040000000000006	32
+bin	0.032080000000000004	32
+bin	0.03212	21
+bin	0.03216	29
+bin	0.0322	20
+bin	0.03224	21
+bin	0.032279999999999996	8
+bin	0.032319999999999995	4
+bin	0.03235999999999999	3
+bin	0.03239999999999999	4
+bin	0.03243999999999999	1
+bin	0.03247999999999999	2
+bin	0.032519999999999986	1
+bin	0.032559999999999985	0
+statistic Contention.ap.sink packetLifeTime:histogram
+field count 32737
+field mean 0.030988575818482696
+field stddev 0.0004266935844812871
+field min 0.029322796204
+field max 0.03253863394
+field sum 1014.473006569668
+field sqrsum 31.443033838786917
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLifeTime(packetPushed)
+attr title "packet life time"
+attr unit s
+bin	-inf	0
+bin	0.029320000000000034	5
+bin	0.029360000000000032	9
+bin	0.02940000000000003	7
+bin	0.02944000000000003	8
+bin	0.029480000000000027	10
+bin	0.02952000000000003	1
+bin	0.029560000000000027	3
+bin	0.029600000000000026	3
+bin	0.029640000000000024	5
+bin	0.029680000000000022	13
+bin	0.02972000000000002	16
+bin	0.02976000000000002	25
+bin	0.029800000000000017	39
+bin	0.02984000000000002	54
+bin	0.029880000000000018	70
+bin	0.02992000000000002	61
+bin	0.029960000000000018	84
+bin	0.03000000000000002	95
+bin	0.030040000000000018	131
+bin	0.030080000000000016	156
+bin	0.03012000000000002	214
+bin	0.030160000000000017	225
+bin	0.03020000000000002	250
+bin	0.030240000000000017	289
+bin	0.030280000000000015	314
+bin	0.030320000000000014	366
+bin	0.030360000000000012	427
+bin	0.03040000000000001	469
+bin	0.03044000000000001	509
+bin	0.03048000000000001	587
+bin	0.03052000000000001	747
+bin	0.030560000000000007	759
+bin	0.030600000000000006	808
+bin	0.030640000000000008	802
+bin	0.030680000000000006	918
+bin	0.030720000000000008	996
+bin	0.030760000000000006	987
+bin	0.030800000000000004	997
+bin	0.030840000000000003	1069
+bin	0.030880000000000005	1194
+bin	0.030920000000000003	1226
+bin	0.030960000000000005	1324
+bin	0.031000000000000003	1324
+bin	0.031040000000000005	1323
+bin	0.031080000000000003	1244
+bin	0.031120000000000005	1209
+bin	0.031160000000000004	1140
+bin	0.031200000000000006	1155
+bin	0.031240000000000004	1053
+bin	0.03128	958
+bin	0.03132	898
+bin	0.031360000000000006	801
+bin	0.031400000000000004	716
+bin	0.03144	636
+bin	0.03148	596
+bin	0.031520000000000006	556
+bin	0.031560000000000005	476
+bin	0.0316	423
+bin	0.03164	354
+bin	0.03168000000000001	301
+bin	0.031720000000000005	255
+bin	0.031760000000000004	238
+bin	0.0318	163
+bin	0.03184000000000001	155
+bin	0.031880000000000006	114
+bin	0.031920000000000004	94
+bin	0.03196	55
+bin	0.032	50
+bin	0.032040000000000006	32
+bin	0.032080000000000004	32
+bin	0.03212	21
+bin	0.03216	29
+bin	0.0322	20
+bin	0.03224	21
+bin	0.032279999999999996	8
+bin	0.032319999999999995	4
+bin	0.03235999999999999	3
+bin	0.03239999999999999	4
+bin	0.03243999999999999	1
+bin	0.03247999999999999	2
+bin	0.032519999999999986	1
+bin	0.032559999999999985	0
+statistic Contention.ap.sink packetJitter:histogram
+field count 32737
+field mean 9.48843222653267e-07
+field stddev 0.00018482675479333552
+field min -0.0001619332880000053
+field max 0.031521396548
+field sum 0.03106228058
+field sqrsum 0.0011183216543879059
+attr interpolationmode none
+attr recordingmode histogram
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+bin	-inf	0
+bin	-0.009000000000000001	0
+bin	-0.008	0
+bin	-0.007000000000000001	0
+bin	-0.006000000000000001	0
+bin	-0.005000000000000001	0
+bin	-0.004000000000000001	0
+bin	-0.003000000000000001	0
+bin	-0.002000000000000001	0
+bin	-0.0010000000000000009	16116
+bin	0	16620
+bin	0.0009999999999999992	0
+bin	0.0019999999999999983	0
+bin	0.002999999999999999	0
+bin	0.004	0
+bin	0.004999999999999999	0
+bin	0.005999999999999998	0
+bin	0.006999999999999999	0
+bin	0.008	0
+bin	0.009000000000000001	0
+bin	0.009999999999999998	0
+bin	0.011	0
+bin	0.012	0
+bin	0.012999999999999998	0
+bin	0.013999999999999999	0
+bin	0.015	0
+bin	0.016	0
+bin	0.017	0
+bin	0.018	0
+bin	0.019	0
+bin	0.02	0
+bin	0.020999999999999998	0
+bin	0.022	0
+bin	0.023	0
+bin	0.024	0
+bin	0.025	0
+bin	0.026000000000000002	0
+bin	0.027000000000000003	0
+bin	0.027999999999999997	0
+bin	0.028999999999999998	0
+bin	0.03	0
+bin	0.031	1
+bin	0.032	0
+bin	0.033	0
+bin	0.034	0
+bin	0.034999999999999996	0
+bin	0.036	0
+bin	0.037	0
+bin	0.038	0
+bin	0.039	0
+bin	0.04	0
+statistic Contention.ap.sink packetDelayDifferenceToMean:histogram
+field count 32737
+field mean 3.181273942808846e-05
+field stddev 0.00042545413288561643
+field min -0.0015027551441019228
+field max 0.0016790234564619984
+field sum 1.041453650657332
+field sqrsum 0.005958714765000686
+attr interpolationmode none
+attr recordingmode histogram
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+bin	-inf	0
+bin	-0.0015499999999999997	1
+bin	-0.0014999999999999996	2
+bin	-0.0014499999999999997	1
+bin	-0.0013999999999999996	5
+bin	-0.0013499999999999996	5
+bin	-0.0012999999999999997	4
+bin	-0.0012499999999999998	23
+bin	-0.0012	30
+bin	-0.00115	31
+bin	-0.0011	44
+bin	-0.0010500000000000002	53
+bin	-0.001	62
+bin	-0.0009500000000000001	114
+bin	-0.0009000000000000001	145
+bin	-0.0008500000000000001	182
+bin	-8e-04	268
+bin	-0.00075	305
+bin	-0.0007000000000000001	362
+bin	-0.0006500000000000001	438
+bin	-0.0006000000000000001	605
+bin	-0.0005500000000000001	664
+bin	-5e-04	729
+bin	-0.00045000000000000004	838
+bin	-0.0004000000000000001	969
+bin	-0.00035000000000000005	1091
+bin	-0.00030000000000000003	1246
+bin	-0.00025	1342
+bin	-0.0002000000000000001	1427
+bin	-0.00015000000000000007	1483
+bin	-0.00010000000000000005	1629
+bin	-5.000000000000002e-05	1766
+bin	0	1697
+bin	4.9999999999999914e-05	1624
+bin	9.999999999999994e-05	1450
+bin	0.00015000000000000007	1309
+bin	0.00019999999999999998	1222
+bin	0.0002499999999999999	1232
+bin	0.00030000000000000003	1059
+bin	0.00034999999999999994	1038
+bin	0.0004000000000000001	934
+bin	0.00045	874
+bin	0.0004999999999999999	722
+bin	0.00055	595
+bin	6e-04	556
+bin	0.0006500000000000001	463
+bin	7e-04	396
+bin	0.0007499999999999999	333
+bin	8e-04	279
+bin	0.00085	253
+bin	0.0009000000000000001	196
+bin	0.00095	141
+bin	0.001	112
+bin	0.0010500000000000002	81
+bin	0.0010999999999999998	73
+bin	0.00115	74
+bin	0.0012000000000000001	46
+bin	0.0012499999999999998	32
+bin	0.0013	21
+bin	0.00135	15
+bin	0.0013999999999999998	5
+bin	0.00145	5
+bin	0.0015	10
+bin	0.0015499999999999997	12
+bin	0.0015999999999999999	11
+bin	0.00165	3
+bin	0.0017000000000000001	0
+bin	0.0017499999999999998	0
+bin	0.0018	0
+bin	0.00185	0
+bin	0.0018999999999999998	0
+bin	0.00195	0
+statistic Contention.ap.sink packetDelayVariation:histogram
+field count 32737
+field mean 0.0004326762605513834
+field stddev 3.37090516089201e-05
+field min 0
+field max 0.0007196209821515298
+field sum 14.16452274167064
+field sqrsum 0.006165850654411047
+attr recordingmode histogram
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+bin	-inf	0
+bin	0	1
+bin	1e-05	0
+bin	2e-05	5
+bin	3.0000000000000004e-05	0
+bin	4e-05	3
+bin	5e-05	7
+bin	6.000000000000001e-05	4
+bin	7.000000000000001e-05	3
+bin	8e-05	4
+bin	9e-05	2
+bin	1e-04	1
+bin	0.00011	1
+bin	0.00012000000000000002	1
+bin	0.00013000000000000002	12
+bin	0.00014000000000000001	30
+bin	0.00015000000000000001	16
+bin	0.00016	13
+bin	0.00017	56
+bin	0.00018	15
+bin	0.00019	3
+bin	2e-04	3
+bin	0.00021	3
+bin	0.00022	3
+bin	0.00023	3
+bin	0.00024000000000000003	1
+bin	0.00025	2
+bin	0.00026000000000000003	1
+bin	0.00027	2
+bin	0.00028000000000000003	1
+bin	0.00029	1
+bin	0.00030000000000000003	1
+bin	0.00031	1
+bin	0.00032	2
+bin	0.00033000000000000005	1
+bin	0.00034	1
+bin	0.00035000000000000005	1
+bin	0.00036	1
+bin	0.00037000000000000005	2
+bin	0.00038	1
+bin	0.00039000000000000005	275
+bin	4e-04	1134
+bin	0.00041000000000000005	1612
+bin	0.00042	9944
+bin	0.00043000000000000004	15652
+bin	0.00044	2542
+bin	0.00045000000000000004	122
+bin	0.00046	189
+bin	0.00047000000000000004	181
+bin	0.00048000000000000007	80
+bin	0.0004900000000000001	50
+bin	5e-04	55
+bin	0.00051	54
+bin	0.0005200000000000001	72
+bin	0.0005300000000000001	114
+bin	0.00054	114
+bin	0.00055	24
+bin	0.0005600000000000001	23
+bin	0.0005700000000000001	21
+bin	0.00058	19
+bin	0.00059	20
+bin	0.0006000000000000001	28
+bin	0.0006100000000000001	19
+bin	0.00062	18
+bin	0.00063	20
+bin	0.00064	28
+bin	0.0006500000000000001	18
+bin	0.0006600000000000001	15
+bin	0.00067	17
+bin	0.00068	18
+bin	0.0006900000000000001	14
+bin	0.0007000000000000001	14
+bin	0.00071	23
+bin	0.00072	0
+bin	0.0007300000000000001	0
+bin	0.0007400000000000001	0
+bin	0.00075	0
+bin	0.00076	0
+bin	0.0007700000000000001	0
+bin	0.0007800000000000001	0
+bin	0.00079	0
+bin	8e-04	0
+bin	0.0008100000000000001	0
+bin	0.0008200000000000001	0
+bin	0.0008300000000000001	0
+bin	0.00084	0
+bin	0.0008500000000000001	0
+bin	0.0008600000000000001	0
+bin	0.0008700000000000001	0
+bin	0.00088	0
+bin	0.0008900000000000001	0
+bin	0.0009000000000000001	0
+scalar Contention.ap.sink droppedPackets:count 32737
+attr recordingmode count
+attr source packetDropped
+attr title "dropped packets, count"
+attr unit pk
+scalar Contention.ap.sink droppedPacketLengths:sum 241206216
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths, sum"
+attr unit b
+statistic Contention.ap.sink droppedPacketLengths:histogram
+field count 32737
+field mean 7368
+field stddev 0
+field min 7368
+field max 7368
+field sum 241206216
+field sqrsum 1777207399488
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+bin	-inf	0
+bin	7367	0
+bin	7368	32737
+bin	7369	0
+par Contention.ap.wlan.radioIn.channel typename "\"ned.IdealChannel\""
+par Contention.ap.wlan.llc.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Contention.ap.wlan.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Contention.ap.wlan.mib typename "\"inet.linklayer.ieee80211.mib.Ieee80211Mib\""
+par Contention.ap.wlan.mib displayStringTextFormat "\"Address: {address}{ssidStr}\\n{modeStr}{stationTypeStr}{qosStr}{associatedStr}\""
+attr mutable ""
+par Contention.ap.wlan.llc typename "\"inet.linklayer.ieee80211.portal.Ieee80211Portal\""
+par Contention.ap.wlan.llc displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.llc fcsMode "\"declared\""
+attr enum declared,computed
+par Contention.ap.wlan.mgmt typename "\"inet.linklayer.ieee80211.mgmt.Ieee80211MgmtApSimplified\""
+par Contention.ap.wlan.mgmt displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mgmt interfaceTableModule "\"Contention.ap.wlan.^.interfaceTable\""
+par Contention.ap.wlan.mgmt mibModule "\"Contention.ap.wlan.mib\""
+par Contention.ap.wlan.mgmt macModule "\"Contention.ap.wlan.mac\""
+par Contention.ap.wlan.mgmt ssid "\"SSID\""
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue typename "\"inet.linklayer.ieee80211.mac.queue.PendingQueue\""
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue packetCapacity 100
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue dataCapacity -1b
+attr unit b
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue comparatorClass "\"inet::ieee80211::MgmtOverDataComparator\""
+par Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue bufferModule "\"\""
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:last 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue outgoingPackets:count 0
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue incomingPackets:count 0
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 0
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames typename "\"inet.linklayer.ieee80211.mac.queue.InProgressFrames\""
+par Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames displayStringTextFormat "\"{numInProgress} packets\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames pendingQueueModule "\"^.pendingQueue\""
+par Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames originatorMacDataServiceModule "\"^.^.originatorMacDataService\""
+par Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames ackHandlerModule "\"^.^.ackHandler\""
+statistic Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:max 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 0
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+par Contention.ap.wlan.mac.dcf.channelAccess.contention typename "\"inet.linklayer.ieee80211.mac.contention.Contention\""
+par Contention.ap.wlan.mac.dcf.channelAccess.contention displayStringTextFormat "\"{fsmState}\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.channelAccess.contention initialChannelBusy true
+par Contention.ap.wlan.mac.dcf.channelAccess.contention backoffOptimization true
+scalar Contention.ap.wlan.mac.dcf.channelAccess.contention channelAccessGranted:count 0
+attr recordingmode count
+attr title "channel access granted, count"
+scalar Contention.ap.wlan.mac.dcf.channelAccess.contention stateChanged:count 261892
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+par Contention.ap.wlan.mac.dcf.channelAccess typename "\"inet.linklayer.ieee80211.mac.channelaccess.Dcaf\""
+par Contention.ap.wlan.mac.dcf.channelAccess displayStringTextFormat "\"{contentionState}\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.channelAccess difsn -1
+par Contention.ap.wlan.mac.dcf.channelAccess cwMin -1
+par Contention.ap.wlan.mac.dcf.channelAccess cwMax -1
+par Contention.ap.wlan.mac.dcf.channelAccess rxModule "\"^.^.rx\""
+scalar Contention.ap.wlan.mac.dcf.channelAccess channelOwnershipChanged:count 0
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+par Contention.ap.wlan.mac.dcf.originatorMacDataService.fragmentationPolicy typename "\"inet.linklayer.ieee80211.mac.fragmentation.BasicFragmentationPolicy\""
+par Contention.ap.wlan.mac.dcf.originatorMacDataService.fragmentationPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.originatorMacDataService.fragmentationPolicy fragmentationThreshold 2346B
+attr unit B
+par Contention.ap.wlan.mac.dcf.originatorMacDataService typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorMacDataService\""
+par Contention.ap.wlan.mac.dcf.originatorMacDataService displayStringTextFormat "\"\""
+attr mutable ""
+scalar Contention.ap.wlan.mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar Contention.ap.wlan.mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+par Contention.ap.wlan.mac.dcf.recipientMacDataService typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientMacDataService\""
+par Contention.ap.wlan.mac.dcf.recipientMacDataService displayStringTextFormat "\"\""
+attr mutable ""
+scalar Contention.ap.wlan.mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar Contention.ap.wlan.mac.dcf.recipientMacDataService packetDefragmented:count 32737
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar Contention.ap.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Contention.ap.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+par Contention.ap.wlan.mac.dcf.rateSelection typename "\"inet.linklayer.ieee80211.mac.rateselection.RateSelection\""
+par Contention.ap.wlan.mac.dcf.rateSelection displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.rateSelection rateControlModule "\"^.rateControl\""
+par Contention.ap.wlan.mac.dcf.rateSelection multicastFrameBitrate -1bps
+attr unit bps
+par Contention.ap.wlan.mac.dcf.rateSelection responseAckFrameBitrate -1bps
+attr unit bps
+par Contention.ap.wlan.mac.dcf.rateSelection responseCtsFrameBitrate -1bps
+attr unit bps
+par Contention.ap.wlan.mac.dcf.rateSelection dataFrameBitrate 5.4e+07bps
+attr unit bps
+par Contention.ap.wlan.mac.dcf.rateSelection dataFrameBandwidth "nan Hz"
+attr unit Hz
+par Contention.ap.wlan.mac.dcf.rateSelection dataFrameNumSpatialStreams -1
+par Contention.ap.wlan.mac.dcf.rateSelection mgmtFrameBitrate -1bps
+attr unit bps
+par Contention.ap.wlan.mac.dcf.rateSelection controlFrameBitrate -1bps
+attr unit bps
+par Contention.ap.wlan.mac.dcf.recoveryProcedure typename "\"inet.linklayer.ieee80211.mac.originator.NonQosRecoveryProcedure\""
+par Contention.ap.wlan.mac.dcf.recoveryProcedure displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.recoveryProcedure cwCalculatorModule "\"^.channelAccess\""
+par Contention.ap.wlan.mac.dcf.recoveryProcedure rtsPolicyModule "\"^.rtsPolicy\""
+par Contention.ap.wlan.mac.dcf.recoveryProcedure shortRetryLimit 7
+par Contention.ap.wlan.mac.dcf.recoveryProcedure longRetryLimit 4
+scalar Contention.ap.wlan.mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+par Contention.ap.wlan.mac.dcf.originatorProtectionMechanism typename "\"inet.linklayer.ieee80211.mac.protectionmechanism.OriginatorProtectionMechanism\""
+par Contention.ap.wlan.mac.dcf.originatorProtectionMechanism displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.originatorProtectionMechanism rateSelectionModule "\"^.rateSelection\""
+par Contention.ap.wlan.mac.dcf.ackHandler typename "\"inet.linklayer.ieee80211.mac.originator.AckHandler\""
+par Contention.ap.wlan.mac.dcf.ackHandler displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.originatorAckPolicy typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorAckPolicy\""
+par Contention.ap.wlan.mac.dcf.originatorAckPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.originatorAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.ap.wlan.mac.dcf.originatorAckPolicy ackTimeout -1s
+attr unit s
+par Contention.ap.wlan.mac.dcf.recipientAckPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientAckPolicy\""
+par Contention.ap.wlan.mac.dcf.recipientAckPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.recipientAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.ap.wlan.mac.dcf.rtsPolicy typename "\"inet.linklayer.ieee80211.mac.originator.RtsPolicy\""
+par Contention.ap.wlan.mac.dcf.rtsPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.rtsPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.ap.wlan.mac.dcf.rtsPolicy ctsTimeout -1s
+attr unit s
+par Contention.ap.wlan.mac.dcf.rtsPolicy rtsThreshold 2346B
+attr unit B
+par Contention.ap.wlan.mac.dcf.ctsPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.CtsPolicy\""
+par Contention.ap.wlan.mac.dcf.ctsPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf.ctsPolicy rxModule "\"^.^.rx\""
+par Contention.ap.wlan.mac.dcf.ctsPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.ap.wlan.mac.dcf typename "\"inet.linklayer.ieee80211.mac.coordinationfunction.Dcf\""
+par Contention.ap.wlan.mac.dcf displayStringTextFormat "\"{frameSequenceInfo}\""
+attr mutable ""
+par Contention.ap.wlan.mac.dcf rxModule "\"^.rx\""
+par Contention.ap.wlan.mac.dcf txModule "\"^.tx\""
+scalar Contention.ap.wlan.mac.dcf frameSequenceFinished:count 0
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic Contention.ap.wlan.mac.dcf frameSequenceDuration:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Contention.ap.wlan.mac.dcf frameSequenceNumPackets:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeer:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeer:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerUnicast:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar Contention.ap.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeer:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeer:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerUnicast:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerUnicast:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerWithoutRetry:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar Contention.ap.wlan.mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar Contention.ap.wlan.mac.dcf packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Contention.ap.wlan.mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Contention.ap.wlan.mac.dcf packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Contention.ap.wlan.mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Contention.ap.wlan.mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+par Contention.ap.wlan.mac.ds typename "\"inet.linklayer.ieee80211.mac.Ds\""
+par Contention.ap.wlan.mac.ds displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac.ds mibModule "\"Contention.ap.wlan.mib\""
+par Contention.ap.wlan.mac.rx typename "\"inet.linklayer.ieee80211.mac.Rx\""
+par Contention.ap.wlan.mac.rx displayStringTextFormat "\"{rxStatus}\""
+attr mutable ""
+par Contention.ap.wlan.mac.tx typename "\"inet.linklayer.ieee80211.mac.Tx\""
+par Contention.ap.wlan.mac.tx displayStringTextFormat "\"{txFramePrefix}{txState}\""
+attr mutable ""
+par Contention.ap.wlan.mac.tx rxModule "\"^.rx\""
+par Contention.ap.wlan.mac typename "\"inet.linklayer.ieee80211.mac.Ieee80211Mac\""
+par Contention.ap.wlan.mac displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.mac interfaceTableModule "\"Contention.ap.wlan.^.interfaceTable\""
+par Contention.ap.wlan.mac mibModule "\"Contention.ap.wlan.mib\""
+par Contention.ap.wlan.mac modeSet "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.ap.wlan.mac fcsMode "\"declared\""
+attr enum declared,computed
+par Contention.ap.wlan.mac initialRadioMode "\"receiver\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Contention.ap.wlan.mac mtu 2304B
+attr unit B
+par Contention.ap.wlan.mac qosStation false
+scalar Contention.ap.wlan.mac packetReceivedFromLower:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar Contention.ap.wlan.mac packetReceivedFromLower:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetSentToLower:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar Contention.ap.wlan.mac packetSentToLower:sum(packetBytes) 458318
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetReceivedFromUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar Contention.ap.wlan.mac packetReceivedFromUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetSentToUpper:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar Contention.ap.wlan.mac packetSentToUpper:sum(packetBytes) 29561511
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDrop:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar Contention.ap.wlan.mac packetDrop:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar Contention.ap.wlan.mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Contention.ap.wlan.mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDropQueueOverflow:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Contention.ap.wlan.mac packetDropQueueOverflow:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Contention.ap.wlan.mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Contention.ap.wlan.mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar Contention.ap.wlan.mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar Contention.ap.wlan.mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar Contention.ap.wlan.mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+par Contention.ap.wlan.radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par Contention.ap.wlan.radio.antenna displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio.antenna mobilityModule "\"^.^.^.mobility\""
+par Contention.ap.wlan.radio.antenna numAntennas 1
+par Contention.ap.wlan.radio.transmitter.analogModel typename "\"inet.physicallayer.wireless.common.analogmodel.scalar.ScalarTransmitterAnalogModel\""
+par Contention.ap.wlan.radio.transmitter.analogModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio.transmitter.analogModel power 0.02W
+attr unit W
+par Contention.ap.wlan.radio.transmitter.analogModel centerFrequency "nan Hz"
+attr unit Hz
+par Contention.ap.wlan.radio.transmitter.analogModel bandwidth "nan Hz"
+attr unit Hz
+par Contention.ap.wlan.radio.transmitter typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211Transmitter\""
+par Contention.ap.wlan.radio.transmitter displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio.transmitter signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.ap.wlan.radio.transmitter preambleDuration -1s
+attr unit s
+par Contention.ap.wlan.radio.transmitter headerLength 192b
+attr unit b
+par Contention.ap.wlan.radio.transmitter bitrate 5.4e+07bps
+attr unit bps
+par Contention.ap.wlan.radio.transmitter power 0.02W
+attr unit W
+par Contention.ap.wlan.radio.transmitter centerFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.ap.wlan.radio.transmitter bandwidth "nan Hz"
+attr unit Hz
+par Contention.ap.wlan.radio.transmitter codeRate 1
+par Contention.ap.wlan.radio.transmitter modulation "\"BPSK\""
+par Contention.ap.wlan.radio.transmitter opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.ap.wlan.radio.transmitter bandName "\"5 GHz (20 MHz)\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Contention.ap.wlan.radio.transmitter channelNumber 8
+par Contention.ap.wlan.radio.receiver.analogModel typename "\"inet.physicallayer.wireless.common.analogmodel.scalar.ScalarReceiverAnalogModel\""
+par Contention.ap.wlan.radio.receiver.analogModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio.receiver.analogModel defaultCenterFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.ap.wlan.radio.receiver.analogModel defaultBandwidth 2.2e+07Hz
+attr unit Hz
+par Contention.ap.wlan.radio.receiver.analogModel defaultSensitivity -85dBm
+attr unit dBm
+par Contention.ap.wlan.radio.receiver.errorModel typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.errormodel.Ieee80211NistErrorModel\""
+par Contention.ap.wlan.radio.receiver.errorModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio.receiver.errorModel corruptionMode "\"packet\""
+attr enum packet,chunk,byte,bit
+par Contention.ap.wlan.radio.receiver.errorModel snirMode "\"min\""
+attr enum min,mean
+par Contention.ap.wlan.radio.receiver.errorModel snirOffset 0dB
+attr unit dB
+par Contention.ap.wlan.radio.receiver typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211Receiver\""
+par Contention.ap.wlan.radio.receiver displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio.receiver ignoreInterference false
+par Contention.ap.wlan.radio.receiver signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.ap.wlan.radio.receiver snirThreshold 4dB
+attr unit dB
+par Contention.ap.wlan.radio.receiver snirThresholdMode "\"min\""
+attr enum min,mean
+par Contention.ap.wlan.radio.receiver energyDetection -85dBm
+attr unit dBm
+par Contention.ap.wlan.radio.receiver sensitivity -85dBm
+attr unit dBm
+par Contention.ap.wlan.radio.receiver centerFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.ap.wlan.radio.receiver bandwidth 2.2e+07Hz
+attr unit Hz
+par Contention.ap.wlan.radio.receiver modulation "\"BPSK\""
+par Contention.ap.wlan.radio.receiver opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.ap.wlan.radio.receiver bandName "\"5 GHz (20 MHz)\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Contention.ap.wlan.radio.receiver channelNumber 8
+par Contention.ap.wlan.radio typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211Radio\""
+par Contention.ap.wlan.radio displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.ap.wlan.radio radioMediumModule "\"radioMedium\""
+par Contention.ap.wlan.radio energySourceModule "\"\""
+par Contention.ap.wlan.radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Contention.ap.wlan.radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par Contention.ap.wlan.radio sendRawBytes false
+par Contention.ap.wlan.radio separateTransmissionParts false
+par Contention.ap.wlan.radio separateReceptionParts false
+par Contention.ap.wlan.radio displayCommunicationRange false
+par Contention.ap.wlan.radio displayInterferenceRange false
+par Contention.ap.wlan.radio signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.ap.wlan.radio centerFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.ap.wlan.radio bandwidth "nan Hz"
+attr unit Hz
+par Contention.ap.wlan.radio opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.ap.wlan.radio bandName "\"5 GHz (20 MHz)\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Contention.ap.wlan.radio channelNumber 8
+par Contention.ap.wlan.radio fcsMode "\"declared\""
+attr enum declared,computed
+statistic Contention.ap.wlan.radio radioChannel:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.ap.wlan.radio radioMode:count 65473
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+attr type enum
+scalar Contention.ap.wlan.radio receptionState:count 130946
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+attr type enum
+scalar Contention.ap.wlan.radio transmissionState:count 130946
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+attr type enum
+statistic Contention.ap.wlan.radio minSnir:histogram
+field count 32737
+field mean 425863.66495766386
+field stddev 0
+field min 425863.66495766386
+field max 425863.66495766386
+field sum 13941498799.719042
+field sqrsum 5937177773851223
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	425863.16000000003	0
+bin	425863.18000000005	0
+bin	425863.2	0
+bin	425863.22000000003	0
+bin	425863.24000000005	0
+bin	425863.26	0
+bin	425863.28	0
+bin	425863.30000000005	0
+bin	425863.32	0
+bin	425863.34	0
+bin	425863.36000000004	0
+bin	425863.38	0
+bin	425863.4	0
+bin	425863.42000000004	0
+bin	425863.44000000006	0
+bin	425863.46	0
+bin	425863.48000000004	0
+bin	425863.50000000006	0
+bin	425863.52	0
+bin	425863.54000000004	0
+bin	425863.56000000006	0
+bin	425863.58	0
+bin	425863.60000000003	0
+bin	425863.62000000005	0
+bin	425863.64	0
+bin	425863.66000000003	32737
+bin	425863.68000000005	0
+bin	425863.7	0
+bin	425863.72000000003	0
+bin	425863.74000000005	0
+bin	425863.76	0
+bin	425863.78	0
+bin	425863.80000000005	0
+bin	425863.82	0
+bin	425863.84	0
+bin	425863.86000000004	0
+bin	425863.88	0
+bin	425863.9	0
+bin	425863.92000000004	0
+bin	425863.94000000006	0
+bin	425863.96	0
+bin	425863.98000000004	0
+bin	425864.00000000006	0
+bin	425864.02	0
+bin	425864.04000000004	0
+bin	425864.06000000006	0
+bin	425864.08	0
+bin	425864.10000000003	0
+bin	425864.12000000005	0
+bin	425864.14	0
+bin	425864.16000000003	0
+bin	425864.18000000005	0
+statistic Contention.ap.wlan.radio packetErrorRate:histogram
+field count 32737
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.33999999999999997	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.21999999999999997	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.15999999999999998	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
+bin	-0.03999999999999998	0
+bin	-0.020000000000000018	0
+bin	0	32737
+bin	0.020000000000000018	0
+bin	0.040000000000000036	0
+bin	0.06000000000000005	0
+bin	0.07999999999999996	0
+bin	0.09999999999999998	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16000000000000003	0
+bin	0.18000000000000005	0
+bin	0.20000000000000007	0
+bin	0.21999999999999997	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.30000000000000004	0
+bin	0.32000000000000006	0
+bin	0.33999999999999997	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42000000000000004	0
+bin	0.44000000000000006	0
+bin	0.45999999999999996	0
+bin	0.48	0
+bin	0.5	0
+statistic Contention.ap.wlan.radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Contention.ap.wlan.radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+par Contention.ap.wlan typename "\"inet.linklayer.ieee80211.Ieee80211Interface\""
+par Contention.ap.wlan displayStringTextFormat "\"%a (%i)\\n%m\""
+attr mutable ""
+par Contention.ap.wlan recordPcap false
+par Contention.ap.wlan numPcapRecorders 0
+par Contention.ap.wlan interfaceTableModule "\"^.interfaceTable\""
+par Contention.ap.wlan energySourceModule "\"\""
+par Contention.ap.wlan opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.ap.wlan address "\"10:00:00:00:00:00\""
+attr mutable ""
+par Contention.ap.wlan protocol "\"\""
+par Contention.ap.wlan bitrate 5.4e+07bps
+attr unit bps
+scalar Contention.ap.wlan packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar Contention.ap.wlan packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar Contention.ap.wlan packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar Contention.ap.wlan packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par Contention.ap.interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par Contention.ap.interfaceTable displayStringTextFormat "\"{numInterfaces} interfaces\""
+attr mutable ""
+par Contention.ap.interfaceTable displayAddresses false
+par Contention.ap.mobility typename "\"inet.mobility.static.StationaryMobility\""
+par Contention.ap.mobility displayStringTextFormat "\"p: {position}\\nv: {velocity}\""
+attr mutable ""
+par Contention.ap.mobility subjectModule "\"^\""
+par Contention.ap.mobility coordinateSystemModule "\"\""
+par Contention.ap.mobility updateDisplayString true
+par Contention.ap.mobility constraintAreaMinX 0m
+attr unit m
+par Contention.ap.mobility constraintAreaMinY 0m
+attr unit m
+par Contention.ap.mobility constraintAreaMinZ 0m
+attr unit m
+par Contention.ap.mobility constraintAreaMaxX 400m
+attr unit m
+par Contention.ap.mobility constraintAreaMaxY 400m
+attr unit m
+par Contention.ap.mobility constraintAreaMaxZ 0m
+attr unit m
+par Contention.ap.mobility initialX 200m
+attr unit m
+par Contention.ap.mobility initialY 200m
+attr unit m
+par Contention.ap.mobility initialZ 0m
+attr unit m
+par Contention.ap.mobility initialLatitude "nan deg"
+attr unit deg
+par Contention.ap.mobility initialLongitude "nan deg"
+attr unit deg
+par Contention.ap.mobility initialAltitude 0m
+attr unit m
+par Contention.ap.mobility initialHeading 0deg
+attr unit deg
+par Contention.ap.mobility initialElevation 0deg
+attr unit deg
+par Contention.ap.mobility initialBank 0deg
+attr unit deg
+par Contention.ap.mobility initFromDisplayString false
+par Contention.ap.mobility updateFromDisplayString true
+par Contention.ap typename "\"phase1.AccessPoint\""
+par Contention.host[0].cli typename "\"inet.applications.ethernet.EtherAppClient\""
+par Contention.host[0].cli displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].cli interfaceTableModule "\"^.interfaceTable\""
+par Contention.host[0].cli destAddress "\"20:00:00:00:00:00\""
+par Contention.host[0].cli interface "\"wlan\""
+par Contention.host[0].cli startTime 4.9999999999999996e-05s
+attr unit s
+par Contention.host[0].cli stopTime -1s
+attr unit s
+par Contention.host[0].cli localSAP 240
+par Contention.host[0].cli remoteSAP 241
+par Contention.host[0].cli sendInterval 4.9999999999999996e-05s
+attr unit s
+par Contention.host[0].cli reqLength 900B
+attr unit B
+par Contention.host[0].cli respLength 0B
+attr unit B
+par Contention.host[0].cli stopOperationExtraTime -1s
+attr unit s
+par Contention.host[0].cli stopOperationTimeout 2s
+attr unit s
+scalar Contention.host[0].cli packetReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetReceived
+attr title "packets received, count"
+scalar Contention.host[0].cli packetReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetReceived
+attr title "packets received, sum(packetBytes)"
+statistic Contention.host[0].cli endToEndDelay:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.host[0].cli packetSent:count 200001
+attr interpolationmode none
+attr recordingmode count
+attr source packetSent
+attr title "packets sent, count"
+scalar Contention.host[0].cli packetSent:sum(packetBytes) 180000900
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetSent
+attr title "packets sent, sum(packetBytes)"
+par Contention.host[0].wlan.radioIn.channel typename "\"ned.IdealChannel\""
+par Contention.host[0].wlan.llc.upperLayerOut.channel typename "\"ned.IdealChannel\""
+par Contention.host[0].wlan.upperLayerIn.channel typename "\"ned.IdealChannel\""
+par Contention.host[0].wlan.mib typename "\"inet.linklayer.ieee80211.mib.Ieee80211Mib\""
+par Contention.host[0].wlan.mib displayStringTextFormat "\"Address: {address}{ssidStr}\\n{modeStr}{stationTypeStr}{qosStr}{associatedStr}\""
+attr mutable ""
+par Contention.host[0].wlan.llc typename "\"inet.linklayer.ieee80211.llc.Ieee80211LlcLpd\""
+par Contention.host[0].wlan.llc displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.llc registerProtocol false
+par Contention.host[0].wlan.mgmt typename "\"inet.linklayer.ieee80211.mgmt.Ieee80211MgmtStaSimplified\""
+par Contention.host[0].wlan.mgmt displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mgmt accessPointAddress "\"10:00:00:00:00:00\""
+par Contention.host[0].wlan.mgmt interfaceTableModule "\"Contention.host[0].wlan.^.interfaceTable\""
+par Contention.host[0].wlan.mgmt mibModule "\"Contention.host[0].wlan.mib\""
+par Contention.host[0].wlan.mgmt macModule "\"Contention.host[0].wlan.mac\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue typename "\"inet.linklayer.ieee80211.mac.queue.PendingQueue\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue displayStringTextFormat "\"contains %p pk (%l) pushed %u\\npulled %o removed %r dropped %d\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue packetCapacity 100
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue dataCapacity -1b
+attr unit b
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue dropperClass "\"inet::queueing::PacketAtCollectionEndDropper\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue comparatorClass "\"inet::ieee80211::MgmtOverDataComparator\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue bufferModule "\"\""
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueLength:last 100
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, last"
+attr unit pk
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueLength:max 100
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, max"
+attr unit pk
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueLength:timeavg 99.91815832311039
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length, timeavg"
+attr unit pk
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:last 744800
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode last
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, last"
+attr unit b
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:max 744800
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, max"
+attr unit b
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:timeavg 744190.4431905262
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length, timeavg"
+attr unit b
+statistic Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueingTime:histogram
+field count 32736
+field mean 0.03052304445354057
+field stddev 0.0004244849261531034
+field min 0.028798696135999998
+field max 0.032028600584
+field sum 999.202383231104
+field sqrsum 30.504597197705277
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+bin	-inf	0
+bin	0.028780000000000014	1
+bin	0.028820000000000016	0
+bin	0.028860000000000014	4
+bin	0.028900000000000016	4
+bin	0.028940000000000014	12
+bin	0.028980000000000013	10
+bin	0.029020000000000015	5
+bin	0.029060000000000013	6
+bin	0.029100000000000015	0
+bin	0.029140000000000013	4
+bin	0.02918000000000001	9
+bin	0.02922000000000001	10
+bin	0.02926000000000001	13
+bin	0.02930000000000001	30
+bin	0.02934000000000001	37
+bin	0.029380000000000007	45
+bin	0.02942000000000001	68
+bin	0.029460000000000007	79
+bin	0.02950000000000001	77
+bin	0.029540000000000007	97
+bin	0.029580000000000006	135
+bin	0.029620000000000007	178
+bin	0.029660000000000006	198
+bin	0.029700000000000008	222
+bin	0.029740000000000006	248
+bin	0.029780000000000008	270
+bin	0.029820000000000006	346
+bin	0.029860000000000008	383
+bin	0.029900000000000006	418
+bin	0.029940000000000005	479
+bin	0.029980000000000007	505
+bin	0.030020000000000005	615
+bin	0.030060000000000007	710
+bin	0.030100000000000005	805
+bin	0.030140000000000004	794
+bin	0.030180000000000005	856
+bin	0.030220000000000004	940
+bin	0.030260000000000006	953
+bin	0.030300000000000004	1011
+bin	0.030340000000000006	1009
+bin	0.030380000000000004	1105
+bin	0.030420000000000006	1166
+bin	0.030460000000000004	1294
+bin	0.030500000000000003	1307
+bin	0.03054	1337
+bin	0.030580000000000003	1321
+bin	0.03062	1249
+bin	0.030660000000000003	1165
+bin	0.0307	1170
+bin	0.030740000000000003	1138
+bin	0.030780000000000002	1042
+bin	0.030820000000000004	953
+bin	0.030860000000000002	897
+bin	0.030900000000000004	791
+bin	0.030940000000000002	717
+bin	0.030980000000000004	603
+bin	0.031020000000000002	607
+bin	0.031060000000000004	555
+bin	0.031100000000000003	469
+bin	0.031140000000000004	391
+bin	0.031180000000000003	343
+bin	0.03122	297
+bin	0.03126	273
+bin	0.0313	211
+bin	0.03134	149
+bin	0.031380000000000005	134
+bin	0.031420000000000003	113
+bin	0.03146	81
+bin	0.0315	64
+bin	0.031540000000000006	37
+bin	0.031580000000000004	38
+bin	0.03162	22
+bin	0.03166	31
+bin	0.0317	17
+bin	0.03174	25
+bin	0.031779999999999996	14
+bin	0.031819999999999994	10
+bin	0.03185999999999999	4
+bin	0.03189999999999999	3
+bin	0.03193999999999999	3
+bin	0.03197999999999999	3
+bin	0.032019999999999986	1
+bin	0.032059999999999984	0
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue outgoingPackets:count 32736
+attr recordingmode count
+attr source packetPulled
+attr title "outgoing packets, count"
+attr unit pk
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:sum 243817728
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths, sum"
+attr unit b
+statistic Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:histogram
+field count 32736
+field mean 7448
+field stddev 0
+field min 7448
+field max 7448
+field sum 243817728
+field sqrsum 1815954438144
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+bin	-inf	0
+bin	7447	0
+bin	7448	32736
+bin	7449	0
+statistic Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue incomingPackets:count 200001
+attr recordingmode count
+attr source packetPushStarted
+attr title "incoming packets, count"
+attr unit pk
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:sum 1489607448
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths, sum"
+attr unit b
+statistic Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:histogram
+field count 200001
+field mean 7448
+field stddev 0
+field min 7448
+field max 7448
+field sum 1489607448
+field sqrsum 11094596272704
+attr interpolationmode none
+attr recordingmode histogram
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+bin	-inf	0
+bin	7447	0
+bin	7448	200001
+bin	7449	0
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue droppedPacketsQueueOverflow:count 167265
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "dropped packets: queue overflow, count"
+attr unit pk
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:sum 1245789720
+attr interpolationmode none
+attr recordingmode sum
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow, sum"
+attr unit b
+par Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames typename "\"inet.linklayer.ieee80211.mac.queue.InProgressFrames\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames displayStringTextFormat "\"{numInProgress} packets\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames pendingQueueModule "\"^.pendingQueue\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames originatorMacDataServiceModule "\"^.^.originatorMacDataService\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames ackHandlerModule "\"^.^.ackHandler\""
+statistic Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:histogram
+field count 32736
+field mean 0.0005095380244398827
+field stddev 4.136393557495961e-05
+field min 0.000442133424
+field max 0.000577133424
+field sum 16.680236768064
+field sqrsum 0.008555223662055998
+attr interpolationmode none
+attr recordingmode histogram
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+bin	-inf	0
+bin	0.00040800000000000005	0
+bin	0.00041000000000000005	0
+bin	0.00041200000000000004	0
+bin	0.00041400000000000003	0
+bin	0.00041600000000000003	0
+bin	0.0004180000000000001	0
+bin	0.00042000000000000007	0
+bin	0.00042200000000000007	0
+bin	0.00042400000000000006	0
+bin	0.00042600000000000005	0
+bin	0.00042800000000000005	0
+bin	0.00043000000000000004	0
+bin	0.00043200000000000004	0
+bin	0.00043400000000000003	0
+bin	0.0004360000000000001	0
+bin	0.0004380000000000001	0
+bin	0.00044000000000000007	0
+bin	0.00044200000000000006	2086
+bin	0.00044400000000000006	0
+bin	0.00044600000000000005	0
+bin	0.00044800000000000005	0
+bin	0.00045000000000000004	1973
+bin	0.00045200000000000004	0
+bin	0.0004540000000000001	0
+bin	0.0004560000000000001	0
+bin	0.0004580000000000001	0
+bin	0.00046000000000000007	1991
+bin	0.00046200000000000006	0
+bin	0.00046400000000000006	0
+bin	0.00046600000000000005	0
+bin	0.00046800000000000005	2089
+bin	0.00047000000000000004	0
+bin	0.0004720000000000001	0
+bin	0.00047400000000000003	0
+bin	0.0004760000000000001	0
+bin	0.00047800000000000007	2092
+bin	0.00048000000000000007	0
+bin	0.00048200000000000006	0
+bin	0.00048400000000000006	0
+bin	0.00048600000000000005	2101
+bin	0.00048800000000000004	0
+bin	0.0004900000000000001	0
+bin	0.000492	0
+bin	0.0004940000000000001	0
+bin	0.000496	2007
+bin	0.0004980000000000001	0
+bin	5e-04	0
+bin	0.0005020000000000001	0
+bin	0.0005040000000000001	2083
+bin	0.000506	0
+bin	0.0005080000000000001	0
+bin	0.00051	0
+bin	0.0005120000000000001	0
+bin	0.000514	2044
+bin	0.0005160000000000001	0
+bin	0.000518	0
+bin	0.0005200000000000001	0
+bin	0.0005220000000000001	2039
+bin	0.000524	0
+bin	0.0005260000000000001	0
+bin	0.000528	0
+bin	0.0005300000000000001	0
+bin	0.0005320000000000001	1987
+bin	0.0005340000000000001	0
+bin	0.000536	0
+bin	0.0005380000000000001	0
+bin	0.0005400000000000001	2062
+bin	0.0005420000000000001	0
+bin	0.0005440000000000001	0
+bin	0.000546	0
+bin	0.0005480000000000001	0
+bin	0.0005500000000000001	2118
+bin	0.0005520000000000001	0
+bin	0.000554	0
+bin	0.0005560000000000001	0
+bin	0.0005580000000000001	2073
+bin	0.0005600000000000001	0
+bin	0.0005620000000000001	0
+bin	0.000564	0
+bin	0.0005660000000000001	0
+bin	0.0005680000000000001	2030
+bin	0.0005700000000000001	0
+bin	0.000572	0
+bin	0.0005740000000000001	0
+bin	0.0005760000000000001	1961
+bin	0.0005780000000000001	0
+bin	0.0005800000000000001	0
+bin	0.000582	0
+bin	0.0005840000000000001	0
+bin	0.000586	0
+bin	0.0005880000000000001	0
+bin	0.00059	0
+bin	0.0005920000000000001	0
+bin	0.0005940000000000001	0
+bin	0.0005960000000000001	0
+bin	0.0005980000000000001	0
+bin	0.0006000000000000001	0
+bin	0.0006020000000000001	0
+bin	0.000604	0
+bin	0.0006060000000000001	0
+bin	0.000608	0
+bin	0.0006100000000000001	0
+bin	0.0006120000000000001	0
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames queueLength:max 2
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode max
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, max"
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames queueLength:timeavg 1.6680206140192002
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode timeavg
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length, timeavg"
+par Contention.host[0].wlan.mac.dcf.channelAccess.contention typename "\"inet.linklayer.ieee80211.mac.contention.Contention\""
+par Contention.host[0].wlan.mac.dcf.channelAccess.contention displayStringTextFormat "\"{fsmState}\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.channelAccess.contention initialChannelBusy true
+par Contention.host[0].wlan.mac.dcf.channelAccess.contention backoffOptimization true
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.contention channelAccessGranted:count 32736
+attr recordingmode count
+attr title "channel access granted, count"
+scalar Contention.host[0].wlan.mac.dcf.channelAccess.contention stateChanged:count 261888
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode count
+attr title "contention state changed, count"
+attr type enum
+par Contention.host[0].wlan.mac.dcf.channelAccess typename "\"inet.linklayer.ieee80211.mac.channelaccess.Dcaf\""
+par Contention.host[0].wlan.mac.dcf.channelAccess displayStringTextFormat "\"{contentionState}\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.channelAccess difsn -1
+par Contention.host[0].wlan.mac.dcf.channelAccess cwMin -1
+par Contention.host[0].wlan.mac.dcf.channelAccess cwMax -1
+par Contention.host[0].wlan.mac.dcf.channelAccess rxModule "\"^.^.rx\""
+scalar Contention.host[0].wlan.mac.dcf.channelAccess channelOwnershipChanged:count 65472
+attr interpolationmode sample-hold
+attr recordingmode count
+attr title "channel ownership, count"
+par Contention.host[0].wlan.mac.dcf.originatorMacDataService.fragmentationPolicy typename "\"inet.linklayer.ieee80211.mac.fragmentation.BasicFragmentationPolicy\""
+par Contention.host[0].wlan.mac.dcf.originatorMacDataService.fragmentationPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.originatorMacDataService.fragmentationPolicy fragmentationThreshold 2346B
+attr unit B
+par Contention.host[0].wlan.mac.dcf.originatorMacDataService typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorMacDataService\""
+par Contention.host[0].wlan.mac.dcf.originatorMacDataService displayStringTextFormat "\"\""
+attr mutable ""
+scalar Contention.host[0].wlan.mac.dcf.originatorMacDataService packetAggregated:count 0
+attr recordingmode count
+attr title "packets aggregated, count"
+scalar Contention.host[0].wlan.mac.dcf.originatorMacDataService packetFragmented:count 0
+attr recordingmode count
+attr title "packets fragmented, count"
+par Contention.host[0].wlan.mac.dcf.recipientMacDataService typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientMacDataService\""
+par Contention.host[0].wlan.mac.dcf.recipientMacDataService displayStringTextFormat "\"\""
+attr mutable ""
+scalar Contention.host[0].wlan.mac.dcf.recipientMacDataService packetDeaggregated:count 0
+attr recordingmode count
+attr title "packets deaggregated, count"
+scalar Contention.host[0].wlan.mac.dcf.recipientMacDataService packetDefragmented:count 0
+attr recordingmode count
+attr title "packets defragmented, count"
+scalar Contention.host[0].wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Contention.host[0].wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+par Contention.host[0].wlan.mac.dcf.rateSelection typename "\"inet.linklayer.ieee80211.mac.rateselection.RateSelection\""
+par Contention.host[0].wlan.mac.dcf.rateSelection displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.rateSelection rateControlModule "\"^.rateControl\""
+par Contention.host[0].wlan.mac.dcf.rateSelection multicastFrameBitrate -1bps
+attr unit bps
+par Contention.host[0].wlan.mac.dcf.rateSelection responseAckFrameBitrate -1bps
+attr unit bps
+par Contention.host[0].wlan.mac.dcf.rateSelection responseCtsFrameBitrate -1bps
+attr unit bps
+par Contention.host[0].wlan.mac.dcf.rateSelection dataFrameBitrate 5.4e+07bps
+attr unit bps
+par Contention.host[0].wlan.mac.dcf.rateSelection dataFrameBandwidth "nan Hz"
+attr unit Hz
+par Contention.host[0].wlan.mac.dcf.rateSelection dataFrameNumSpatialStreams -1
+par Contention.host[0].wlan.mac.dcf.rateSelection mgmtFrameBitrate -1bps
+attr unit bps
+par Contention.host[0].wlan.mac.dcf.rateSelection controlFrameBitrate -1bps
+attr unit bps
+par Contention.host[0].wlan.mac.dcf.recoveryProcedure typename "\"inet.linklayer.ieee80211.mac.originator.NonQosRecoveryProcedure\""
+par Contention.host[0].wlan.mac.dcf.recoveryProcedure displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.recoveryProcedure cwCalculatorModule "\"^.channelAccess\""
+par Contention.host[0].wlan.mac.dcf.recoveryProcedure rtsPolicyModule "\"^.rtsPolicy\""
+par Contention.host[0].wlan.mac.dcf.recoveryProcedure shortRetryLimit 7
+par Contention.host[0].wlan.mac.dcf.recoveryProcedure longRetryLimit 4
+scalar Contention.host[0].wlan.mac.dcf.recoveryProcedure retryLimitReached:count 0
+attr recordingmode count
+attr title "retry limit reached, count"
+par Contention.host[0].wlan.mac.dcf.originatorProtectionMechanism typename "\"inet.linklayer.ieee80211.mac.protectionmechanism.OriginatorProtectionMechanism\""
+par Contention.host[0].wlan.mac.dcf.originatorProtectionMechanism displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.originatorProtectionMechanism rateSelectionModule "\"^.rateSelection\""
+par Contention.host[0].wlan.mac.dcf.ackHandler typename "\"inet.linklayer.ieee80211.mac.originator.AckHandler\""
+par Contention.host[0].wlan.mac.dcf.ackHandler displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.originatorAckPolicy typename "\"inet.linklayer.ieee80211.mac.originator.OriginatorAckPolicy\""
+par Contention.host[0].wlan.mac.dcf.originatorAckPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.originatorAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.host[0].wlan.mac.dcf.originatorAckPolicy ackTimeout -1s
+attr unit s
+par Contention.host[0].wlan.mac.dcf.recipientAckPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.RecipientAckPolicy\""
+par Contention.host[0].wlan.mac.dcf.recipientAckPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.recipientAckPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.host[0].wlan.mac.dcf.rtsPolicy typename "\"inet.linklayer.ieee80211.mac.originator.RtsPolicy\""
+par Contention.host[0].wlan.mac.dcf.rtsPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.rtsPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.host[0].wlan.mac.dcf.rtsPolicy ctsTimeout -1s
+attr unit s
+par Contention.host[0].wlan.mac.dcf.rtsPolicy rtsThreshold 2346B
+attr unit B
+par Contention.host[0].wlan.mac.dcf.ctsPolicy typename "\"inet.linklayer.ieee80211.mac.recipient.CtsPolicy\""
+par Contention.host[0].wlan.mac.dcf.ctsPolicy displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf.ctsPolicy rxModule "\"^.^.rx\""
+par Contention.host[0].wlan.mac.dcf.ctsPolicy rateSelectionModule "\"^.rateSelection\""
+par Contention.host[0].wlan.mac.dcf typename "\"inet.linklayer.ieee80211.mac.coordinationfunction.Dcf\""
+par Contention.host[0].wlan.mac.dcf displayStringTextFormat "\"{frameSequenceInfo}\""
+attr mutable ""
+par Contention.host[0].wlan.mac.dcf rxModule "\"^.rx\""
+par Contention.host[0].wlan.mac.dcf txModule "\"^.tx\""
+scalar Contention.host[0].wlan.mac.dcf frameSequenceFinished:count 32736
+attr recordingmode count
+attr title "finished frame sequences, count"
+statistic Contention.host[0].wlan.mac.dcf frameSequenceDuration:histogram
+field count 32736
+field mean 0.000204066712
+field stddev 0
+field min 0.000204066712
+field max 0.000204066712
+field sum 6.680327884032001
+field sqrsum 0.0013632325463763277
+attr recordingmode histogram
+attr source frameSequenceDuration(frameSequenceFinished)
+attr title "frame sequence durations"
+bin	-inf	0
+bin	0	32736
+bin	0.01	0
+bin	0.02	0
+bin	0.03	0
+bin	0.04	0
+bin	0.05	0
+bin	0.06	0
+bin	0.07	0
+bin	0.08	0
+bin	0.09	0
+bin	0.1	0
+bin	0.11	0
+bin	0.12	0
+bin	0.13	0
+bin	0.14	0
+bin	0.15	0
+bin	0.16	0
+bin	0.17	0
+bin	0.18	0
+bin	0.19	0
+bin	0.2	0
+bin	0.21	0
+bin	0.22	0
+bin	0.23	0
+bin	0.24	0
+bin	0.25	0
+bin	0.26	0
+bin	0.27	0
+bin	0.28	0
+bin	0.29	0
+bin	0.3	0
+bin	0.31	0
+bin	0.32	0
+bin	0.33	0
+bin	0.34	0
+bin	0.35000000000000003	0
+bin	0.36	0
+bin	0.37	0
+bin	0.38	0
+bin	0.39	0
+bin	0.4	0
+bin	0.41000000000000003	0
+bin	0.42	0
+bin	0.43	0
+bin	0.44	0
+bin	0.45	0
+bin	0.46	0
+bin	0.47000000000000003	0
+bin	0.48	0
+bin	0.49	0
+bin	0.5	0
+bin	0.51	0
+statistic Contention.host[0].wlan.mac.dcf frameSequenceNumPackets:histogram
+field count 32736
+field mean 2
+field stddev 0
+field min 2
+field max 2
+field sum 65472
+field sqrsum 130944
+attr recordingmode histogram
+attr source frameSequenceNumPackets(frameSequenceFinished)
+attr title "frame sequences: number of packets"
+bin	-inf	0
+bin	1	0
+bin	2	32736
+bin	3	0
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeer:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received, count"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeer:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerUnicast:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, count"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerUnicast:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, count"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, count"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, count"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerWithoutRetry:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, count"
+scalar Contention.host[0].wlan.mac.dcf packetReceivedFromPeerWithoutRetry:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeer:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent, count"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeer:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerUnicast:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, count"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerUnicast:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerMulticast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, count"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerMulticast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerBroadcast:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , count"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerBroadcast:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerWithRetry:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, count"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerWithRetry:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerWithoutRetry:count 32737
+attr interpolationmode none
+attr recordingmode count
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, count"
+scalar Contention.host[0].wlan.mac.dcf packetSentToPeerWithoutRetry:sum(packetBytes) 30478147
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetDrop:count 167265
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar Contention.host[0].wlan.mac.dcf packetDrop:sum(packetBytes) 155723715
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Contention.host[0].wlan.mac.dcf packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetDropQueueOverflow:count 167265
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Contention.host[0].wlan.mac.dcf packetDropQueueOverflow:sum(packetBytes) 155723715
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Contention.host[0].wlan.mac.dcf packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac.dcf linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+par Contention.host[0].wlan.mac.ds typename "\"inet.linklayer.ieee80211.mac.Ds\""
+par Contention.host[0].wlan.mac.ds displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac.ds mibModule "\"Contention.host[0].wlan.mib\""
+par Contention.host[0].wlan.mac.rx typename "\"inet.linklayer.ieee80211.mac.Rx\""
+par Contention.host[0].wlan.mac.rx displayStringTextFormat "\"{rxStatus}\""
+attr mutable ""
+par Contention.host[0].wlan.mac.tx typename "\"inet.linklayer.ieee80211.mac.Tx\""
+par Contention.host[0].wlan.mac.tx displayStringTextFormat "\"{txFramePrefix}{txState}\""
+attr mutable ""
+par Contention.host[0].wlan.mac.tx rxModule "\"^.rx\""
+par Contention.host[0].wlan.mac typename "\"inet.linklayer.ieee80211.mac.Ieee80211Mac\""
+par Contention.host[0].wlan.mac displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.mac interfaceTableModule "\"Contention.host[0].wlan.^.interfaceTable\""
+par Contention.host[0].wlan.mac mibModule "\"Contention.host[0].wlan.mib\""
+par Contention.host[0].wlan.mac modeSet "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.host[0].wlan.mac fcsMode "\"declared\""
+attr enum declared,computed
+par Contention.host[0].wlan.mac initialRadioMode "\"receiver\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Contention.host[0].wlan.mac mtu 2304B
+attr unit B
+par Contention.host[0].wlan.mac qosStation false
+scalar Contention.host[0].wlan.mac packetReceivedFromLower:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from lower layer, count"
+scalar Contention.host[0].wlan.mac packetReceivedFromLower:sum(packetBytes) 458304
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from lower layer, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetSentToLower:count 32736
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to lower layer, count"
+scalar Contention.host[0].wlan.mac packetSentToLower:sum(packetBytes) 30477216
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to lower layer, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetReceivedFromUpper:count 200001
+attr interpolationmode none
+attr recordingmode count
+attr title "packets received from upper layer, count"
+scalar Contention.host[0].wlan.mac packetReceivedFromUpper:sum(packetBytes) 180600903
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets received from upper layer, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetSentToUpper:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "packets sent to upper layer, count"
+scalar Contention.host[0].wlan.mac packetSentToUpper:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr title "packets sent to upper layer, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDrop:count 167265
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropped
+attr title "packet drops, count"
+scalar Contention.host[0].wlan.mac packetDrop:sum(packetBytes) 155723715
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropped
+attr title "packet drops, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDropIncorrectlyReceived:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, count"
+scalar Contention.host[0].wlan.mac packetDropIncorrectlyReceived:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDropNotAddressedToUs:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, count"
+scalar Contention.host[0].wlan.mac packetDropNotAddressedToUs:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDropQueueOverflow:count 167265
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, count"
+scalar Contention.host[0].wlan.mac packetDropQueueOverflow:sum(packetBytes) 155723715
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDropRetryLimitReached:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, count"
+scalar Contention.host[0].wlan.mac packetDropRetryLimitReached:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDropDuplicateDetected:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, count"
+scalar Contention.host[0].wlan.mac packetDropDuplicateDetected:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac packetDropOther:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, count"
+scalar Contention.host[0].wlan.mac packetDropOther:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, sum(packetBytes)"
+scalar Contention.host[0].wlan.mac linkBroken:count 0
+attr interpolationmode none
+attr recordingmode count
+attr title "link breaks, count"
+par Contention.host[0].wlan.radio.antenna typename "\"inet.physicallayer.wireless.common.antenna.IsotropicAntenna\""
+par Contention.host[0].wlan.radio.antenna displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio.antenna mobilityModule "\"^.^.^.mobility\""
+par Contention.host[0].wlan.radio.antenna numAntennas 1
+par Contention.host[0].wlan.radio.transmitter.analogModel typename "\"inet.physicallayer.wireless.common.analogmodel.scalar.ScalarTransmitterAnalogModel\""
+par Contention.host[0].wlan.radio.transmitter.analogModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio.transmitter.analogModel power 0.02W
+attr unit W
+par Contention.host[0].wlan.radio.transmitter.analogModel centerFrequency "nan Hz"
+attr unit Hz
+par Contention.host[0].wlan.radio.transmitter.analogModel bandwidth "nan Hz"
+attr unit Hz
+par Contention.host[0].wlan.radio.transmitter typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211Transmitter\""
+par Contention.host[0].wlan.radio.transmitter displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio.transmitter signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.host[0].wlan.radio.transmitter preambleDuration -1s
+attr unit s
+par Contention.host[0].wlan.radio.transmitter headerLength 192b
+attr unit b
+par Contention.host[0].wlan.radio.transmitter bitrate 5.4e+07bps
+attr unit bps
+par Contention.host[0].wlan.radio.transmitter power 0.02W
+attr unit W
+par Contention.host[0].wlan.radio.transmitter centerFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.host[0].wlan.radio.transmitter bandwidth "nan Hz"
+attr unit Hz
+par Contention.host[0].wlan.radio.transmitter codeRate 1
+par Contention.host[0].wlan.radio.transmitter modulation "\"BPSK\""
+par Contention.host[0].wlan.radio.transmitter opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.host[0].wlan.radio.transmitter bandName "\"5 GHz (20 MHz)\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Contention.host[0].wlan.radio.transmitter channelNumber 8
+par Contention.host[0].wlan.radio.receiver.analogModel typename "\"inet.physicallayer.wireless.common.analogmodel.scalar.ScalarReceiverAnalogModel\""
+par Contention.host[0].wlan.radio.receiver.analogModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio.receiver.analogModel defaultCenterFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.host[0].wlan.radio.receiver.analogModel defaultBandwidth 2.2e+07Hz
+attr unit Hz
+par Contention.host[0].wlan.radio.receiver.analogModel defaultSensitivity -85dBm
+attr unit dBm
+par Contention.host[0].wlan.radio.receiver.errorModel typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.errormodel.Ieee80211NistErrorModel\""
+par Contention.host[0].wlan.radio.receiver.errorModel displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio.receiver.errorModel corruptionMode "\"packet\""
+attr enum packet,chunk,byte,bit
+par Contention.host[0].wlan.radio.receiver.errorModel snirMode "\"min\""
+attr enum min,mean
+par Contention.host[0].wlan.radio.receiver.errorModel snirOffset 0dB
+attr unit dB
+par Contention.host[0].wlan.radio.receiver typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211Receiver\""
+par Contention.host[0].wlan.radio.receiver displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio.receiver ignoreInterference false
+par Contention.host[0].wlan.radio.receiver signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.host[0].wlan.radio.receiver snirThreshold 4dB
+attr unit dB
+par Contention.host[0].wlan.radio.receiver snirThresholdMode "\"min\""
+attr enum min,mean
+par Contention.host[0].wlan.radio.receiver energyDetection -85dBm
+attr unit dBm
+par Contention.host[0].wlan.radio.receiver sensitivity -85dBm
+attr unit dBm
+par Contention.host[0].wlan.radio.receiver centerFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.host[0].wlan.radio.receiver bandwidth 2.2e+07Hz
+attr unit Hz
+par Contention.host[0].wlan.radio.receiver modulation "\"BPSK\""
+par Contention.host[0].wlan.radio.receiver opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.host[0].wlan.radio.receiver bandName "\"5 GHz (20 MHz)\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Contention.host[0].wlan.radio.receiver channelNumber 8
+par Contention.host[0].wlan.radio typename "\"inet.physicallayer.wireless.ieee80211.packetlevel.Ieee80211Radio\""
+par Contention.host[0].wlan.radio displayStringTextFormat "\"\""
+attr mutable ""
+par Contention.host[0].wlan.radio radioMediumModule "\"radioMedium\""
+par Contention.host[0].wlan.radio energySourceModule "\"\""
+par Contention.host[0].wlan.radio initialRadioMode "\"off\""
+attr enum off,sleep,receiver,transmitter,transceiver
+par Contention.host[0].wlan.radio switchingTimes "\"ms 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0\""
+par Contention.host[0].wlan.radio sendRawBytes false
+par Contention.host[0].wlan.radio separateTransmissionParts false
+par Contention.host[0].wlan.radio separateReceptionParts false
+par Contention.host[0].wlan.radio displayCommunicationRange false
+par Contention.host[0].wlan.radio displayInterferenceRange false
+par Contention.host[0].wlan.radio signalAnalogRepresentation "\"scalar\""
+attr enum unitDisk,scalar,dimensional
+par Contention.host[0].wlan.radio centerFrequency 2.412e+09Hz
+attr unit Hz
+par Contention.host[0].wlan.radio bandwidth "nan Hz"
+attr unit Hz
+par Contention.host[0].wlan.radio opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.host[0].wlan.radio bandName "\"5 GHz (20 MHz)\""
+attr enum "2.4 GHz,5 GHz,5 GHz (20 MHz),5 GHz (40 MHz),5 GHz (80 MHz),5 GHz (160 MHz),5.9 GHz"
+par Contention.host[0].wlan.radio channelNumber 8
+par Contention.host[0].wlan.radio fcsMode "\"declared\""
+attr enum declared,computed
+statistic Contention.host[0].wlan.radio radioChannel:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr interpolationmode sample-hold
+attr recordingmode histogram
+attr source radioChannelChanged
+attr title "Radio channel"
+bin	-inf	0
+bin	0	0
+bin	1	0
+scalar Contention.host[0].wlan.radio radioMode:count 65473
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source radioModeChanged
+attr title "Radio mode, count"
+attr type enum
+scalar Contention.host[0].wlan.radio receptionState:count 130946
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source receptionStateChanged
+attr title "Radio reception state, count"
+attr type enum
+scalar Contention.host[0].wlan.radio transmissionState:count 130946
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode count
+attr source transmissionStateChanged
+attr title "Radio transmission state, count"
+attr type enum
+statistic Contention.host[0].wlan.radio minSnir:histogram
+field count 32736
+field mean 425863.66495766386
+field stddev 0
+field min 425863.66495766386
+field max 425863.66495766386
+field sum 13941072936.054085
+field sqrsum 5936996413990091
+attr recordingmode histogram
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+bin	-inf	0
+bin	425863.16000000003	0
+bin	425863.18000000005	0
+bin	425863.2	0
+bin	425863.22000000003	0
+bin	425863.24000000005	0
+bin	425863.26	0
+bin	425863.28	0
+bin	425863.30000000005	0
+bin	425863.32	0
+bin	425863.34	0
+bin	425863.36000000004	0
+bin	425863.38	0
+bin	425863.4	0
+bin	425863.42000000004	0
+bin	425863.44000000006	0
+bin	425863.46	0
+bin	425863.48000000004	0
+bin	425863.50000000006	0
+bin	425863.52	0
+bin	425863.54000000004	0
+bin	425863.56000000006	0
+bin	425863.58	0
+bin	425863.60000000003	0
+bin	425863.62000000005	0
+bin	425863.64	0
+bin	425863.66000000003	32736
+bin	425863.68000000005	0
+bin	425863.7	0
+bin	425863.72000000003	0
+bin	425863.74000000005	0
+bin	425863.76	0
+bin	425863.78	0
+bin	425863.80000000005	0
+bin	425863.82	0
+bin	425863.84	0
+bin	425863.86000000004	0
+bin	425863.88	0
+bin	425863.9	0
+bin	425863.92000000004	0
+bin	425863.94000000006	0
+bin	425863.96	0
+bin	425863.98000000004	0
+bin	425864.00000000006	0
+bin	425864.02	0
+bin	425864.04000000004	0
+bin	425864.06000000006	0
+bin	425864.08	0
+bin	425864.10000000003	0
+bin	425864.12000000005	0
+bin	425864.14	0
+bin	425864.16000000003	0
+bin	425864.18000000005	0
+statistic Contention.host[0].wlan.radio packetErrorRate:histogram
+field count 32736
+field mean 0
+field stddev 0
+field min 0
+field max 0
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source packetErrorRate(packetSentToUpper)
+attr title "Packet error rate"
+bin	-inf	0
+bin	-0.5	0
+bin	-0.48	0
+bin	-0.46	0
+bin	-0.44	0
+bin	-0.42	0
+bin	-0.4	0
+bin	-0.38	0
+bin	-0.36	0
+bin	-0.33999999999999997	0
+bin	-0.32	0
+bin	-0.3	0
+bin	-0.28	0
+bin	-0.26	0
+bin	-0.24	0
+bin	-0.21999999999999997	0
+bin	-0.2	0
+bin	-0.18	0
+bin	-0.15999999999999998	0
+bin	-0.14	0
+bin	-0.12	0
+bin	-0.09999999999999998	0
+bin	-0.08000000000000002	0
+bin	-0.06	0
+bin	-0.03999999999999998	0
+bin	-0.020000000000000018	0
+bin	0	32736
+bin	0.020000000000000018	0
+bin	0.040000000000000036	0
+bin	0.06000000000000005	0
+bin	0.07999999999999996	0
+bin	0.09999999999999998	0
+bin	0.12	0
+bin	0.14	0
+bin	0.16000000000000003	0
+bin	0.18000000000000005	0
+bin	0.20000000000000007	0
+bin	0.21999999999999997	0
+bin	0.24	0
+bin	0.26	0
+bin	0.28	0
+bin	0.30000000000000004	0
+bin	0.32000000000000006	0
+bin	0.33999999999999997	0
+bin	0.36	0
+bin	0.38	0
+bin	0.4	0
+bin	0.42000000000000004	0
+bin	0.44000000000000006	0
+bin	0.45999999999999996	0
+bin	0.48	0
+bin	0.5	0
+statistic Contention.host[0].wlan.radio bitErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source bitErrorRate(packetSentToUpper)
+attr title "Bit error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+statistic Contention.host[0].wlan.radio symbolErrorRate:histogram
+field count 0
+field mean nan
+field stddev nan
+field min nan
+field max nan
+field sum 0
+field sqrsum 0
+attr recordingmode histogram
+attr source symbolErrorRate(packetSentToUpper)
+attr title "Symbol error rate"
+bin	-inf	0
+bin	0	0
+bin	1	0
+par Contention.host[0].wlan typename "\"inet.linklayer.ieee80211.Ieee80211Interface\""
+par Contention.host[0].wlan displayStringTextFormat "\"%a (%i)\\n%m\""
+attr mutable ""
+par Contention.host[0].wlan recordPcap false
+par Contention.host[0].wlan numPcapRecorders 0
+par Contention.host[0].wlan interfaceTableModule "\"^.interfaceTable\""
+par Contention.host[0].wlan energySourceModule "\"\""
+par Contention.host[0].wlan opMode "\"a\""
+attr enum a,b,g(erp),g(mixed),n(mixed-2.4Ghz),p,ac
+par Contention.host[0].wlan address "\"0A-AA-00-00-00-01\""
+attr mutable ""
+par Contention.host[0].wlan protocol "\"\""
+par Contention.host[0].wlan bitrate 5.4e+07bps
+attr unit bps
+scalar Contention.host[0].wlan packetDropInterfaceDown:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, count"
+scalar Contention.host[0].wlan packetDropInterfaceDown:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, sum(packetBytes)"
+scalar Contention.host[0].wlan packetDropNoCarrier:count 0
+attr interpolationmode none
+attr recordingmode count
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, count"
+scalar Contention.host[0].wlan packetDropNoCarrier:sum(packetBytes) 0
+attr interpolationmode none
+attr recordingmode sum(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, sum(packetBytes)"
+par Contention.host[0].interfaceTable typename "\"inet.networklayer.common.InterfaceTable\""
+par Contention.host[0].interfaceTable displayStringTextFormat "\"{numInterfaces} interfaces\""
+attr mutable ""
+par Contention.host[0].interfaceTable displayAddresses false
+par Contention.host[0].mobility typename "\"inet.mobility.static.StationaryMobility\""
+par Contention.host[0].mobility displayStringTextFormat "\"p: {position}\\nv: {velocity}\""
+attr mutable ""
+par Contention.host[0].mobility subjectModule "\"^\""
+par Contention.host[0].mobility coordinateSystemModule "\"\""
+par Contention.host[0].mobility updateDisplayString true
+par Contention.host[0].mobility constraintAreaMinX 0m
+attr unit m
+par Contention.host[0].mobility constraintAreaMinY 0m
+attr unit m
+par Contention.host[0].mobility constraintAreaMinZ 0m
+attr unit m
+par Contention.host[0].mobility constraintAreaMaxX 400m
+attr unit m
+par Contention.host[0].mobility constraintAreaMaxY 400m
+attr unit m
+par Contention.host[0].mobility constraintAreaMaxZ 0m
+attr unit m
+par Contention.host[0].mobility initialX 210m
+attr unit m
+par Contention.host[0].mobility initialY 200m
+attr unit m
+par Contention.host[0].mobility initialZ 0m
+attr unit m
+par Contention.host[0].mobility initialLatitude "nan deg"
+attr unit deg
+par Contention.host[0].mobility initialLongitude "nan deg"
+attr unit deg
+par Contention.host[0].mobility initialAltitude 0m
+attr unit m
+par Contention.host[0].mobility initialHeading 0deg
+attr unit deg
+par Contention.host[0].mobility initialElevation 0deg
+attr unit deg
+par Contention.host[0].mobility initialBank 0deg
+attr unit deg
+par Contention.host[0].mobility initFromDisplayString false
+par Contention.host[0].mobility updateFromDisplayString true
+par Contention.host[0] typename "\"phase1.Station\""
+par Contention typename "\"phase1.Contention\""
+par Contention n 1
+par Contention r 10m
+attr unit m
+
