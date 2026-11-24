@@ -1,0 +1,8 @@
+** Event #0   t=0   Elapsed: 1.4e-05s (0m 00s)  0% completed  (0% total)
+     Speed:     ev/sec=0   simsec/sec=0   ev/simsec=0
+     Messages:  created: 68   present: 68   in FES: 4   Memory (RSS): 105.25MiB
+** Event #39325   t=120   Elapsed: 0.237747s (0m 00s)  100% completed  (100% total)
+     Speed:     ev/sec=165412   simsec/sec=504.626   ev/simsec=327.792
+     Messages:  created: 39100   present: 68   in FES: 2   Memory (RSS): 106MiB
+
+<!> Simulation time limit reached -- at t=120s, event #39325

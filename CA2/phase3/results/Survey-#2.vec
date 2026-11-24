@@ -1,0 +1,2821 @@
+version 3
+run Survey-2-20261124-23:03:23-60373
+attr configname Survey
+attr datetime 20261124-23:03:23
+attr datetimef 20261124-230323
+attr experiment Survey
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network Roaming
+attr processid 60373
+attr repetition 2
+attr replication #2
+attr resultdir results
+attr runnumber 2
+attr seedset 2
+config cmdenv-redirect-output true
+config image-path /home/sadra/omnetpp-6.4.0/samples/inet-4.7.0/images
+config description "a receive-only meter walks the same path and records every beacon of both APs"
+config repeat 3
+config *.survey true
+config *.meter.wlan[0].radio.channelNumber 1
+config *.meter.wlan[1].radio.channelNumber 3
+config *.meter.wlan[0].mgmt.accessPointAddress "\"10:00:00:00:00:01\""
+config *.meter.wlan[1].mgmt.accessPointAddress "\"10:00:00:00:00:02\""
+config *.meter.wlan[*].radio.minSnir.result-recording-modes +vector
+config *.meter.wlan[*].radio.minSnir:vector.vector-recording true
+config network Roaming
+config Contention.**.wlan*.bitrate 54Mbps
+config Contention.**.cli.reqLength 900B
+config Anomaly.n 5
+config Anomaly.host[0].wlan[*].bitrate 9Mbps
+config Anomaly.host[*].wlan[*].bitrate 54Mbps
+config Anomaly.ap.wlan[*].bitrate 54Mbps
+config Anomaly.**.messageLength 900B
+config Anomaly.ap.**.pendingQueue.numQueues 5
+config Roaming.D 51m
+config Roaming.radioMedium.pathLoss.alpha 3.2
+config Roaming.radioMedium.pathLoss.sigma 3
+config Roaming.ap*.wlan.mgmt.beaconInterval 100ms
+config Roaming.host.wlan.mgmt.numChannels 7
+config Roaming.*.mobility.turtleScript "xml(\"<movement><set x='50' y='102' speed='1.75' angle='0'/><forward d='51'/></movement>\")"
+config sim-time-limit 120s
+config **.vector-recording false
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 600m
+config **.constraintAreaMaxY 200m
+config **.constraintAreaMaxZ 0m
+config **.mobility.initialZ 0m
+config **.mobility.initFromDisplayString false
+config *.radioMedium.pathLoss.typename LogNormalShadowing
+config *.radioMedium.sameTransmissionStartTimeCheck "\"ignore\""
+config *.radioMedium.analogModel.ignorePartialInterference true
+config **.opMode "\"a\""
+config **.radio.bandName "\"5 GHz (20 MHz)\""
+config **.radio.transmitter.power 20mW
+config **.wlan*.bitrate 12Mbps
+config **.rateSelection.mgmtFrameBitrate 6Mbps
+config **.rateSelection.multicastFrameBitrate 6Mbps
+config *.ap1.wlan.address "\"10:00:00:00:00:01\""
+config *.ap2.wlan.address "\"10:00:00:00:00:02\""
+config *.ap*.wlan.mgmt.ssid "\"CA2\""
+config *.ap1.wlan.radio.channelNumber 1
+config *.ap2.wlan.radio.channelNumber 3
+config *.host.cli.destAddress "\"20:00:00:00:00:00\""
+config *.host.cli.sendInterval 20ms
+config *.host.cli.reqLength 160B
+config *.host.cli.respLength 0B
+config *.host.cli.startTime 1s
+
+vector 0 Roaming.ap1.sink droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 1 Roaming.ap1.sink droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 2 Roaming.ap1.sink packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 3 Roaming.ap1.sink dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 4 Roaming.ap1.sink meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 5 Roaming.ap1.sink packetLifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLifeTime(packetPushed)
+attr title "packet life time"
+attr unit s
+vector 6 Roaming.ap1.sink packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+vector 7 Roaming.ap1.sink packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 8 Roaming.ap1.sink packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+vector 9 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 10 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 11 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 12 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 13 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 14 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 15 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 16 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 17 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 18 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 19 Roaming.ap1.wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 20 Roaming.ap1.wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 21 Roaming.ap1.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 22 Roaming.ap1.wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 23 Roaming.ap1.wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 24 Roaming.ap1.wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 25 Roaming.ap1.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 26 Roaming.ap1.wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 27 Roaming.ap1.wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 28 Roaming.ap1.wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 29 Roaming.ap1.wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 30 Roaming.ap1.wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 31 Roaming.ap1.wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 32 Roaming.ap1.wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 33 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 34 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 35 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 36 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 37 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 38 Roaming.ap1.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 39 Roaming.ap1.wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 40 Roaming.ap1.wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 41 Roaming.ap1.wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 42 Roaming.ap1.wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 43 Roaming.ap1.wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 44 Roaming.ap1.wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 45 Roaming.ap1.wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 46 Roaming.ap1.wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 47 Roaming.ap1.wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 48 Roaming.ap1.wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 49 Roaming.ap1.wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 50 Roaming.ap1.wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 51 Roaming.ap1.wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 52 Roaming.ap1.wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 53 Roaming.ap1.wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 54 Roaming.ap1.wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 55 Roaming.ap1.wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 56 Roaming.ap1.wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 57 Roaming.ap1.wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 58 Roaming.ap1.wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 59 Roaming.ap1.wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 60 Roaming.ap1.wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 61 Roaming.ap1.wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 62 Roaming.ap1.wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 63 Roaming.ap2.sink droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 64 Roaming.ap2.sink droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 65 Roaming.ap2.sink packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 66 Roaming.ap2.sink dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 67 Roaming.ap2.sink meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 68 Roaming.ap2.sink packetLifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLifeTime(packetPushed)
+attr title "packet life time"
+attr unit s
+vector 69 Roaming.ap2.sink packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+vector 70 Roaming.ap2.sink packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 71 Roaming.ap2.sink packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+vector 72 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 73 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 74 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 75 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 76 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 77 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 78 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 79 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 80 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 81 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 82 Roaming.ap2.wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 83 Roaming.ap2.wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 84 Roaming.ap2.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 85 Roaming.ap2.wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 86 Roaming.ap2.wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 87 Roaming.ap2.wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 88 Roaming.ap2.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 89 Roaming.ap2.wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 90 Roaming.ap2.wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 91 Roaming.ap2.wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 92 Roaming.ap2.wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 93 Roaming.ap2.wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 94 Roaming.ap2.wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 95 Roaming.ap2.wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 96 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 97 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 98 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 99 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 100 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 101 Roaming.ap2.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 102 Roaming.ap2.wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 103 Roaming.ap2.wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 104 Roaming.ap2.wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 105 Roaming.ap2.wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 106 Roaming.ap2.wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 107 Roaming.ap2.wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 108 Roaming.ap2.wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 109 Roaming.ap2.wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 110 Roaming.ap2.wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 111 Roaming.ap2.wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 112 Roaming.ap2.wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 113 Roaming.ap2.wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 114 Roaming.ap2.wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 115 Roaming.ap2.wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 116 Roaming.ap2.wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 117 Roaming.ap2.wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 118 Roaming.ap2.wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 119 Roaming.ap2.wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 120 Roaming.ap2.wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 121 Roaming.ap2.wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 122 Roaming.ap2.wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 123 Roaming.ap2.wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 124 Roaming.ap2.wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 125 Roaming.ap2.wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 126 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 127 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 128 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 129 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 130 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 131 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 132 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 133 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 134 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 135 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 136 Roaming.meter.wlan[0].mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 137 Roaming.meter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 138 Roaming.meter.wlan[0].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 139 Roaming.meter.wlan[0].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 140 Roaming.meter.wlan[0].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 141 Roaming.meter.wlan[0].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 142 Roaming.meter.wlan[0].mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 143 Roaming.meter.wlan[0].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 144 Roaming.meter.wlan[0].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 145 Roaming.meter.wlan[0].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 146 Roaming.meter.wlan[0].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 147 Roaming.meter.wlan[0].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 148 Roaming.meter.wlan[0].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 149 Roaming.meter.wlan[0].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 150 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 151 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 152 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 153 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 154 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 155 Roaming.meter.wlan[0].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 156 Roaming.meter.wlan[0].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 157 Roaming.meter.wlan[0].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 158 Roaming.meter.wlan[0].mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 159 Roaming.meter.wlan[0].mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 160 Roaming.meter.wlan[0].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 161 Roaming.meter.wlan[0].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 162 Roaming.meter.wlan[0].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 163 Roaming.meter.wlan[0].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 164 Roaming.meter.wlan[0].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 165 Roaming.meter.wlan[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 166 Roaming.meter.wlan[0].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 167 Roaming.meter.wlan[0].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 168 Roaming.meter.wlan[0].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 169 Roaming.meter.wlan[0].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 170 Roaming.meter.wlan[0].mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 171 Roaming.meter.wlan[0].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 172 Roaming.meter.wlan[0].mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 173 Roaming.meter.wlan[0].mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 174 Roaming.meter.wlan[0].radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 175 Roaming.meter.wlan[0].radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 176 Roaming.meter.wlan[0].radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 177 Roaming.meter.wlan[0].radio minSnir:vector ETV
+attr recordingmode vector
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+vector 178 Roaming.meter.wlan[0].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 179 Roaming.meter.wlan[0] packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 180 Roaming.meter.wlan[0] packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 181 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 182 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 183 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 184 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 185 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 186 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 187 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 188 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 189 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 190 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 191 Roaming.meter.wlan[1].mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 192 Roaming.meter.wlan[1].mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 193 Roaming.meter.wlan[1].mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 194 Roaming.meter.wlan[1].mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 195 Roaming.meter.wlan[1].mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 196 Roaming.meter.wlan[1].mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 197 Roaming.meter.wlan[1].mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 198 Roaming.meter.wlan[1].mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 199 Roaming.meter.wlan[1].mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 200 Roaming.meter.wlan[1].mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 201 Roaming.meter.wlan[1].mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 202 Roaming.meter.wlan[1].mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 203 Roaming.meter.wlan[1].mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 204 Roaming.meter.wlan[1].mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 205 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 206 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 207 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 208 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 209 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 210 Roaming.meter.wlan[1].mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 211 Roaming.meter.wlan[1].mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 212 Roaming.meter.wlan[1].mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 213 Roaming.meter.wlan[1].mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 214 Roaming.meter.wlan[1].mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 215 Roaming.meter.wlan[1].mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 216 Roaming.meter.wlan[1].mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 217 Roaming.meter.wlan[1].mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 218 Roaming.meter.wlan[1].mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 219 Roaming.meter.wlan[1].mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 220 Roaming.meter.wlan[1].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 221 Roaming.meter.wlan[1].mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 222 Roaming.meter.wlan[1].mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 223 Roaming.meter.wlan[1].mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 224 Roaming.meter.wlan[1].mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 225 Roaming.meter.wlan[1].mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 226 Roaming.meter.wlan[1].mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 227 Roaming.meter.wlan[1].mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 228 Roaming.meter.wlan[1].mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 229 Roaming.meter.wlan[1].radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 230 Roaming.meter.wlan[1].radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 231 Roaming.meter.wlan[1].radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 232 Roaming.meter.wlan[1].radio minSnir:vector ETV
+attr recordingmode vector
+attr source minimumSnir(packetSentToUpper)
+attr title "Min SNIR"
+vector 233 Roaming.meter.wlan[1].radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 234 Roaming.meter.wlan[1] packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 235 Roaming.meter.wlan[1] packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+177	27	0.043699496939	10692609.18555938
+177	60	0.143699496987	3305539.7116333866
+177	93	0.243699497084	2679016.2689094516
+177	128	0.343699497229	3424811.307547635
+177	161	0.443699497419	8466260.591245182
+177	194	0.54369949765	2436154.8985140766
+177	227	0.643699497919	1854882.496569663
+177	262	0.743699498222	2727138.2613211186
+177	295	0.843699498555	1661885.6558644124
+177	328	0.943699498914	4905238.566276956
+177	361	1.043699499297	610408.2995335023
+177	394	1.143699499701	5248870.070884471
+177	429	1.243699500122	253921.76865489595
+177	462	1.34369950056	682651.4735900917
+177	497	1.443699501011	1459576.5473215717
+177	532	1.543699501474	3738571.7575584273
+177	565	1.643699501949	1914058.4131559427
+177	598	1.743699502433	443941.46890917915
+177	631	1.843699502925	760437.820340195
+177	664	1.943699503425	820139.7107274014
+177	697	2.043699503931	282740.41432520753
+177	730	2.143699504443	104164.85594057043
+177	765	2.243699504961	644297.7320024892
+177	800	2.343699505483	1222720.9093515773
+177	833	2.44369950601	345082.36599596473
+177	866	2.543699506541	284964.46838022023
+177	899	2.643699507075	168841.86495229063
+177	932	2.743699507612	96494.33870660367
+177	967	2.843699508153	62646.77220386866
+177	1000	2.943699508696	70436.16687200007
+177	1033	3.043699509241	383877.42918911413
+177	1066	3.143699509788	51465.211791826114
+177	1099	3.243699510338	111802.65978738388
+177	1132	3.343699510889	143962.65246149682
+177	1165	3.443699511443	151746.5062787609
+177	1200	3.543699511997	187062.8577111556
+177	1233	3.643699512554	157670.0729119189
+177	1266	3.743699513111	56087.41805245967
+177	1299	3.84369951367	142835.90654037782
+177	1334	3.94369951423	153571.22221926978
+177	1369	4.043699514792	106336.84234044948
+177	1402	4.143699515354	112501.25209784102
+177	1435	4.243699515917	91903.92236434453
+177	1468	4.343699516481	61533.62882116673
+177	1501	4.443699517046	88137.71376524551
+177	1536	4.543699517612	40427.73512276958
+177	1571	4.643699518178	79623.5105637489
+177	1604	4.743699518745	36425.36690282986
+177	1637	4.843699519313	17245.929333664757
+177	1670	4.943699519882	92192.92877746036
+177	1703	5.043699520451	101170.82354744205
+177	1738	5.14369952102	48412.77743517632
+177	1771	5.24369952159	26796.31370959503
+177	1804	5.343699522161	46253.047211702076
+177	1839	5.443699522732	20705.787517617788
+177	1872	5.543699523304	84401.89942561742
+177	1907	5.643699523875	30648.03640868449
+177	1942	5.743699524448	18735.087407338393
+177	1975	5.843699525021	47327.852212230944
+177	2008	5.943699525594	28241.806987742235
+177	2043	6.043699526167	11589.763616301298
+177	2078	6.143699526741	28501.738724605333
+177	2113	6.243699527315	20569.463331489642
+177	2146	6.343699527889	27082.648902860754
+177	2181	6.443699528464	21870.848468127188
+177	2216	6.543699529039	27089.21120113184
+177	2251	6.643699529614	25165.967647217738
+177	2284	6.743699530189	19475.001122460682
+177	2317	6.843699530765	9881.542639827308
+177	2352	6.943699531341	13467.894494939685
+177	2387	7.043699531917	21273.9350531278
+177	2422	7.143699532493	3323.1791777115777
+177	2455	7.24369953307	9428.515171082034
+177	2490	7.343699533646	22362.9255433786
+177	2525	7.443699534223	5016.553258950051
+177	2560	7.5436995348	6812.310788395014
+177	2595	7.643699535378	8383.491301935699
+177	2630	7.743699535955	13378.35907503493
+177	2665	7.843699536532	3512.7637444452944
+177	2700	7.94369953711	7279.776301386285
+177	2735	8.043699537688	20126.52048831607
+177	2770	8.143699538266	5465.259308609171
+177	2805	8.243699538844	8806.771170899303
+177	2840	8.343699539422	13632.580553451657
+177	2873	8.443699540001	38454.967609769046
+177	2908	8.543699540579	10182.698251646203
+177	2943	8.643699541158	13419.971421239978
+177	2978	8.743699541737	7264.504893068531
+177	3011	8.843699542316	2091.0631189726
+177	3046	8.943699542895	5739.83910069937
+177	3081	9.043699543474	4405.790828101624
+177	3116	9.143699544053	11067.364347386569
+177	3149	9.243699544632	6381.062962594824
+177	3184	9.343699545212	5890.355429383984
+177	3219	9.443699545791	16906.947192687658
+177	3254	9.543699546371	7745.46455754874
+177	3287	9.64369954695	4201.529123963928
+177	3322	9.74369954753	4815.523511849733
+177	3357	9.84369954811	4333.571746835932
+177	3392	9.94369954869	4623.573033345763
+177	3427	10.04369954927	1954.5626958059709
+177	3460	10.14369954985	4549.240318948366
+177	3495	10.24369955043	6244.536152534362
+177	3528	10.34369955101	1713.5003426048777
+177	3563	10.44369955159	1480.8738913104871
+177	3598	10.54369955217	9706.814431532408
+177	3633	10.643699552751	6090.997177886865
+177	3668	10.743699553331	2281.776589451775
+177	3703	10.843699553912	2346.562258294441
+177	3738	10.943699554492	6065.107482405149
+177	3773	11.043699555073	1360.678082620329
+177	3808	11.143699555654	6264.378825082981
+177	3843	11.243699556234	3990.136285031896
+177	3878	11.343699556815	6757.574097130496
+177	3913	11.443699557396	2988.2731526389434
+177	3948	11.543699557977	3513.436170340589
+177	3983	11.643699558558	5071.1446431231725
+177	4018	11.743699559139	3854.9466943394823
+177	4053	11.84369955972	2465.0481284844127
+177	4088	11.943699560301	7478.700147666988
+177	4123	12.043699560882	1271.7490690083184
+177	4156	12.143699561463	3041.183020831471
+177	4191	12.243699562044	3734.1490589888335
+177	4226	12.343699562625	1411.2126265305044
+177	4261	12.443699563207	6731.579980199108
+177	4296	12.543699563788	457.517816380279
+177	4331	12.643699564369	1157.2957743936868
+177	4366	12.743699564951	2515.5897216348694
+177	4401	12.843699565532	1822.9557613131522
+177	4436	12.943699566114	1207.8696005925635
+177	4471	13.043699566695	1304.2818347836335
+177	4506	13.143699567277	1390.6408789969248
+177	4541	13.243699567858	1477.2994660388895
+177	4576	13.34369956844	7175.085715672192
+177	4611	13.443699569021	3129.911117822112
+177	4646	13.543699569603	1939.5462447314576
+177	4681	13.643699570185	1770.4032066306108
+177	4716	13.743699570766	355.49336006775724
+177	4751	13.843699571348	673.9307538908939
+177	4786	13.94369957193	1332.6961163506096
+177	4821	14.043699572512	7274.194212200431
+177	4854	14.143699573094	4164.989631467474
+177	4889	14.243699573675	2226.927152852263
+177	4924	14.343699574257	1663.8505415311279
+177	4959	14.443699574839	5139.9185267745215
+177	4994	14.543699575421	2032.4721498160595
+177	5029	14.643699576003	563.6885952616987
+177	5064	14.743699576585	889.2583780627943
+177	5099	14.843699577167	1396.1002355439002
+177	5134	14.943699577749	564.9315517929092
+177	5169	15.043699578331	1367.7294536622253
+177	5204	15.143699578913	1847.5544893884874
+177	5239	15.243699579495	835.5527205893089
+177	5274	15.343699580077	1140.390923833902
+177	5309	15.44369958066	785.1704144430702
+177	5344	15.543699581242	1087.5797329154898
+177	5379	15.643699581824	434.88877712813166
+177	5414	15.743699582406	914.8652019962253
+177	5548	16.143699584735	1649.738398792013
+177	5583	16.243699585317	2949.9658947803446
+177	5618	16.3436995859	320.921407191822
+177	5719	16.643699587647	1141.324880719717
+177	5754	16.743699588229	534.4854692604051
+177	5789	16.843699588811	735.0864936475122
+177	5824	16.943699589394	551.7966796849579
+177	5859	17.043699589976	347.3137930608711
+177	5894	17.143699590559	1085.911000131794
+177	5929	17.243699591141	1219.0853697191453
+177	5997	17.443699592306	727.1099731734241
+177	6032	17.543699592889	1642.2813753248797
+177	6067	17.643699593471	911.8689340762537
+177	6102	17.743699594054	340.95210556621606
+177	6137	17.843699594636	613.7807384435271
+177	6172	17.943699595219	465.3859808350564
+177	6207	18.043699595801	433.45867927508016
+177	6242	18.143699596384	398.3614282568329
+177	6310	18.343699597549	679.3743186829056
+177	6378	18.543699598714	934.2205806464874
+177	6446	18.74369959988	536.2503929855155
+177	6514	18.943699601045	1180.0565259016032
+177	6549	19.043699601628	322.76814005637215
+177	6584	19.14369960221	768.385767747585
+177	6619	19.243699602793	377.4741236657369
+177	6654	19.343699603376	1361.2304460640419
+177	6689	19.443699603958	493.3827202676929
+177	6790	19.743699605707	1007.2274752063948
+177	6891	20.043699607455	555.8947016697158
+177	6926	20.143699608038	1120.8049329477728
+177	6961	20.243699608621	654.4600691780823
+177	6996	20.343699609203	399.27986782672167
+177	7031	20.443699609786	535.2948802739033
+177	7066	20.543699610369	405.2867950418694
+177	7134	20.743699611535	442.5943480851512
+177	7202	20.9436996127	636.8315534933921
+177	7237	21.043699613283	1021.7658862585804
+177	7305	21.243699614449	529.6781496575761
+177	7340	21.343699615032	964.0921032468235
+177	7375	21.443699615615	322.25387895396807
+177	7410	21.543699616198	721.6446370542299
+177	7478	21.743699617364	400.46623530261877
+177	7546	21.94369961853	558.9877645597627
+177	7581	22.043699619113	496.32289405796706
+177	7649	22.243699620278	1032.9112446262232
+177	7717	22.443699621444	412.0463566885499
+177	7785	22.64369962261	511.4677145601681
+177	7853	22.843699623776	759.4104546395449
+177	7987	23.243699626108	382.3158705207554
+177	8088	23.543699627858	1044.2048971155427
+177	8189	23.843699629607	453.83855288781416
+177	8224	23.94369963019	715.3603863114699
+177	8292	24.143699631356	515.393812288666
+177	8327	24.243699631939	510.79307685363057
+177	8362	24.343699632522	332.0278610873201
+177	8397	24.443699633105	795.8352395883982
+177	8498	24.743699634855	611.5150555198877
+177	8599	25.043699636604	344.51692838851744
+177	8799	25.643699640103	379.839956832809
+177	8900	25.943699641852	362.55395878929335
+177	9034	26.343699644185	545.8752688880134
+177	9432	27.543699651184	405.76722964187235
+177	9500	27.74369965235	321.84660072068624
+177	9898	28.943699659349	375.09064589960104
+177	10512	30.843699660511	336.5291192492253
+177	10834	31.843699660511	355.483882593794
+177	10868	31.943699660511	377.3679550901014
+177	11062	32.543699660511	335.419751626009
+177	11096	32.643699660511	914.0519662381097
+177	11418	33.643699660511	378.2227041826941
+177	11580	34.143699660511	395.0234096066606
+177	12094	35.743699660511	379.84465781005184
+177	12800	37.943699660511	392.7837860683762
+177	13026	38.643699660511	703.0810475020938
+177	13636	40.543699660511	333.43267172669135
+177	13926	41.443699660511	490.20222362333067
+177	13960	41.543699660511	376.42033171010075
+177	14058	41.843699660511	382.7958860295521
+177	14220	42.343699660511	324.9302917957126
+177	14734	43.943699660511	344.86681391060847
+177	14768	44.043699660511	388.8781096196327
+177	14834	44.243699660511	337.87517997927677
+177	14932	44.543699660511	805.6982586460512
+177	15030	44.843699660511	931.3089644477542
+177	15096	45.043699660511	435.3499895927587
+177	15194	45.343699660511	368.14408375071207
+177	15324	45.743699660511	560.1700033396519
+177	15390	45.943699660511	355.2009820857271
+177	15520	46.343699660511	387.6522389136031
+177	15906	47.543699660511	478.46422686928025
+177	16196	48.443699660511	744.6586677744489
+177	16422	49.143699660511	570.0233559384709
+177	16808	50.343699660511	465.54583074412255
+177	17162	51.443699660511	398.16205398502706
+177	17228	51.643699660511	535.9620096340908
+177	17422	52.243699660511	511.3732088301347
+177	17520	52.543699660511	588.8191056240639
+177	17586	52.743699660511	1524.366242170977
+177	17972	53.943699660511	327.9154406775392
+177	18326	55.043699660511	377.23959426794715
+177	18360	55.143699660511	377.7325830222852
+177	18458	55.443699660511	401.20565261070294
+177	18556	55.743699660511	400.13477681177596
+177	18590	55.843699660511	445.1795076327299
+177	18656	56.043699660511	465.1075345617567
+177	18850	56.643699660511	595.8675260495871
+177	19012	57.143699660511	412.1184153573626
+177	19430	58.443699660511	320.97494286707206
+177	19560	58.843699660511	1019.3665070155674
+177	19818	59.643699660511	552.0676141417138
+177	20268	61.043699660511	581.1368801964447
+177	20782	62.643699660511	702.3271971960503
+177	21040	63.443699660511	513.6026974094037
+177	21234	64.043699660511	351.3547309549999
+177	21364	64.443699660511	355.7078858488263
+177	21398	64.543699660511	473.58997794028625
+177	21496	64.843699660511	407.28471330335725
+177	21562	65.043699660511	350.8991779355112
+177	22012	66.443699660511	360.21899723698334
+177	22174	66.943699660511	574.1065684334117
+177	22976	69.443699660511	777.1079403723519
+177	23202	70.143699660511	373.6718757876833
+177	23428	70.843699660511	380.15958095147204
+177	23526	71.143699660511	391.3594246054739
+177	23592	71.343699660511	320.509028362155
+177	23626	71.443699660511	459.6439399620935
+177	23788	71.943699660511	342.8653213685226
+177	23854	72.143699660511	375.11499651861715
+177	24048	72.743699660511	622.2961444136796
+177	24402	73.843699660511	327.29221281802575
+177	24756	74.943699660511	335.3134426314743
+177	24918	75.443699660511	724.49287479605
+177	25144	76.143699660511	502.0509274910986
+177	25754	78.043699660511	371.0563983056774
+177	25884	78.443699660511	850.419384372532
+177	25918	78.543699660511	450.3378641475825
+177	25952	78.643699660511	915.9264840374974
+177	26082	79.043699660511	425.42647677424924
+177	26148	79.243699660511	344.1385294662096
+177	26694	80.943699660511	325.53880883497885
+177	26728	81.043699660511	344.21664458450584
+177	26986	81.843699660511	421.0777918459652
+177	27116	82.243699660511	589.3841108186735
+177	27630	83.843699660511	397.9634018374651
+177	27696	84.043699660511	316.6761562507953
+177	28018	85.043699660511	398.33740051716103
+177	28052	85.143699660511	356.6071111579265
+177	29078	88.343699660511	382.76620429970785
+177	29592	89.943699660511	397.92048549521417
+177	29626	90.043699660511	410.32670897426846
+177	30044	91.343699660511	794.2924050695495
+177	30110	91.543699660511	365.1297392111911
+177	30496	92.743699660511	327.92054676130766
+177	30722	93.443699660511	357.8062259300099
+177	31044	94.443699660511	381.26884358914214
+177	31302	95.243699660511	324.54639691514956
+177	31400	95.543699660511	406.81055770001313
+177	31626	96.243699660511	349.01272511537235
+177	31916	97.143699660511	778.3302386081784
+177	32014	97.443699660511	416.97306455619844
+177	32144	97.843699660511	480.3112250564229
+177	32754	99.743699660511	326.733426861518
+177	33396	101.743699660511	321.31444071920544
+177	33558	102.243699660511	415.00707161848146
+177	33784	102.943699660511	409.91662491814174
+177	33882	103.243699660511	368.96663504995036
+177	34300	104.543699660511	394.3252725371354
+177	34494	105.143699660511	403.34327199329545
+177	34528	105.243699660511	407.25364593566275
+177	34690	105.743699660511	538.1877267983473
+177	35076	106.943699660511	407.19869040478204
+177	35270	107.543699660511	773.2302532420533
+177	35592	108.543699660511	354.5456597500486
+177	35754	109.043699660511	439.39709638552165
+177	36492	111.343699660511	359.09646198818405
+177	36782	112.243699660511	393.7405175664607
+177	36944	112.743699660511	379.0741879510023
+177	36978	112.843699660511	591.0875251499821
+177	37012	112.943699660511	459.49518522811576
+177	37206	113.543699660511	637.066549039517
+177	37272	113.743699660511	337.73466878906703
+177	37306	113.843699660511	498.5435323031807
+177	37468	114.343699660511	348.68597625826
+177	37534	114.543699660511	354.8622555682577
+177	37856	115.543699660511	406.14006530914537
+177	38338	117.043699660511	383.6665899478736
+177	38788	118.443699660511	497.6302962416926
+177	38886	118.743699660511	558.9884642940701
+177	38920	118.843699660511	467.94568313738574
+177	38986	119.043699660511	334.2315590059221
+177	39116	119.443699660511	559.8190096797252
+177	39150	119.543699660511	385.0988494404685
+177	39280	119.943699660511	702.468194125844
+232	112	0.318608376538	368.5371100966358
+232	246	0.718608374205	628.3123136755704
+232	413	1.218608371288	478.84538835074125
+232	481	1.418608370122	605.6358874076606
+232	516	1.518608369539	327.86835229387293
+232	749	2.218608365456	518.5205786529788
+232	784	2.318608364873	953.5629051404268
+232	951	2.818608361957	382.3999408548541
+232	1184	3.518608357875	703.0535219271657
+232	1318	3.918608355542	1844.149595917994
+232	1353	4.018608354959	479.16374985467576
+232	1520	4.518608352043	330.05614613958414
+232	1555	4.61860835146	373.51184647067294
+232	1722	5.118608348545	633.3216442827369
+232	1823	5.418608346795	540.6038254275369
+232	1891	5.618608345629	866.0399246743915
+232	1926	5.718608345046	652.889863036618
+232	2027	6.018608343297	519.9998075034903
+232	2062	6.118608342714	767.32804379562
+232	2097	6.218608342131	615.101165050206
+232	2165	6.418608340965	324.31598554306953
+232	2200	6.518608340382	1263.9471322983723
+232	2235	6.618608339799	1019.6557473048066
+232	2336	6.91860833805	361.96876151919474
+232	2371	7.018608337467	988.4652418653233
+232	2406	7.118608336884	477.8908018387506
+232	2474	7.318608335718	512.6691397606372
+232	2509	7.418608335135	425.56618820175134
+232	2544	7.518608334553	372.7890027885937
+232	2579	7.61860833397	359.73547005368096
+232	2614	7.718608333387	347.4523168325648
+232	2649	7.818608332804	397.41086846599086
+232	2684	7.918608332221	501.0151531482937
+232	2719	8.018608331638	342.32762054455986
+232	2754	8.118608331055	607.2528154133829
+232	2789	8.218608330472	608.312741502716
+232	2824	8.318608329889	1785.7048152926927
+232	2892	8.518608328724	703.9735530331409
+232	2927	8.618608328141	581.9763886835201
+232	2962	8.718608327558	649.810818501389
+232	3030	8.918608326392	374.7758182802055
+232	3065	9.01860832581	442.21288327048006
+232	3100	9.118608325227	684.5606803653445
+232	3168	9.318608324061	1258.8644787368962
+232	3203	9.418608323478	850.3264487549997
+232	3238	9.518608322896	409.1710475909118
+232	3306	9.71860832173	1429.5074124729808
+232	3341	9.818608321148	1947.5386355772253
+232	3376	9.918608320565	333.123411046318
+232	3411	10.018608319982	726.653808913851
+232	3479	10.218608318817	432.99429096193273
+232	3547	10.418608317651	2364.975476094891
+232	3582	10.518608317069	949.0209224501299
+232	3617	10.618608316486	469.4075029350487
+232	3652	10.718608315903	3547.4817376031665
+232	3687	10.818608315321	620.8540375970115
+232	3722	10.918608314738	4372.318908397452
+232	3757	11.018608314156	692.9001338888195
+232	3792	11.118608313573	1032.653299353355
+232	3827	11.218608312991	991.3740520382974
+232	3862	11.318608312408	700.7630676884731
+232	3897	11.418608311825	1247.3323878693798
+232	3932	11.518608311243	721.2665128847372
+232	3967	11.61860831066	1111.565417533038
+232	4002	11.718608310078	805.9380297564197
+232	4037	11.818608309495	881.8638623570772
+232	4072	11.918608308913	714.5813861918817
+232	4107	12.018608308331	326.59890022055833
+232	4175	12.218608307166	433.30266560445546
+232	4210	12.318608306583	352.5773239242094
+232	4245	12.418608306001	874.856949407618
+232	4280	12.518608305419	900.415821689595
+232	4315	12.618608304836	543.8316251874169
+232	4350	12.718608304254	869.2110489718094
+232	4385	12.818608303672	486.89161718507677
+232	4420	12.918608303089	1084.4681414685936
+232	4455	13.018608302507	1881.5725500250871
+232	4490	13.118608301925	1080.8241275369141
+232	4525	13.218608301342	2158.842337276653
+232	4560	13.31860830076	611.553315554364
+232	4595	13.418608300178	1401.97154486988
+232	4630	13.518608299596	742.7940239824054
+232	4665	13.618608299014	462.26881018767006
+232	4700	13.718608298431	864.3857186395265
+232	4735	13.818608297849	2873.014759635924
+232	4770	13.918608297267	1608.689861320019
+232	4805	14.018608296685	1382.580460658603
+232	4873	14.218608295521	2027.1840929842967
+232	4908	14.318608294939	973.071418813734
+232	4943	14.418608294357	6008.383703074906
+232	4978	14.518608293775	1266.113875686685
+232	5013	14.618608293193	584.4109156664167
+232	5048	14.718608292611	2384.0837761387925
+232	5083	14.818608292029	1106.9379799481426
+232	5118	14.918608291447	1585.0904162193185
+232	5153	15.018608290866	3694.295168233307
+232	5188	15.118608290284	2045.2892243448994
+232	5223	15.218608289702	4047.6010221289894
+232	5258	15.31860828912	2327.2955226798663
+232	5293	15.418608288538	1134.918292041812
+232	5328	15.518608287957	748.1084391175224
+232	5363	15.618608287375	1855.7207272028834
+232	5398	15.718608286793	2294.471542890903
+232	5433	15.818608286212	3305.7775644444596
+232	5466	15.91860828563	1698.3611039302384
+232	5499	16.018608285049	7664.994084573149
+232	5532	16.118608284467	4118.20473983783
+232	5567	16.218608283886	787.9168556817315
+232	5602	16.318608283304	335.2775362186206
+232	5637	16.418608282723	2944.0680907545548
+232	5670	16.518608282141	966.1291749961281
+232	5703	16.61860828156	2539.1117358994366
+232	5738	16.718608280979	2205.2748561621397
+232	5773	16.818608280397	1544.8960777384966
+232	5808	16.918608279816	2939.842242044902
+232	5843	17.018608279235	3499.351401669127
+232	5878	17.118608278654	4078.596845056119
+232	5913	17.218608278073	3435.1501462625856
+232	5948	17.318608277492	2258.2946493907925
+232	5981	17.418608276911	3549.6255294923785
+232	6016	17.51860827633	2145.469912863668
+232	6051	17.618608275749	1414.3001235634788
+232	6086	17.718608275168	1176.4680843873405
+232	6121	17.818608274587	6628.038277330498
+232	6156	17.918608274006	2497.1902740715113
+232	6191	18.018608273426	3385.480950111056
+232	6226	18.118608272845	2091.3144298526336
+232	6261	18.218608272264	4219.191770943866
+232	6294	18.318608271684	6862.107720334558
+232	6329	18.418608271103	3561.6980367873425
+232	6362	18.518608270523	3802.870887847943
+232	6397	18.618608269943	4172.61953868925
+232	6430	18.718608269362	7898.914404800283
+232	6465	18.818608268782	1456.5768482220428
+232	6498	18.918608268202	2320.2889731778228
+232	6533	19.018608267622	2620.0146674633042
+232	6568	19.118608267042	12244.610585861768
+232	6603	19.218608266462	2206.0161116734225
+232	6638	19.318608265882	4262.415605509622
+232	6673	19.418608265302	2169.513511052343
+232	6708	19.518608264723	5164.777241139585
+232	6741	19.618608264143	7518.91997283412
+232	6774	19.718608263563	4418.304551470938
+232	6809	19.818608262984	10415.223101355543
+232	6842	19.918608262405	7275.912556163558
+232	6875	20.018608261825	2304.5327555964955
+232	6910	20.118608261246	4481.181955258986
+232	6945	20.218608260667	16339.292923883228
+232	6980	20.318608260088	5384.139547005944
+232	7015	20.418608259509	18025.354224490853
+232	7050	20.518608258931	11364.04662349376
+232	7085	20.618608258352	3057.038057780778
+232	7118	20.718608257774	5719.422055845886
+232	7153	20.818608257195	4035.9072398619865
+232	7186	20.918608256617	14849.790047853903
+232	7221	21.018608256039	6532.734480685901
+232	7256	21.118608255461	12626.510391533488
+232	7289	21.218608254883	18875.115853370207
+232	7324	21.318608254305	17680.376253264956
+232	7359	21.418608253728	5156.906850059247
+232	7394	21.51860825315	18235.364430315185
+232	7429	21.618608252573	17671.903267824964
+232	7462	21.718608251996	10060.67768647124
+232	7497	21.818608251419	13465.204929244754
+232	7530	21.918608250843	8527.487265854692
+232	7565	22.018608250266	46259.0128156245
+232	7600	22.11860824969	8074.5568405563245
+232	7633	22.218608249114	14785.813150462849
+232	7668	22.318608248538	11010.65989481043
+232	7701	22.418608247962	6003.310797172777
+232	7736	22.518608247387	10993.824873117956
+232	7769	22.618608246812	57714.30510702707
+232	7804	22.718608246237	72189.23149150141
+232	7837	22.818608245663	14508.281971697947
+232	7872	22.918608245088	6156.451212856022
+232	7905	23.018608244514	4675.799822074541
+232	7938	23.118608243941	8704.04076755546
+232	7971	23.218608243367	8376.29174871157
+232	8006	23.318608242794	33574.27716711105
+232	8039	23.418608242222	19178.912503084746
+232	8072	23.518608241649	9464.905369259935
+232	8107	23.618608241078	44492.203869669356
+232	8140	23.718608240506	61548.50336491664
+232	8173	23.818608239935	26008.810375876576
+232	8208	23.918608239365	23041.45572778635
+232	8243	24.018608238795	37330.74015811875
+232	8276	24.118608238225	91762.68919457307
+232	8311	24.218608237656	52701.36764000516
+232	8346	24.318608237088	71456.6951642446
+232	8381	24.41860823652	47064.901540092564
+232	8416	24.518608235953	12702.277949827852
+232	8449	24.618608235387	27335.414469124564
+232	8482	24.718608234821	50417.78892613484
+232	8517	24.818608234257	94108.21233758317
+232	8550	24.918608233693	37717.59393144375
+232	8583	25.01860823313	48233.72396303379
+232	8618	25.118608232568	142009.20725032606
+232	8651	25.218608232007	238045.11776211884
+232	8684	25.318608231447	120003.0110781721
+232	8717	25.418608230888	67654.26025485275
+232	8750	25.518608230331	152289.83038901634
+232	8783	25.618608229775	45388.31701560989
+232	8818	25.71860822922	149171.3367252587
+232	8851	25.818608228667	232762.85836018436
+232	8884	25.918608228116	365181.3421181468
+232	8919	26.018608227567	282123.915341657
+232	8952	26.11860822702	919791.3097158312
+232	8985	26.218608226475	380831.1217142845
+232	9018	26.318608225932	211394.05701131377
+232	9053	26.418608225393	105651.10012064672
+232	9086	26.518608224856	78595.2261744017
+232	9119	26.618608224322	321445.70882631664
+232	9152	26.718608223792	67057.62635052144
+232	9185	26.818608223266	326180.9813147377
+232	9218	26.918608222745	532747.3309111528
+232	9251	27.018608222228	338470.2656733581
+232	9284	27.118608221717	529043.641369896
+232	9317	27.218608221212	367783.17379548145
+232	9350	27.318608220713	231451.53119272745
+232	9383	27.418608220223	451764.82056660455
+232	9416	27.518608219741	735520.6524108938
+232	9451	27.618608219268	1108304.4470716382
+232	9484	27.718608218807	4362031.843863216
+232	9519	27.818608218358	528628.0016140677
+232	9552	27.918608217924	691800.7927670492
+232	9585	28.018608217506	2957754.2146311845
+232	9618	28.118608217106	2133576.5761087104
+232	9651	28.218608216727	1758751.2012786516
+232	9684	28.318608216373	1004429.1535752859
+232	9717	28.418608216045	2275307.9520354047
+232	9750	28.518608215749	3541702.4852652447
+232	9783	28.618608215487	4897816.290733383
+232	9816	28.718608215263	4614146.680575612
+232	9849	28.818608215082	1685473.2475458554
+232	9882	28.918608214946	6614958.793932747
+232	9917	29.018608214858	6564587.775777691
+232	9950	29.11860821482	18869358.121431798
+232	9983	29.218608214818	19937197.83515914
+232	10015	29.318608214818	1183436.4398040602
+232	10047	29.418608214818	5227737.428394958
+232	10079	29.518608214818	7449893.222605001
+232	10111	29.618608214818	3379348.7360403007
+232	10143	29.718608214818	14605721.312437398
+232	10175	29.818608214818	6218485.4271218
+232	10207	29.918608214818	1061543.0433827904
+232	10239	30.018608214818	6997128.508612086
+232	10271	30.118608214818	10464881.725549351
+232	10303	30.218608214818	2232833.0329874805
+232	10335	30.318608214818	6543062.552103294
+232	10367	30.418608214818	5781113.951202321
+232	10399	30.518608214818	2030447.271266878
+232	10431	30.618608214818	4684236.125901388
+232	10463	30.718608214818	1513000.587149991
+232	10495	30.818608214818	1532959.563843107
+232	10529	30.918608214818	5581164.39212549
+232	10561	31.018608214818	1249949.42662909
+232	10593	31.118608214818	8622326.418059966
+232	10625	31.218608214818	11062721.96199877
+232	10657	31.318608214818	7200055.054488213
+232	10689	31.418608214818	6841514.368698224
+232	10721	31.518608214818	4067508.2639880124
+232	10753	31.618608214818	3039592.222173001
+232	10785	31.718608214818	984001.2850527583
+232	10817	31.818608214818	2087118.4014848806
+232	10851	31.918608214818	2584958.660250798
+232	10885	32.018608214818	3090380.3312180825
+232	10917	32.118608214818	18608420.388970084
+232	10949	32.218608214818	4137970.260875894
+232	10981	32.318608214818	1941309.954498289
+232	11013	32.418608214818	12005178.292423813
+232	11045	32.518608214818	3518773.3233970227
+232	11079	32.618608214818	4008066.944741801
+232	11113	32.718608214818	3251835.0889685727
+232	11145	32.818608214818	2831291.3361073695
+232	11177	32.918608214818	6481750.809145647
+232	11209	33.018608214818	6232187.740627884
+232	11241	33.118608214818	5877308.324440717
+232	11273	33.218608214818	1394959.656977003
+232	11305	33.318608214818	1248746.952789032
+232	11337	33.418608214818	2447451.3737021424
+232	11369	33.518608214818	13342535.869543742
+232	11401	33.618608214818	6092861.712684696
+232	11435	33.718608214818	5001800.086398149
+232	11467	33.818608214818	2406547.019557647
+232	11499	33.918608214818	4625612.3606291
+232	11531	34.018608214818	7757706.10114082
+232	11563	34.118608214818	2680805.7955657085
+232	11597	34.218608214818	14418151.062403888
+232	11629	34.318608214818	2921588.381799509
+232	11661	34.418608214818	10194370.67643535
+232	11693	34.518608214818	6286900.722456784
+232	11725	34.618608214818	2671622.6766168843
+232	11757	34.718608214818	3501660.6521390947
+232	11789	34.818608214818	3223837.270375232
+232	11821	34.918608214818	4369813.89291392
+232	11853	35.018608214818	9810393.209731113
+232	11885	35.118608214818	838818.3073966377
+232	11917	35.218608214818	1797507.946618771
+232	11949	35.318608214818	2062712.576706556
+232	11981	35.418608214818	5998772.712510488
+232	12013	35.518608214818	4045555.818066224
+232	12045	35.618608214818	6217455.493954316
+232	12077	35.718608214818	2030165.3927897185
+232	12111	35.818608214818	3156718.0034120525
+232	12143	35.918608214818	16953937.9754037
+232	12175	36.018608214818	5600142.644985925
+232	12207	36.118608214818	18097335.17472543
+232	12239	36.218608214818	7911053.777848775
+232	12271	36.318608214818	7774966.690195092
+232	12303	36.418608214818	4183171.5342188943
+232	12335	36.518608214818	12742642.738144888
+232	12367	36.618608214818	5061567.085756555
+232	12399	36.718608214818	5865487.726085714
+232	12431	36.818608214818	2877994.3981554043
+232	12463	36.918608214818	5037570.217829005
+232	12495	37.018608214818	2402175.3531968137
+232	12527	37.118608214818	5901401.4557284005
+232	12559	37.218608214818	4275496.2829201985
+232	12591	37.318608214818	11844031.86326305
+232	12623	37.418608214818	6990419.233740045
+232	12655	37.518608214818	1919904.194385543
+232	12687	37.618608214818	2690767.1485917913
+232	12719	37.718608214818	6160338.2299108105
+232	12751	37.818608214818	3282546.063660351
+232	12783	37.918608214818	17064221.879665554
+232	12817	38.018608214818	2996739.202887629
+232	12849	38.118608214818	8897550.677417919
+232	12881	38.218608214818	9028638.248391883
+232	12913	38.318608214818	4760591.288264291
+232	12945	38.418608214818	10270649.716317862
+232	12977	38.518608214818	2931077.5123001896
+232	13009	38.618608214818	5724120.590615658
+232	13043	38.718608214818	1514997.0960595668
+232	13075	38.818608214818	1799402.320609369
+232	13107	38.918608214818	6006907.60956519
+232	13139	39.018608214818	3429018.857932629
+232	13171	39.118608214818	7026438.104866435
+232	13203	39.218608214818	6211562.432760055
+232	13235	39.318608214818	3476797.255870573
+232	13267	39.418608214818	6241444.977741046
+232	13299	39.518608214818	13613259.848444019
+232	13331	39.618608214818	4342011.636929113
+232	13363	39.718608214818	3731510.2094617737
+232	13395	39.818608214818	4350054.600287536
+232	13427	39.918608214818	12325347.46663803
+232	13459	40.018608214818	1877116.3756159565
+232	13491	40.118608214818	1776703.5450889498
+232	13523	40.218608214818	14379548.889778163
+232	13555	40.318608214818	2412183.7979186825
+232	13587	40.418608214818	3093768.26711606
+232	13619	40.518608214818	2374625.7051722705
+232	13653	40.618608214818	12235422.098094061
+232	13685	40.718608214818	14619725.021203583
+232	13717	40.818608214818	5096480.2930240035
+232	13749	40.918608214818	8845322.764684703
+232	13781	41.018608214818	3147405.0477347616
+232	13813	41.118608214818	3810914.228315228
+232	13845	41.218608214818	4881617.929951011
+232	13877	41.318608214818	2320417.9749338073
+232	13909	41.418608214818	18177052.788456272
+232	13943	41.518608214818	4668357.887052672
+232	13977	41.618608214818	1682630.4692897582
+232	14009	41.718608214818	3358856.418299048
+232	14041	41.818608214818	4655228.294084291
+232	14075	41.918608214818	2098611.30882371
+232	14107	42.018608214818	8605334.795626702
+232	14139	42.118608214818	2112431.0681651533
+232	14171	42.218608214818	10210742.736781579
+232	14203	42.318608214818	31262686.086601026
+232	14237	42.418608214818	1810665.7826622368
+232	14269	42.518608214818	1571250.2403125307
+232	14301	42.618608214818	9026255.087374
+232	14333	42.718608214818	4078986.336500598
+232	14365	42.818608214818	8399376.346877895
+232	14397	42.918608214818	3171784.021772919
+232	14429	43.018608214818	2907535.2012060364
+232	14461	43.118608214818	11442890.47309236
+232	14493	43.218608214818	4125273.242698135
+232	14525	43.318608214818	34104648.58086325
+232	14557	43.418608214818	4826742.664366909
+232	14589	43.518608214818	10897983.237633815
+232	14621	43.618608214818	3266530.919094271
+232	14653	43.718608214818	1961182.8197131597
+232	14685	43.818608214818	4021854.988807164
+232	14717	43.918608214818	5445578.090560487
+232	14751	44.018608214818	6490870.863274773
+232	14785	44.118608214818	15389852.55175642
+232	14817	44.218608214818	3736090.135798394
+232	14851	44.318608214818	7121435.931402331
+232	14883	44.418608214818	11212346.33745945
+232	14915	44.518608214818	3339961.2401057365
+232	14949	44.618608214818	5279413.762148034
+232	14981	44.718608214818	10645089.277864112
+232	15013	44.818608214818	5457249.572190989
+232	15047	44.918608214818	1624849.978493389
+232	15079	45.018608214818	6621874.316341443
+232	15113	45.118608214818	10631373.428187825
+232	15145	45.218608214818	4085465.4454933177
+232	15177	45.318608214818	8128168.0099979285
+232	15211	45.418608214818	13344442.063674873
+232	15243	45.518608214818	2854956.523978242
+232	15275	45.618608214818	3843736.0458314563
+232	15307	45.718608214818	3542807.828594487
+232	15341	45.818608214818	21812306.21145283
+232	15373	45.918608214818	7798614.321037675
+232	15407	46.018608214818	3780981.345335978
+232	15439	46.118608214818	4443203.098726697
+232	15471	46.218608214818	2647096.642198419
+232	15503	46.318608214818	14432648.251998013
+232	15537	46.418608214818	9067271.128477579
+232	15569	46.518608214818	6316895.63720649
+232	15601	46.618608214818	5455683.259381341
+232	15633	46.718608214818	3225508.0689940867
+232	15665	46.818608214818	3669669.148199922
+232	15697	46.918608214818	19963309.092391152
+232	15729	47.018608214818	4094380.503428614
+232	15761	47.118608214818	8097432.452761073
+232	15793	47.218608214818	1872488.648049189
+232	15825	47.318608214818	10115505.960223684
+232	15857	47.418608214818	4601109.168529616
+232	15889	47.518608214818	2454971.1740267286
+232	15923	47.618608214818	3415286.2281344123
+232	15955	47.718608214818	10615919.444326999
+232	15987	47.818608214818	21114679.313851174
+232	16019	47.918608214818	5973093.262201159
+232	16051	48.018608214818	6935451.780594226
+232	16083	48.118608214818	10864670.622768031
+232	16115	48.218608214818	3042737.2638877486
+232	16147	48.318608214818	1836429.7523315547
+232	16179	48.418608214818	9334247.485974487
+232	16213	48.518608214818	7517765.491551426
+232	16245	48.618608214818	9066578.818565195
+232	16277	48.718608214818	5570245.535498325
+232	16309	48.818608214818	10015632.913484149
+232	16341	48.918608214818	2589816.3026304627
+232	16373	49.018608214818	5939901.230803452
+232	16405	49.118608214818	2923966.483238539
+232	16439	49.218608214818	2799194.5138232056
+232	16471	49.318608214818	5406846.212202672
+232	16503	49.418608214818	4714824.941794177
+232	16535	49.518608214818	6460593.360674848
+232	16567	49.618608214818	1654010.847542915
+232	16599	49.718608214818	5058357.018658709
+232	16631	49.818608214818	10575438.164717918
+232	16663	49.918608214818	9636612.379603462
+232	16695	50.018608214818	3543063.189279501
+232	16727	50.118608214818	11541328.98124299
+232	16759	50.218608214818	22318323.007297378
+232	16791	50.318608214818	3083742.627140878
+232	16825	50.418608214818	1393808.1263156713
+232	16857	50.518608214818	4778605.939144105
+232	16889	50.618608214818	4111091.83773099
+232	16921	50.718608214818	10655582.746952556
+232	16953	50.818608214818	1658176.9480453543
+232	16985	50.918608214818	5546526.672787087
+232	17017	51.018608214818	11957781.063905738
+232	17049	51.118608214818	8344849.601460049
+232	17081	51.218608214818	1585847.9000246734
+232	17113	51.318608214818	1148780.7220740195
+232	17145	51.418608214818	10108392.469010804
+232	17179	51.518608214818	4270869.464458389
+232	17211	51.618608214818	7757340.943692415
+232	17245	51.718608214818	964394.8216036796
+232	17277	51.818608214818	3391623.9830442416
+232	17309	51.918608214818	7537258.155651224
+232	17341	52.018608214818	2664083.3537976346
+232	17373	52.118608214818	7940415.866999849
+232	17405	52.218608214818	14741550.495847896
+232	17439	52.318608214818	2265435.144424293
+232	17471	52.418608214818	3279408.084088696
+232	17503	52.518608214818	10150974.259767108
+232	17537	52.618608214818	4142343.570302413
+232	17569	52.718608214818	11154722.335502112
+232	17603	52.818608214818	7743376.374721782
+232	17635	52.918608214818	11165384.035784839
+232	17667	53.018608214818	4574696.567537865
+232	17699	53.118608214818	7876152.989751922
+232	17731	53.218608214818	4505660.762308863
+232	17763	53.318608214818	2468737.104107932
+232	17795	53.418608214818	16684943.071355548
+232	17827	53.518608214818	8311929.4047562955
+232	17859	53.618608214818	3718785.3089515897
+232	17891	53.718608214818	2791978.6659918707
+232	17923	53.818608214818	1866774.5356134954
+232	17955	53.918608214818	5310580.674636953
+232	17989	54.018608214818	4765326.128665834
+232	18021	54.118608214818	3966540.949448231
+232	18053	54.218608214818	8314152.2020578515
+232	18085	54.318608214818	2628775.407614355
+232	18117	54.418608214818	916769.8971115601
+232	18149	54.518608214818	6825244.475203295
+232	18181	54.618608214818	6311888.535762261
+232	18213	54.718608214818	16617540.860646872
+232	18245	54.818608214818	5735627.753990274
+232	18277	54.918608214818	3691231.885912786
+232	18309	55.018608214818	8759802.260192972
+232	18343	55.118608214818	4084426.2282146094
+232	18377	55.218608214818	588737.1850406135
+232	18409	55.318608214818	2901679.157501655
+232	18441	55.418608214818	2292113.350595132
+232	18475	55.518608214818	8659312.955081182
+232	18507	55.618608214818	14853841.441775307
+232	18539	55.718608214818	3374130.42151582
+232	18573	55.818608214818	3009593.645694011
+232	18607	55.918608214818	4239240.474229231
+232	18639	56.018608214818	799986.8007885456
+232	18673	56.118608214818	4289485.103649552
+232	18705	56.218608214818	20721863.396389503
+232	18737	56.318608214818	17820051.090102617
+232	18769	56.418608214818	4355669.575717273
+232	18801	56.518608214818	2545529.352980412
+232	18833	56.618608214818	4652763.439725056
+232	18867	56.718608214818	11777067.007706624
+232	18899	56.818608214818	21393429.34180092
+232	18931	56.918608214818	2392084.1218414865
+232	18963	57.018608214818	3838916.7903919574
+232	18995	57.118608214818	5245319.377801873
+232	19029	57.218608214818	5307528.17821763
+232	19061	57.318608214818	4900621.819072118
+232	19093	57.418608214818	1541180.7932523119
+232	19125	57.518608214818	6304027.175880033
+232	19157	57.618608214818	2602960.680393738
+232	19189	57.718608214818	4148390.930533283
+232	19221	57.818608214818	3040987.5552628464
+232	19253	57.918608214818	3562934.6670117257
+232	19285	58.018608214818	3560306.7379614343
+232	19317	58.118608214818	2769147.6347568766
+232	19349	58.218608214818	9405937.81691657
+232	19381	58.318608214818	4266638.349320084
+232	19413	58.418608214818	11080343.452618541
+232	19447	58.518608214818	4929301.359712435
+232	19479	58.618608214818	2471723.855658238
+232	19511	58.718608214818	8886333.850082504
+232	19543	58.818608214818	7669545.162602055
+232	19577	58.918608214818	2066224.6091260768
+232	19609	59.018608214818	6914926.547212408
+232	19641	59.118608214818	2907947.605142387
+232	19673	59.218608214818	19761069.65674303
+232	19705	59.318608214818	3042750.9345062706
+232	19737	59.418608214818	6498218.73097681
+232	19769	59.518608214818	1702590.7304105049
+232	19801	59.618608214818	3453608.546345097
+232	19835	59.718608214818	3628502.5406774315
+232	19867	59.818608214818	2012679.4689604875
+232	19899	59.918608214818	5517191.637539233
+232	19931	60.018608214818	9870819.445917768
+232	19963	60.118608214818	7292311.209762999
+232	19995	60.218608214818	1898923.5272747925
+232	20027	60.318608214818	1496327.173011545
+232	20059	60.418608214818	11564103.724049406
+232	20091	60.518608214818	2359437.6601104527
+232	20123	60.618608214818	1990575.6145635687
+232	20155	60.718608214818	4287248.393640048
+232	20187	60.818608214818	5973575.429565696
+232	20219	60.918608214818	5069099.768490532
+232	20251	61.018608214818	5926461.821404193
+232	20285	61.118608214818	5754952.67921429
+232	20317	61.218608214818	4858010.770020265
+232	20349	61.318608214818	6175014.1047243625
+232	20381	61.418608214818	1179434.8605840818
+232	20413	61.518608214818	5741376.528630579
+232	20445	61.618608214818	27463009.882921938
+232	20477	61.718608214818	7064418.757917081
+232	20509	61.818608214818	8075811.008259923
+232	20541	61.918608214818	1218872.949878044
+232	20573	62.018608214818	6137266.989859427
+232	20605	62.118608214818	5914144.713282026
+232	20637	62.218608214818	5190486.934675783
+232	20669	62.318608214818	3928023.0781013165
+232	20701	62.418608214818	2696515.445316267
+232	20733	62.518608214818	3358643.841109304
+232	20765	62.618608214818	20804306.53125463
+232	20799	62.718608214818	3520206.579217082
+232	20831	62.818608214818	8116570.72114209
+232	20863	62.918608214818	3245011.2699808977
+232	20895	63.018608214818	5776108.149369132
+232	20927	63.118608214818	4529793.655035091
+232	20959	63.218608214818	2925889.4192635566
+232	20991	63.318608214818	9498413.527773535
+232	21023	63.418608214818	15611476.885342563
+232	21057	63.518608214818	2057155.7735526047
+232	21089	63.618608214818	5682762.140251431
+232	21121	63.718608214818	9987430.11157415
+232	21153	63.818608214818	8462580.98418685
+232	21185	63.918608214818	5170722.64503449
+232	21217	64.018608214818	3524730.0147127025
+232	21251	64.118608214818	4237860.166415036
+232	21283	64.218608214818	2714696.5069202078
+232	21315	64.318608214818	5117830.93455988
+232	21347	64.418608214818	4872418.024018517
+232	21381	64.518608214818	3002132.068169553
+232	21415	64.618608214818	3733056.3077282733
+232	21447	64.718608214818	5006925.560788769
+232	21479	64.818608214818	8490823.033842843
+232	21513	64.918608214818	4135992.80142934
+232	21545	65.018608214818	3988133.004985673
+232	21579	65.118608214818	6488090.6548850825
+232	21611	65.218608214818	7726583.0557509735
+232	21643	65.318608214818	6210103.644545966
+232	21675	65.418608214818	1176651.0096843708
+232	21707	65.518608214818	5637782.3977814205
+232	21739	65.618608214818	8565798.538435562
+232	21771	65.718608214818	1821366.355630587
+232	21803	65.818608214818	4801617.456087595
+232	21835	65.918608214818	4929024.49540477
+232	21867	66.018608214818	3153674.0039889147
+232	21899	66.118608214818	7710928.692928314
+232	21931	66.218608214818	2805152.446981673
+232	21963	66.318608214818	2706311.39075857
+232	21995	66.418608214818	5579324.570968133
+232	22029	66.518608214818	2929275.3382785814
+232	22061	66.618608214818	3026044.735975313
+232	22093	66.718608214818	2694782.0472515244
+232	22125	66.818608214818	6008668.566755377
+232	22157	66.918608214818	2914232.003767115
+232	22191	67.018608214818	13024685.628031766
+232	22223	67.118608214818	4534477.815869425
+232	22255	67.218608214818	3597087.001199143
+232	22287	67.318608214818	5652045.587211609
+232	22319	67.418608214818	7177248.366955999
+232	22351	67.518608214818	8176271.420492926
+232	22383	67.618608214818	3107143.9602565835
+232	22415	67.718608214818	9077365.859836573
+232	22447	67.818608214818	3442925.082329228
+232	22479	67.918608214818	3979396.9887706675
+232	22511	68.018608214818	5600906.949004579
+232	22543	68.118608214818	1722740.0941697897
+232	22575	68.218608214818	3186780.5574058453
+232	22607	68.318608214818	7407501.545073267
+232	22639	68.418608214818	3709750.6725931256
+232	22671	68.518608214818	8660896.930161884
+232	22703	68.618608214818	3113399.2167496854
+232	22735	68.718608214818	4748260.660823486
+232	22767	68.818608214818	5190878.381229111
+232	22799	68.918608214818	6341425.3056892175
+232	22831	69.018608214818	6471529.016678349
+232	22863	69.118608214818	3970247.464029527
+232	22895	69.218608214818	1079368.9438320673
+232	22927	69.318608214818	2170489.8386885137
+232	22959	69.418608214818	14078356.40651267
+232	22993	69.518608214818	9103058.072815103
+232	23025	69.618608214818	11295393.674841136
+232	23057	69.718608214818	8542112.654579064
+232	23089	69.818608214818	5107109.505337477
+232	23121	69.918608214818	3151523.6532946113
+232	23153	70.018608214818	4786270.912871927
+232	23185	70.118608214818	7549598.144007589
+232	23219	70.218608214818	1868149.0512597633
+232	23251	70.318608214818	8487561.632928029
+232	23283	70.418608214818	3959152.9885270735
+232	23315	70.518608214818	2799874.3956667013
+232	23347	70.618608214818	4560196.69029868
+232	23379	70.718608214818	1508692.629643432
+232	23411	70.818608214818	2486243.229630986
+232	23445	70.918608214818	1894535.558918509
+232	23477	71.018608214818	4897142.9625185
+232	23509	71.118608214818	2101884.1866638768
+232	23543	71.218608214818	4167241.164674936
+232	23575	71.318608214818	4434311.993695263
+232	23609	71.418608214818	5637748.140805661
+232	23643	71.518608214818	8688924.349177632
+232	23675	71.618608214818	3339007.135829054
+232	23707	71.718608214818	3315192.1022733124
+232	23739	71.818608214818	1669230.7575089922
+232	23771	71.918608214818	4458832.224624677
+232	23805	72.018608214818	5662483.331768123
+232	23837	72.118608214818	4262664.745360315
+232	23871	72.218608214818	8032507.469352275
+232	23903	72.318608214818	8304008.246683548
+232	23935	72.418608214818	2901443.971536432
+232	23967	72.518608214818	2060887.6209080527
+232	23999	72.618608214818	19008201.500687577
+232	24031	72.718608214818	2395780.9525794033
+232	24065	72.818608214818	38052709.44028431
+232	24097	72.918608214818	4544921.731265277
+232	24129	73.018608214818	4327147.095020886
+232	24161	73.118608214818	4156812.515096943
+232	24193	73.218608214818	2556272.8293003784
+232	24225	73.318608214818	4256396.55352703
+232	24257	73.418608214818	2889428.7406212534
+232	24289	73.518608214818	2274179.484232427
+232	24321	73.618608214818	5445500.563540043
+232	24353	73.718608214818	4618054.505330344
+232	24385	73.818608214818	3874644.1633265414
+232	24419	73.918608214818	4448777.713956518
+232	24451	74.018608214818	7103790.168634574
+232	24483	74.118608214818	10203498.060547596
+232	24515	74.218608214818	5942280.74183427
+232	24547	74.318608214818	5939381.172260401
+232	24579	74.418608214818	3582154.367564979
+232	24611	74.518608214818	4336570.623434199
+232	24643	74.618608214818	1683831.001635354
+232	24675	74.718608214818	6892305.598381187
+232	24707	74.818608214818	8384132.475676503
+232	24739	74.918608214818	4691245.479944566
+232	24773	75.018608214818	11366905.635658704
+232	24805	75.118608214818	1559535.944232178
+232	24837	75.218608214818	10738803.40580415
+232	24869	75.318608214818	4529220.073923888
+232	24901	75.418608214818	8136541.859393516
+232	24935	75.518608214818	9674128.567212373
+232	24967	75.618608214818	6137970.358237553
+232	24999	75.718608214818	1686583.162881904
+232	25031	75.818608214818	6669131.693007549
+232	25063	75.918608214818	9320872.73371047
+232	25095	76.018608214818	6478369.710907899
+232	25127	76.118608214818	15571804.300318182
+232	25161	76.218608214818	6940370.716905178
+232	25193	76.318608214818	4632274.521136306
+232	25225	76.418608214818	2651994.3314643796
+232	25257	76.518608214818	1414234.3594130788
+232	25289	76.618608214818	6448769.737202833
+232	25321	76.718608214818	3540461.6966017904
+232	25353	76.818608214818	15177635.23762936
+232	25385	76.918608214818	10830415.080217863
+232	25417	77.018608214818	2336500.713578486
+232	25449	77.118608214818	1344987.2833676871
+232	25481	77.218608214818	1352953.2224699198
+232	25513	77.318608214818	4476871.346690341
+232	25545	77.418608214818	956213.8611305447
+232	25577	77.518608214818	7488785.31223988
+232	25609	77.618608214818	1410208.7667368772
+232	25641	77.718608214818	3314846.188606605
+232	25673	77.818608214818	1288299.3189231963
+232	25705	77.918608214818	6168877.057767884
+232	25737	78.018608214818	16785956.36069144
+232	25771	78.118608214818	2564968.155770405
+232	25803	78.218608214818	2604282.3624820616
+232	25835	78.318608214818	8103558.880202642
+232	25867	78.418608214818	11977805.166867929
+232	25901	78.518608214818	3291225.2223678026
+232	25935	78.618608214818	9160722.572353004
+232	25969	78.718608214818	10414739.11232073
+232	26001	78.818608214818	2494380.9872429674
+232	26033	78.918608214818	3304247.93143582
+232	26065	79.018608214818	5178250.755245431
+232	26099	79.118608214818	10638601.01384992
+232	26131	79.218608214818	3627592.7768201944
+232	26165	79.318608214818	3605406.812686682
+232	26197	79.418608214818	2872128.711122726
+232	26229	79.518608214818	2310291.5042363363
+232	26261	79.618608214818	15505863.1663864
+232	26293	79.718608214818	3294793.0278550303
+232	26325	79.818608214818	6011497.800133655
+232	26357	79.918608214818	6033569.3009515
+232	26389	80.018608214818	3596194.507421743
+232	26421	80.118608214818	1121690.781092091
+232	26453	80.218608214818	3473272.945251662
+232	26485	80.318608214818	4887720.764502356
+232	26517	80.418608214818	3482849.9443143494
+232	26549	80.518608214818	6920172.27072111
+232	26581	80.618608214818	11854287.294452965
+232	26613	80.718608214818	8143634.309161078
+232	26645	80.818608214818	9850588.603263484
+232	26677	80.918608214818	33389216.38168111
+232	26711	81.018608214818	10485601.48493164
+232	26745	81.118608214818	1527091.114119919
+232	26777	81.218608214818	3341951.0666043037
+232	26809	81.318608214818	5397037.974828355
+232	26841	81.418608214818	12810859.703931974
+232	26873	81.518608214818	3968043.790018545
+232	26905	81.618608214818	2443892.60960767
+232	26937	81.718608214818	7178566.056329237
+232	26969	81.818608214818	11983867.532827498
+232	27003	81.918608214818	2107203.489005652
+232	27035	82.018608214818	8409655.495000552
+232	27067	82.118608214818	2138233.964138076
+232	27099	82.218608214818	5483896.76110212
+232	27133	82.318608214818	6137606.070072718
+232	27165	82.418608214818	2638903.3841011506
+232	27197	82.518608214818	13736361.399910957
+232	27229	82.618608214818	7806808.798804211
+232	27261	82.718608214818	6746848.137417466
+232	27293	82.818608214818	1230984.427404286
+232	27325	82.918608214818	7669002.7802028805
+232	27357	83.018608214818	5030516.510547558
+232	27389	83.118608214818	3924880.2670259415
+232	27421	83.218608214818	4077505.574614169
+232	27453	83.318608214818	3939728.062633473
+232	27485	83.418608214818	6979034.5670342995
+232	27517	83.518608214818	2320577.6981413476
+232	27549	83.618608214818	3426146.3760047597
+232	27581	83.718608214818	6315687.862366424
+232	27613	83.818608214818	5571972.885048317
+232	27647	83.918608214818	8631484.886539148
+232	27679	84.018608214818	4063694.848742672
+232	27713	84.118608214818	3701929.0562748397
+232	27745	84.218608214818	4067403.969082969
+232	27777	84.318608214818	4161016.8946445505
+232	27809	84.418608214818	18041206.777329244
+232	27841	84.518608214818	2464392.277417977
+232	27873	84.618608214818	3038412.728758204
+232	27905	84.718608214818	13034249.369977621
+232	27937	84.818608214818	9424433.047570433
+232	27969	84.918608214818	2223964.61674525
+232	28001	85.018608214818	3243840.97397664
+232	28035	85.118608214818	2511201.44817603
+232	28069	85.218608214818	4376699.511074359
+232	28101	85.318608214818	2858259.150352822
+232	28133	85.418608214818	5314354.747702084
+232	28165	85.518608214818	9864761.823417842
+232	28197	85.618608214818	3901528.115972671
+232	28229	85.718608214818	2868612.847870714
+232	28261	85.818608214818	5308334.353907235
+232	28293	85.918608214818	1673714.8532237362
+232	28325	86.018608214818	3738247.8840160556
+232	28357	86.118608214818	4559561.138132616
+232	28389	86.218608214818	3962513.3531572325
+232	28421	86.318608214818	2196815.695502238
+232	28453	86.418608214818	4136472.9055427257
+232	28485	86.518608214818	10002595.373796787
+232	28517	86.618608214818	9560504.609901953
+232	28549	86.718608214818	4860622.309717366
+232	28581	86.818608214818	7127397.737222217
+232	28613	86.918608214818	6831153.183409978
+232	28645	87.018608214818	4628766.557930751
+232	28677	87.118608214818	2187036.6403070646
+232	28709	87.218608214818	7832356.307900476
+232	28741	87.318608214818	6158619.883172808
+232	28773	87.418608214818	4193740.875304457
+232	28805	87.518608214818	6549043.246537295
+232	28837	87.618608214818	4349104.945860581
+232	28869	87.718608214818	2357774.741412848
+232	28901	87.818608214818	7684569.910547619
+232	28933	87.918608214818	6028122.594704712
+232	28965	88.018608214818	2810799.4951030933
+232	28997	88.118608214818	21013236.21657035
+232	29029	88.218608214818	10769325.983926596
+232	29061	88.318608214818	6375416.96992726
+232	29095	88.418608214818	1718279.1511005356
+232	29127	88.518608214818	17197685.1381153
+232	29159	88.618608214818	5436315.492412083
+232	29191	88.718608214818	4574771.38450278
+232	29223	88.818608214818	13035745.730359709
+232	29255	88.918608214818	6146874.281770187
+232	29287	89.018608214818	2275426.9019470476
+232	29319	89.118608214818	2871159.9412256484
+232	29351	89.218608214818	23841046.747432534
+232	29383	89.318608214818	16502192.91951809
+232	29415	89.418608214818	3809253.911129669
+232	29447	89.518608214818	8792928.676843498
+232	29479	89.618608214818	9664437.625088682
+232	29511	89.718608214818	6715177.851381411
+232	29543	89.818608214818	4772035.681875711
+232	29575	89.918608214818	8584829.237238409
+232	29609	90.018608214818	2916912.5622231457
+232	29643	90.118608214818	1879874.0425574726
+232	29675	90.218608214818	7681252.166274665
+232	29707	90.318608214818	14074488.463923631
+232	29739	90.418608214818	2227237.1137911594
+232	29771	90.518608214818	5263862.93110289
+232	29803	90.618608214818	4756662.294139159
+232	29835	90.718608214818	6037838.058531921
+232	29867	90.818608214818	8882343.87005733
+232	29899	90.918608214818	8853330.82899394
+232	29931	91.018608214818	7219124.236925859
+232	29963	91.118608214818	4220070.191644274
+232	29995	91.218608214818	3754693.41284873
+232	30027	91.318608214818	19401817.661339916
+232	30061	91.418608214818	2932011.203806417
+232	30093	91.518608214818	1623468.9406622397
+232	30127	91.618608214818	5582681.953726271
+232	30159	91.718608214818	2013425.0611435627
+232	30191	91.818608214818	3639706.026344147
+232	30223	91.918608214818	10290549.776929872
+232	30255	92.018608214818	5061235.940388393
+232	30287	92.118608214818	13465755.515738096
+232	30319	92.218608214818	36281384.16611726
+232	30351	92.318608214818	2733737.641623393
+232	30383	92.418608214818	16216177.640683675
+232	30415	92.518608214818	9691775.745741868
+232	30447	92.618608214818	7658145.914460676
+232	30479	92.718608214818	5286415.9333700305
+232	30513	92.818608214818	7573632.831414201
+232	30545	92.918608214818	3863814.3329842673
+232	30577	93.018608214818	12374247.994385526
+232	30609	93.118608214818	3200436.5477884877
+232	30641	93.218608214818	5280676.205959424
+232	30673	93.318608214818	4359551.531107246
+232	30705	93.418608214818	5469181.714863589
+232	30739	93.518608214818	3196172.3998833564
+232	30771	93.618608214818	5236308.254178024
+232	30803	93.718608214818	6201080.656792843
+232	30835	93.818608214818	2670162.9184224494
+232	30867	93.918608214818	2790641.198983018
+232	30899	94.018608214818	3171859.890326606
+232	30931	94.118608214818	1440126.669046836
+232	30963	94.218608214818	1088607.5153769886
+232	30995	94.318608214818	5741331.773170705
+232	31027	94.418608214818	3418595.180625761
+232	31061	94.518608214818	3310240.435082131
+232	31093	94.618608214818	9346588.609570876
+232	31125	94.718608214818	6701199.402963895
+232	31157	94.818608214818	3233213.03590831
+232	31189	94.918608214818	4541155.36886038
+232	31221	95.018608214818	2964517.8771365997
+232	31253	95.118608214818	5577304.939550402
+232	31285	95.218608214818	9430771.468244031
+232	31319	95.318608214818	10782615.548122164
+232	31351	95.418608214818	5716945.123403809
+232	31383	95.518608214818	3148536.0010325294
+232	31417	95.618608214818	4369399.297281169
+232	31449	95.718608214818	7980817.151298097
+232	31481	95.818608214818	5464488.499187464
+232	31513	95.918608214818	7017537.0640944
+232	31545	96.018608214818	8782947.60988351
+232	31577	96.118608214818	2213509.399588999
+232	31609	96.218608214818	6609561.290229671
+232	31643	96.318608214818	8474717.15675475
+232	31675	96.418608214818	2718243.2790906075
+232	31707	96.518608214818	35118399.96544974
+232	31739	96.618608214818	3410229.248492029
+232	31771	96.718608214818	17263529.71069535
+232	31803	96.818608214818	3924295.276648951
+232	31835	96.918608214818	1148751.104378088
+232	31867	97.018608214818	4084930.547562938
+232	31899	97.118608214818	3675497.498917791
+232	31933	97.218608214818	3173716.688489071
+232	31965	97.318608214818	5814652.286502029
+232	31997	97.418608214818	9208619.235979132
+232	32031	97.518608214818	4583325.996142191
+232	32063	97.618608214818	4300016.1272849245
+232	32095	97.718608214818	4883003.476569946
+232	32127	97.818608214818	10900244.798817705
+232	32161	97.918608214818	16658452.990495063
+232	32193	98.018608214818	4983687.833073776
+232	32225	98.118608214818	2174579.0735185863
+232	32257	98.218608214818	5175914.933674269
+232	32289	98.318608214818	2051113.784371269
+232	32321	98.418608214818	3330202.9362630756
+232	32353	98.518608214818	3136243.3140856056
+232	32385	98.618608214818	8559637.006014833
+232	32417	98.718608214818	7552534.209844272
+232	32449	98.818608214818	4686713.056675079
+232	32481	98.918608214818	2558736.3844825597
+232	32513	99.018608214818	1379915.8833279938
+232	32545	99.118608214818	4874782.115011292
+232	32577	99.218608214818	4062680.6401079386
+232	32609	99.318608214818	4688503.601307006
+232	32641	99.418608214818	4249694.373358977
+232	32673	99.518608214818	2255600.7249748106
+232	32705	99.618608214818	10469306.86320769
+232	32737	99.718608214818	2342856.3072240995
+232	32771	99.818608214818	8464784.937162923
+232	32803	99.918608214818	3776547.483065881
+232	32835	100.018608214818	16856108.27254793
+232	32867	100.118608214818	5387103.515086424
+232	32899	100.218608214818	4613412.997202758
+232	32931	100.318608214818	4053640.550808551
+232	32963	100.418608214818	5853864.604320117
+232	32995	100.518608214818	3650421.115741618
+232	33027	100.618608214818	3574684.6493364107
+232	33059	100.718608214818	1994758.738603904
+232	33091	100.818608214818	8159289.762461397
+232	33123	100.918608214818	4621535.736631074
+232	33155	101.018608214818	5828898.196563101
+232	33187	101.118608214818	2783554.5464469455
+232	33219	101.218608214818	3467439.6840898627
+232	33251	101.318608214818	3445810.358922428
+232	33283	101.418608214818	12001874.271114422
+232	33315	101.518608214818	4149653.891616097
+232	33347	101.618608214818	2793706.5381891136
+232	33379	101.718608214818	6433411.0825437
+232	33413	101.818608214818	17587462.3245116
+232	33445	101.918608214818	4039716.7340426324
+232	33477	102.018608214818	2581882.59137389
+232	33509	102.118608214818	5055080.906618331
+232	33541	102.218608214818	1231797.2107332996
+232	33575	102.318608214818	6506500.693253396
+232	33607	102.418608214818	11208685.861343538
+232	33639	102.518608214818	3161605.7574879983
+232	33671	102.618608214818	8878230.105986528
+232	33703	102.718608214818	7008354.294922525
+232	33735	102.818608214818	2633042.617438983
+232	33767	102.918608214818	1820622.9067773877
+232	33801	103.018608214818	10344009.821415478
+232	33833	103.118608214818	7408619.395610545
+232	33865	103.218608214818	1093248.2531461723
+232	33899	103.318608214818	4825597.955700763
+232	33931	103.418608214818	2543017.9033408747
+232	33963	103.518608214818	2579304.7850583945
+232	33995	103.618608214818	7332752.122888257
+232	34027	103.718608214818	3161111.6620547236
+232	34059	103.818608214818	3673083.937796754
+232	34091	103.918608214818	12579254.774857344
+232	34123	104.018608214818	3081756.6455275803
+232	34155	104.118608214818	6754781.496056786
+232	34187	104.218608214818	11404827.930666996
+232	34219	104.318608214818	6021214.171183568
+232	34251	104.418608214818	8126837.16198683
+232	34283	104.518608214818	7875785.970330064
+232	34317	104.618608214818	1844097.0423669787
+232	34349	104.718608214818	6613355.532123218
+232	34381	104.818608214818	8090459.581499781
+232	34413	104.918608214818	2052357.9628578592
+232	34445	105.018608214818	6845437.394342874
+232	34477	105.118608214818	9119657.18402743
+232	34511	105.218608214818	7066701.846768583
+232	34545	105.318608214818	4146363.046742876
+232	34577	105.418608214818	2874950.117025047
+232	34609	105.518608214818	8403064.867756994
+232	34641	105.618608214818	7187900.760305389
+232	34673	105.718608214818	8349471.695523706
+232	34707	105.818608214818	6288278.833557991
+232	34739	105.918608214818	5257238.178446313
+232	34771	106.018608214818	7354219.881526562
+232	34803	106.118608214818	4331206.950323559
+232	34835	106.218608214818	1095484.37315821
+232	34867	106.318608214818	2748047.170064457
+232	34899	106.418608214818	2391723.545661585
+232	34931	106.518608214818	1637521.7259029755
+232	34963	106.618608214818	1976259.1705842747
+232	34995	106.718608214818	6875513.075612295
+232	35027	106.818608214818	13210258.378431033
+232	35059	106.918608214818	5683781.739019264
+232	35093	107.018608214818	10564151.202436304
+232	35125	107.118608214818	3447777.9821312306
+232	35157	107.218608214818	10417226.385661375
+232	35189	107.318608214818	1005497.2882491067
+232	35221	107.418608214818	1963541.4671681814
+232	35253	107.518608214818	1613887.1974636754
+232	35287	107.618608214818	4638678.353776103
+232	35319	107.718608214818	6301717.263299807
+232	35351	107.818608214818	19074270.528204687
+232	35383	107.918608214818	7671622.061458254
+232	35415	108.018608214818	9080515.401922675
+232	35447	108.118608214818	7002244.7168605225
+232	35479	108.218608214818	9237755.581689157
+232	35511	108.318608214818	5950713.835396834
+232	35543	108.418608214818	1831065.3437415631
+232	35575	108.518608214818	3202108.7180790748
+232	35609	108.618608214818	5661486.380286636
+232	35641	108.718608214818	4491739.258828199
+232	35673	108.818608214818	4851763.921139431
+232	35705	108.918608214818	6117642.119117341
+232	35737	109.018608214818	7067533.929162925
+232	35771	109.118608214818	3471214.911278929
+232	35803	109.218608214818	3696445.0593101056
+232	35835	109.318608214818	9289803.752254346
+232	35867	109.418608214818	8001667.766535973
+232	35899	109.518608214818	4468288.794013316
+232	35931	109.618608214818	4887487.689910639
+232	35963	109.718608214818	8731352.40408398
+232	35995	109.818608214818	2895560.7798245433
+232	36027	109.918608214818	5142255.263170891
+232	36059	110.018608214818	18511866.763404097
+232	36091	110.118608214818	3235027.510861432
+232	36123	110.218608214818	9180643.41792792
+232	36155	110.318608214818	6373762.484421894
+232	36187	110.418608214818	2726180.3536542603
+232	36219	110.518608214818	1865685.408654539
+232	36251	110.618608214818	6343329.501193572
+232	36283	110.718608214818	1616707.0051332423
+232	36315	110.818608214818	5137903.013613233
+232	36347	110.918608214818	4047806.442544743
+232	36379	111.018608214818	3520329.0440289434
+232	36411	111.118608214818	5926854.990680985
+232	36443	111.218608214818	5905000.763273956
+232	36475	111.318608214818	4277707.911594404
+232	36509	111.418608214818	3926990.5022751624
+232	36541	111.518608214818	4207384.562501813
+232	36573	111.618608214818	3510760.44953
+232	36605	111.718608214818	11252034.788916884
+232	36637	111.818608214818	1181496.5994565277
+232	36669	111.918608214818	8135550.741948184
+232	36701	112.018608214818	2687616.0155364075
+232	36733	112.118608214818	6710152.82517632
+232	36765	112.218608214818	6963275.296587562
+232	36799	112.318608214818	6155922.551804797
+232	36831	112.418608214818	4078601.862934548
+232	36863	112.518608214818	3933516.8632295136
+232	36895	112.618608214818	2167821.777448094
+232	36927	112.718608214818	9407785.194873901
+232	36961	112.818608214818	1712757.4576968197
+232	36995	112.918608214818	9978960.133993609
+232	37029	113.018608214818	5047610.419919236
+232	37061	113.118608214818	10072723.354693526
+232	37093	113.218608214818	450664.74351071165
+232	37125	113.318608214818	1717125.5099513123
+232	37157	113.418608214818	1964417.973242187
+232	37189	113.518608214818	1429343.503784277
+232	37223	113.618608214818	5084327.853871153
+232	37255	113.718608214818	9128776.639707025
+232	37289	113.818608214818	2445752.761566071
+232	37323	113.918608214818	1917607.2891698866
+232	37355	114.018608214818	16404232.87195886
+232	37387	114.118608214818	6586779.143051594
+232	37419	114.218608214818	3553397.4772135126
+232	37451	114.318608214818	8470450.5586174
+232	37485	114.418608214818	3038036.261725724
+232	37517	114.518608214818	22099492.248614606
+232	37551	114.618608214818	2026376.2863109314
+232	37583	114.718608214818	2796950.0143988584
+232	37615	114.818608214818	15407008.346555723
+232	37647	114.918608214818	3669217.6534505687
+232	37679	115.018608214818	3716228.779813314
+232	37711	115.118608214818	4260894.020909881
+232	37743	115.218608214818	7436777.830483703
+232	37775	115.318608214818	4174425.0522456313
+232	37807	115.418608214818	2920662.7708820864
+232	37839	115.518608214818	1634325.127508766
+232	37873	115.618608214818	3272603.1580109647
+232	37905	115.718608214818	10275424.853043534
+232	37937	115.818608214818	3569876.8407000634
+232	37969	115.918608214818	5606813.504423395
+232	38001	116.018608214818	1670707.0683905007
+232	38033	116.118608214818	4480328.727237291
+232	38065	116.218608214818	31182426.018588576
+232	38097	116.318608214818	2146869.5734273638
+232	38129	116.418608214818	10341705.522308398
+232	38161	116.518608214818	11957350.317353096
+232	38193	116.618608214818	6355997.806605995
+232	38225	116.718608214818	3073778.403574846
+232	38257	116.818608214818	4828368.221036916
+232	38289	116.918608214818	6255829.057194445
+232	38321	117.018608214818	3719638.9871132174
+232	38355	117.118608214818	4739021.1552341655
+232	38387	117.218608214818	4565940.546796642
+232	38419	117.318608214818	10499953.692278547
+232	38451	117.418608214818	17297821.290643826
+232	38483	117.518608214818	1649431.547003832
+232	38515	117.618608214818	2928923.3620366897
+232	38547	117.718608214818	1811011.2614968624
+232	38579	117.818608214818	8690221.853656128
+232	38611	117.918608214818	32288210.871872764
+232	38643	118.018608214818	3818618.9455184885
+232	38675	118.118608214818	22223326.190102857
+232	38707	118.218608214818	3705926.891729094
+232	38739	118.318608214818	5525911.462173548
+232	38771	118.418608214818	2988140.7978302483
+232	38805	118.518608214818	1484975.042168392
+232	38837	118.618608214818	3071231.1980581325
+232	38869	118.718608214818	19801207.244284824
+232	38903	118.818608214818	2366526.844673437
+232	38937	118.918608214818	3022158.074894296
+232	38969	119.018608214818	5769304.3299852135
+232	39003	119.118608214818	16773129.11889797
+232	39035	119.218608214818	2967122.560399639
+232	39067	119.318608214818	2435397.765688108
+232	39099	119.418608214818	3548911.001234817
+232	39133	119.518608214818	4520319.078368519
+232	39167	119.618608214818	1073646.117900806
+232	39199	119.718608214818	4212721.135690302
+232	39231	119.818608214818	2800988.3263838273
+232	39263	119.918608214818	7938364.470324009
+
