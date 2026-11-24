@@ -1,0 +1,1012 @@
+file 46520 1795470968                                           
+version 3
+run HiddenTrace-1-20261124-01:25:39-36212
+attr configname HiddenTrace
+attr datetime 20261124-01:25:39
+attr datetimef 20261124-012539
+attr experiment HiddenTrace
+attr inifile omnetpp.ini
+attr iterationvars $rtsThreshold=100B
+attr iterationvarsd rtsThreshold=100B
+attr iterationvarsf rtsThreshold=100B-
+attr measurement $rtsThreshold=100B
+attr network Contention
+attr processid 36212
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 1
+attr seedset 1
+itervar rtsThreshold 100B
+config image-path ../../../../../omnetpp-6.4.0/samples/inet-4.7.0/images
+config description "as Hidden, but 50 ms with an eventlog: for the Sequence Chart screenshots"
+config extends Hidden
+config repeat 1
+config sim-time-limit 50ms
+config warmup-period 0s
+config record-eventlog true
+config description "two stations hidden from each other, without and with RTS/CTS"
+config repeat 5
+config *.n 2
+config *.r 100m
+config *.host[*].wlan.radio.receiver.energyDetection -77dBm
+config *.host[*].wlan.radio.receiver.sensitivity -77dBm
+config **.wlan*.mac.dcf.rtsPolicy.rtsThreshold 100B
+config network Contention
+config Contention.**.wlan*.bitrate 54Mbps
+config Contention.**.cli.reqLength 900B
+config Anomaly.n 5
+config Anomaly.host[0].wlan[*].bitrate 9Mbps
+config Anomaly.host[*].wlan[*].bitrate 54Mbps
+config Anomaly.ap.wlan[*].bitrate 54Mbps
+config Anomaly.**.messageLength 900B
+config Anomaly.ap.**.pendingQueue.numQueues 5
+config Roaming.D 51m
+config Roaming.radioMedium.pathLoss.alpha 3.2
+config Roaming.radioMedium.pathLoss.sigma 3
+config Roaming.ap*.wlan.mgmt.beaconInterval 100ms
+config Roaming.host.wlan.mgmt.numChannels 7
+config Roaming.*.mobility.turtleScript "xml(\"<movement><set x='50' y='102' speed='1.75' angle='0'/><forward d='51'/></movement>\")"
+config sim-time-limit 12s
+config warmup-period 2s
+config **.vector-recording false
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxX 400m
+config **.constraintAreaMaxY 400m
+config **.constraintAreaMaxZ 0m
+config *.radioMedium.sameTransmissionStartTimeCheck "\"ignore\""
+config **.wlan*.opMode "\"a\""
+config **.wlan*.radio.bandName "\"5 GHz (20 MHz)\""
+config **.wlan*.radio.channelNumber 8
+config **.radio.transmitter.power 20mW
+config **.fragmentationPolicy.fragmentationThreshold 2346B
+config **.ap.wlan.address "\"10:00:00:00:00:00\""
+config **.mgmt.accessPointAddress "\"10:00:00:00:00:00\""
+config **.cli.respLength 0B
+config **.cli.destAddress "\"20:00:00:00:00:00\""
+config **.cli.sendInterval 50us
+config *.ap.mobility.initialX 200m
+config *.ap.mobility.initialY 200m
+config **.mobility.initialZ 0m
+config **.mobility.initFromDisplayString false
+
+vector 0 Contention.ap.sink droppedPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropped)
+attr title "dropped packet lengths"
+attr unit b
+vector 1 Contention.ap.sink droppedDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetDropped)
+attr title "dropped data rate"
+attr unit bps
+vector 2 Contention.ap.sink packetLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushed)
+attr title "packet lengths"
+attr unit b
+vector 3 Contention.ap.sink dataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushed)
+attr title "data rate"
+attr unit bps
+vector 4 Contention.ap.sink meanBitLifeTimePerPacket:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed)))
+attr title "mean bit life time per packet"
+attr unit s
+vector 5 Contention.ap.sink packetLifeTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLifeTime(packetPushed)
+attr title "packet life time"
+attr unit s
+vector 6 Contention.ap.sink packetJitter:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source jitter(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet jitter"
+attr unit s
+vector 7 Contention.ap.sink packetDelayDifferenceToMean:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source differenceToMean(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay difference to mean"
+attr unit s
+vector 8 Contention.ap.sink packetDelayVariation:vector ETV
+attr recordingmode vector
+attr source stddev(weightedMeanPerGroup(groupRegionsPerPacket(lifeTimePerRegion(packetPushed))))
+attr title "packet delay variation"
+attr unit s
+vector 9 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 10 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 11 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 12 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 13 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 14 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 15 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 16 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 17 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 18 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 19 Contention.ap.wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 20 Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 21 Contention.ap.wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 22 Contention.ap.wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 23 Contention.ap.wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 24 Contention.ap.wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 25 Contention.ap.wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 26 Contention.ap.wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 27 Contention.ap.wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 28 Contention.ap.wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 29 Contention.ap.wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 30 Contention.ap.wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 31 Contention.ap.wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 32 Contention.ap.wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 33 Contention.ap.wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 34 Contention.ap.wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 35 Contention.ap.wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 36 Contention.ap.wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 37 Contention.ap.wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 38 Contention.ap.wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 39 Contention.ap.wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 40 Contention.ap.wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 41 Contention.ap.wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 42 Contention.ap.wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 43 Contention.ap.wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 44 Contention.ap.wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 45 Contention.ap.wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 46 Contention.ap.wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 47 Contention.ap.wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 48 Contention.ap.wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 49 Contention.ap.wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 50 Contention.ap.wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 51 Contention.ap.wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 52 Contention.ap.wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 53 Contention.ap.wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 54 Contention.ap.wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 55 Contention.ap.wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 56 Contention.ap.wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 57 Contention.ap.wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 58 Contention.ap.wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 59 Contention.ap.wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 60 Contention.ap.wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 61 Contention.ap.wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 62 Contention.ap.wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 63 Contention.host[0].cli packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 64 Contention.host[0].cli packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 65 Contention.host[0].cli endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+vector 66 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 67 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 68 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 69 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 70 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 71 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 72 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 73 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 74 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 75 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 76 Contention.host[0].wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 77 Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 78 Contention.host[0].wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 79 Contention.host[0].wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 80 Contention.host[0].wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 81 Contention.host[0].wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 82 Contention.host[0].wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 83 Contention.host[0].wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 84 Contention.host[0].wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 85 Contention.host[0].wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 86 Contention.host[0].wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 87 Contention.host[0].wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 88 Contention.host[0].wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 89 Contention.host[0].wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 90 Contention.host[0].wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 91 Contention.host[0].wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 92 Contention.host[0].wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 93 Contention.host[0].wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 94 Contention.host[0].wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 95 Contention.host[0].wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 96 Contention.host[0].wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 97 Contention.host[0].wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 98 Contention.host[0].wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 99 Contention.host[0].wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 100 Contention.host[0].wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 101 Contention.host[0].wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 102 Contention.host[0].wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 103 Contention.host[0].wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 104 Contention.host[0].wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 105 Contention.host[0].wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 106 Contention.host[0].wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 107 Contention.host[0].wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 108 Contention.host[0].wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 109 Contention.host[0].wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 110 Contention.host[0].wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 111 Contention.host[0].wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 112 Contention.host[0].wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 113 Contention.host[0].wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 114 Contention.host[0].wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 115 Contention.host[0].wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 116 Contention.host[0].wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 117 Contention.host[0].wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 118 Contention.host[0].wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 119 Contention.host[0].wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+vector 120 Contention.host[1].cli packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 121 Contention.host[1].cli packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 122 Contention.host[1].cli endToEndDelay:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source dataAge(packetReceived)
+attr title "end-to-end delay"
+attr unit s
+vector 123 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 124 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 125 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 126 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 127 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 128 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 129 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 130 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue droppedPacketLengthsQueueOverflow:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetDropReasonIsQueueOverflow(packetDropped))
+attr title "dropped packet lengths: queue overflow"
+attr unit b
+vector 131 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue flowQueueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(demuxFlow(packetPulled))
+attr title "flow queueing times"
+attr unit s
+vector 132 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue flowIncomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPushStarted)))
+attr title "flow specific incoming data rate"
+attr unit bps
+vector 133 Contention.host[1].wlan.mac.dcf.channelAccess.pendingQueue flowOutgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(flowPacketLength(demuxFlow(packetPulled)))
+attr title "flow specific outgoing data rate"
+attr unit bps
+vector 134 Contention.host[1].wlan.mac.dcf.channelAccess.inProgressFrames queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetDequeued)
+attr title "queueing times"
+vector 135 Contention.host[1].wlan.mac.dcf.channelAccess.inProgressFrames queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(count(packetEnqueued) - count(packetDequeued))"
+attr title "queue length"
+vector 136 Contention.host[1].wlan.mac.dcf.channelAccess.contention backoffPeriodGenerated:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "backoff periods"
+vector 137 Contention.host[1].wlan.mac.dcf.channelAccess.contention backoffActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(backoffStarted)-count(backoffStopped))
+attr title "backoff active"
+vector 138 Contention.host[1].wlan.mac.dcf.channelAccess.contention stateChanged:vector ETV
+attr enum IDLE,DEFER,IFS_AND_BACKOFF
+attr interpolationmode none
+attr recordingmode vector
+attr title "contention state changed"
+attr type enum
+vector 139 Contention.host[1].wlan.mac.dcf.recipientMacDataService packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 140 Contention.host[1].wlan.mac.dcf.recoveryProcedure contentionWindowChanged:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr title "contention window"
+vector 141 Contention.host[1].wlan.mac.dcf packetSentToPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent, packetBytes"
+vector 142 Contention.host[1].wlan.mac.dcf packetSentToPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetSentToPeer)
+attr title "packets sent: unicast, packetBytes"
+vector 143 Contention.host[1].wlan.mac.dcf packetSentToPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetSentToPeer)
+attr title "packets sent: multicast, packetBytes"
+vector 144 Contention.host[1].wlan.mac.dcf packetSentToPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetSentToPeer)
+attr title "packets sent: broadcast , packetBytes"
+vector 145 Contention.host[1].wlan.mac.dcf packetSentToPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetSentToPeer)
+attr title "packets sent: with retry, packetBytes"
+vector 146 Contention.host[1].wlan.mac.dcf packetSentToPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetSentToPeer)
+attr title "packets sent: without retry, packetBytes"
+vector 147 Contention.host[1].wlan.mac.dcf packetReceivedFromPeer:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received, packetBytes"
+vector 148 Contention.host[1].wlan.mac.dcf packetReceivedFromPeerUnicast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Unicast(packetReceivedFromPeer)
+attr title "packets received: unicast, packetBytes"
+vector 149 Contention.host[1].wlan.mac.dcf packetReceivedFromPeerMulticast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Multicast(packetReceivedFromPeer)
+attr title "packets received: multicast, packetBytes"
+vector 150 Contention.host[1].wlan.mac.dcf packetReceivedFromPeerBroadcast:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Broadcast(packetReceivedFromPeer)
+attr title "packets received: broadcast, packetBytes"
+vector 151 Contention.host[1].wlan.mac.dcf packetReceivedFromPeerWithRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211Retry(packetReceivedFromPeer)
+attr title "packets received: with retry, packetBytes"
+vector 152 Contention.host[1].wlan.mac.dcf packetReceivedFromPeerWithoutRetry:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source ieee80211NotRetry(packetReceivedFromPeer)
+attr title "packets received: without retry, packetBytes"
+vector 153 Contention.host[1].wlan.mac.dcf packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 154 Contention.host[1].wlan.mac.dcf packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 155 Contention.host[1].wlan.mac.dcf packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 156 Contention.host[1].wlan.mac.dcf packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 157 Contention.host[1].wlan.mac.dcf frameSequenceActive:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source warmup(count(frameSequenceStarted)-count(frameSequenceFinished))
+attr title "frame sequence active"
+vector 158 Contention.host[1].wlan.mac.dcf datarateSelected:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr title "datarates selected"
+vector 159 Contention.host[1].wlan.mac.rx nav:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source navChanged
+attr title "network allocation vector"
+vector 160 Contention.host[1].wlan.mac packetSentToUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to upper layer, packetBytes"
+vector 161 Contention.host[1].wlan.mac packetSentToLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets sent to lower layer, packetBytes"
+vector 162 Contention.host[1].wlan.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from upper layer, packetBytes"
+vector 163 Contention.host[1].wlan.mac packetReceivedFromLower:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr title "packets received from lower layer, packetBytes"
+vector 164 Contention.host[1].wlan.mac packetDrop:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropped
+attr title "packet drops, packetBytes"
+vector 165 Contention.host[1].wlan.mac packetDropIncorrectlyReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packet drops: incorrectly received, packetBytes"
+vector 166 Contention.host[1].wlan.mac packetDropNotAddressedToUs:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNotAddressedToUs(packetDropped)
+attr title "packet drops: not addressed to us, packetBytes"
+vector 167 Contention.host[1].wlan.mac packetDropQueueOverflow:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsQueueOverflow(packetDropped)
+attr title "packet drops: queue overflow, packetBytes"
+vector 168 Contention.host[1].wlan.mac packetDropRetryLimitReached:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsRetryLimitReached(packetDropped)
+attr title "packet drops: retry limit reached, packetBytes"
+vector 169 Contention.host[1].wlan.mac packetDropDuplicateDetected:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsDuplicateDetected(packetDropped)
+attr title "packet drops: duplicate detected, packetBytes"
+vector 170 Contention.host[1].wlan.mac packetDropOther:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsOther(packetDropped)
+attr title "packet drops: other, packetBytes"
+vector 171 Contention.host[1].wlan.radio radioMode:vector ETV
+attr enum OFF,SLEEP,RECEIVER,TRANSMITTER,TRANSCEIVER,SWITCHING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+attr type enum
+vector 172 Contention.host[1].wlan.radio receptionState:vector ETV
+attr enum UNDEFINED,IDLE,BUSY,RECEIVING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+attr type enum
+vector 173 Contention.host[1].wlan.radio transmissionState:vector ETV
+attr enum UNDEFINED,IDLE,TRANSMITTING
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+attr type enum
+vector 174 Contention.host[1].wlan.radio radioChannel:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioChannelChanged
+attr title "Radio channel"
+vector 175 Contention.host[1].wlan packetDropInterfaceDown:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsInterfaceDown(packetDropped)
+attr title "packet drops: interface down, packetBytes"
+vector 176 Contention.host[1].wlan packetDropNoCarrier:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetDropReasonIsNoCarrier(packetDropped)
+attr title "packet drops: no carrier, packetBytes"
+

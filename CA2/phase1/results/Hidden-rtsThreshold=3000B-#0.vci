@@ -1,9 +1,9 @@
-                                                                
+file 46331 1795468306                                           
 version 3
-run Hidden-0-20261123-23:55:34-29429
+run Hidden-0-20261124-00:41:15-33158
 attr configname Hidden
-attr datetime 20261123-23:55:34
-attr datetimef 20261123-235534
+attr datetime 20261124-00:41:15
+attr datetimef 20261124-004115
 attr experiment Hidden
 attr inifile omnetpp.ini
 attr iterationvars $rtsThreshold=3000B
@@ -11,14 +11,15 @@ attr iterationvarsd rtsThreshold=3000B
 attr iterationvarsf rtsThreshold=3000B-
 attr measurement $rtsThreshold=3000B
 attr network Contention
-attr processid 29429
+attr processid 33158
 attr repetition 0
 attr replication #0
 attr resultdir results
 attr runnumber 0
 attr seedset 0
 itervar rtsThreshold 3000B
-config image-path ../../../../../omnetpp-6.4.0/samples/inet-4.7.0/images
+config cmdenv-redirect-output true
+config image-path /home/sadra/omnetpp-6.4.0/samples/inet-4.7.0/images
 config description "two stations hidden from each other, without and with RTS/CTS"
 config repeat 5
 config *.n 2
@@ -1003,3 +1004,4 @@ attr interpolationmode none
 attr recordingmode vector(packetBytes)
 attr source packetDropReasonIsNoCarrier(packetDropped)
 attr title "packet drops: no carrier, packetBytes"
+
